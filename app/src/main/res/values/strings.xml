@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">App_Market</string>
+    <string-array name="list_genero">
+        <item>Masculino</item>
+        <item>Feminino</item>
+    </string-array>
+</resources>

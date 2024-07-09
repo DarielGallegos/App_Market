@@ -1,0 +1,14 @@
+package storage.src
+
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
+
+enum class KEY_PREFERENCE_STORAGE {
+    ;
+    companion object {
+        val KEY_ID = intPreferencesKey("id")
+        val KEY_NAME = stringPreferencesKey("nombre")
+        val KEY_USERNAME = stringPreferencesKey("username")
+        val KEY_ROL = stringPreferencesKey("rol")
+    }
+}
