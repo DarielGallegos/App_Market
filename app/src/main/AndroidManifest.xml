@@ -3,15 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.app_market">
 
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
-    <uses-feature android:name="android.hardware.camera.autofocus" android:required="true" />
-    <uses-feature android:name="android.hardware.camera.flash" android:required="true" />
-    <uses-feature android:name="android.hardware.camera.front" android:required="true" />
-    <uses-feature android:name="android.hardware.camera.front.autofocus" android:required="true" />
-    <uses-feature android:name="android.hardware.camera.front.flash" android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.front.autofocus"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.front.flash"
+        android:required="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -22,6 +34,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
+        <activity
+            android:name=".DashboardClient"
+            android:exported="false" />
         <activity
             android:name=".FormRegisterClientActivity"
             android:exported="false" />
@@ -44,7 +59,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".Main2Activity"
+            android:name=".CatalogoProductosActivity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"

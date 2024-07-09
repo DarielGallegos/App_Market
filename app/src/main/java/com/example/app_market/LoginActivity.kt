@@ -12,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import model.Credentials
 import storage.StoragePreferences
 import view.loginView
 
@@ -37,7 +36,6 @@ class LoginActivity : loginView,  AppCompatActivity(){
         register = findViewById(R.id.register)
         forgot = findViewById(R.id.forgot)
 
-
         register.setOnClickListener(View.OnClickListener {
             val intent = Intent(applicationContext, FormRegisterClientActivity::class.java)
             startActivity(intent)
@@ -48,9 +46,6 @@ class LoginActivity : loginView,  AppCompatActivity(){
                 withContext(Dispatchers.Main) {
                     if(it.id != null){
                         Log.i("Credenciales", "${it.nombre} - ${it.username}")
-                        val intent = Intent(applicationContext, Main2Activity::class.java)
-                        startActivity(intent)
-                        finish()
                     }else{
                         Log.i("Credenciales", "No hay credenciales")
                     }
@@ -61,6 +56,9 @@ class LoginActivity : loginView,  AppCompatActivity(){
 
         loginButton = findViewById(R.id.login)
         loginButton.setOnClickListener {
+            val intent = Intent(applicationContext, DashboardClient::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
