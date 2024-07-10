@@ -8,7 +8,6 @@
     android:background="#ffffff"
     tools:context=".FormRegisterClientActivity">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

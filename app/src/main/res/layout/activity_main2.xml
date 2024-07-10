@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main2Activity">
+    tools:context=".CatalogoProductosActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -727,60 +727,6 @@
             android:src="@drawable/ic_favorite_white_24dp"
             app:fabSize="normal" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#FFFFFF"
-            android:elevation="4dp"
-            android:orientation="horizontal"
-            android:padding="8dp"
-            android:weightSum="100">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="50"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_home_gray_24dp" />
-
-                <View
-                    android:layout_width="84dp"
-                    android:layout_height="2dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/person_linear_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="50"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_person_gray_24dp" />
-
-                <View
-                    android:layout_width="84dp"
-                    android:layout_height="2dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:visibility="invisible" />
-
-            </LinearLayout>
-        </LinearLayout>
 
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,5 +1,5 @@
 package view
 
 interface loginView {
-    fun login(msg : String?)
+    fun login(status: Boolean)
 }
