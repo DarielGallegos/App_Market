@@ -1,10 +1,11 @@
 package com.example.app_market
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -12,17 +13,21 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import model.dto.POST.CredentialsPOST
+import service.impl.LoginServiceImpl
 import storage.StoragePreferences
 import view.loginView
 
 class LoginActivity : loginView,  AppCompatActivity(){
 
-    private var CREDENTIALES: StoragePreferences? = StoragePreferences(this)
+    private var preferences = StoragePreferences.getInstance(this)
     private lateinit var loginButton: Button
     private lateinit var txtuser: EditText
     private lateinit var txtPassword: EditText
     private lateinit var register: TextView
     private lateinit var forgot: TextView
+    private lateinit var chkClient: CheckBox
+    private val service = LoginServiceImpl(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,18 +41,18 @@ class LoginActivity : loginView,  AppCompatActivity(){
         register = findViewById(R.id.register)
         forgot = findViewById(R.id.forgot)
 
+        chkClient = findViewById(R.id.chkClientLogin)
+
         register.setOnClickListener(View.OnClickListener {
             val intent = Intent(applicationContext, FormRegisterClientActivity::class.java)
             startActivity(intent)
         })
 
         lifecycleScope.launch(Dispatchers.IO) {
-            CREDENTIALES?.getCredentiales()?.collect {
+            preferences.getCredentiales().collect {
                 withContext(Dispatchers.Main) {
                     if(it.id != null){
-                        Log.i("Credenciales", "${it.nombre} - ${it.username}")
-                    }else{
-                        Log.i("Credenciales", "No hay credenciales")
+                        start()
                     }
                 }
             }
@@ -56,12 +61,44 @@ class LoginActivity : loginView,  AppCompatActivity(){
 
         loginButton = findViewById(R.id.login)
         loginButton.setOnClickListener {
-            val intent = Intent(applicationContext, DashboardClient::class.java)
-            startActivity(intent)
-            finish()
+            val user = txtuser.text.toString().trim()
+            val password = txtPassword.text.toString().trim()
+            if (user.isEmpty() || password.isEmpty()) {
+                val alert = AlertDialog.Builder(this)
+                alert.setTitle("Inicio de Sesión")
+                alert.setMessage("Los campos no pueden estar vacios")
+                alert.setPositiveButton("Aceptar") { dialog, which ->
+                    dialog.dismiss()
+                }
+                alert.show()
+            }else{
+                service.getLogin(
+                    CredentialsPOST(
+                        txtuser.text.toString(),
+                        txtPassword.text.toString(),
+                        chkClient.isChecked
+                    )
+                )
+            }
         }
     }
 
-    override fun login(msg: String?) {
+    override fun login(status: Boolean) {
+        val alert = AlertDialog.Builder(this)
+        alert.setTitle("Inicio de Sesión")
+        alert.setMessage( if(status) "Inicio de sesión exitoso" else "Inicio de sesión fallido")
+        alert.setPositiveButton("Aceptar") { dialog, which ->
+            if(status){
+                start()
+            }
+            dialog.dismiss()
+        }
+        alert.show()
+    }
+
+    private fun start(){
+        val intent = Intent(this, DashboardClient::class.java)
+        startActivity(intent)
+        finish()
     }
 }

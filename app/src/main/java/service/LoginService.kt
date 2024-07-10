@@ -1,5 +1,7 @@
 package service
 
+import model.dto.POST.CredentialsPOST
+
 interface LoginService {
-    fun getLogin(username: String?, password: String?)
+    fun getLogin(e: CredentialsPOST)
 }
