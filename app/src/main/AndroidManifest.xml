@@ -35,6 +35,18 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".login.formRegister.FormRegisterClienValidationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.recoveryPassword.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.recoveryPassword.ResetPasswordValidationCodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.recoveryPassword.ResetPasswordEmailActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainCerrarActivity"
             android:exported="false"
             android:label="@string/title_activity_main_cerrar" />
@@ -42,7 +54,7 @@
             android:name=".DashboardClient"
             android:exported="false" />
         <activity
-            android:name=".FormRegisterClientActivity"
+            android:name=".login.formRegister.FormRegisterClientActivity"
             android:exported="false" />
         <activity
             android:name=".Main5Activity"
@@ -69,7 +81,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".login.LoginActivity"
             android:exported="true"
             android:label=""
             android:screenOrientation="portrait"

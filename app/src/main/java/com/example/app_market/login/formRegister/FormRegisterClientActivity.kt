@@ -1,4 +1,4 @@
-package com.example.app_market
+package com.example.app_market.login.formRegister
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.app_market.R
 import model.dto.POST.ClientPOST
 import service.impl.RegisterClientServiceImpl
 import utils.Converters
