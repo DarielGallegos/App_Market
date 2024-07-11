@@ -35,6 +35,10 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".MainCerrarActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main_cerrar" />
+        <activity
             android:name=".DashboardClient"
             android:exported="false" />
         <activity

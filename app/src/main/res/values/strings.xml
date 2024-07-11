@@ -4,4 +4,8 @@
         <item>Masculino</item>
         <item>Feminino</item>
     </string-array>
+    <string name="title_activity_main_cerrar">MainCerrarActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

@@ -19,7 +19,7 @@ import utils.Converters
 import utils.Permissions
 import view.RegisterClientView
 
-class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
+class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterClientView {
     private lateinit var image: ImageView
     private lateinit var btnRegister: Button
     private lateinit var txtName: EditText

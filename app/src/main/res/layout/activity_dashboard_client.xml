@@ -160,13 +160,16 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/btactualizar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="33"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:src="activty_actualizar_client">
+
                 <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_person_gray_24dp" />
                 <View
@@ -179,16 +182,18 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/btcerrar"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:layout_weight="33"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_person_gray_24dp" />
+
                 <View
                     android:layout_width="84dp"
                     android:layout_height="2dp"
