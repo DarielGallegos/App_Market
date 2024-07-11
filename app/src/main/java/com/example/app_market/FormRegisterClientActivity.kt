@@ -18,6 +18,7 @@ import service.impl.RegisterClientServiceImpl
 import utils.Converters
 import utils.Permissions
 import view.RegisterClientView
+import view.validations.ValidationAlertFormRegister
 
 class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
     private lateinit var image: ImageView
@@ -30,9 +31,8 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
     private lateinit var txtUser: EditText
     private lateinit var txtPasswd: EditText
     private lateinit var txtPasswdConfirm: EditText
-
     private lateinit var cboGender: Spinner
-
+    private lateinit var btnBack: ImageView
     private var service = RegisterClientServiceImpl(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,21 +55,28 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         txtPasswd = findViewById(R.id.txtRegPassword)
         txtPasswdConfirm = findViewById(R.id.txtRegPasswordConfirm)
         cboGender = findViewById(R.id.txtRegGenero)
-
+        btnBack = findViewById(R.id.imgBack)
         btnRegister = findViewById(R.id.btn_guardar)
+        val validator = ValidationAlertFormRegister(this)
         btnRegister.setOnClickListener {
-            var nombre = txtName.text.toString()
-            var apellido = txtLastName.text.toString()
-            var fecha = txtDate.text.toString()
-            var correo = txtEmail.text.toString()
-            var telefono = txtPhone.text.toString()
-            var generoChar = cboGender.selectedItem.toString()[0]
-            var genero = generoChar.toString()
-            var usuario = txtUser.text.toString()
-            var passwd = txtPasswd.text.toString()
-            var passwdConfirm = txtPasswdConfirm.text.toString()
-            var img = Converters().bitmapToBase64(image.drawable.toBitmap()) as String
-            service.saveClient(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwdConfirm, 2, "Admin", 1))
+            val nombre = txtName.text.toString().trim()
+            val apellido = txtLastName.text.toString().trim()
+            val fecha = txtDate.text.toString().trim()
+            val correo = txtEmail.text.toString().trim()
+            val telefono = txtPhone.text.toString().trim()
+            val generoChar = cboGender.selectedItem.toString()[0]
+            val genero = generoChar.toString().trim()
+            val usuario = txtUser.text.toString().trim()
+            val passwd = txtPasswd.text.toString().trim()
+            val passwdConfirm = txtPasswdConfirm.text.toString().trim()
+            val img = Converters().bitmapToBase64(image.drawable.toBitmap()) as String
+            val status = validator.validateForm(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin", 1), passwdConfirm)
+            if(status){
+                service.saveClient(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin", 1))
+            }
+        }
+        btnBack.setOnClickListener{
+            finish()
         }
         image.setOnClickListener {
             Permissions().checkCameraPermission(this)
