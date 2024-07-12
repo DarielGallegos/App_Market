@@ -1,35 +1,34 @@
 package com.example.app_market
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.view.inputmethod.InputMethodManager
+import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.lifecycle.lifecycleScope
 import com.example.app_market.databinding.ActivityMainCerrarBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import storage.StoragePreferences
 
 class MainCerrarActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainCerrarBinding
+
+    private lateinit var btnLogout: LinearLayout
+    private val preference = StoragePreferences.getInstance(this)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_dashboard_client)
 
-        binding = ActivityMainCerrarBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        btnLogout = findViewById(R.id.btcerrar)
 
-        val navView: BottomNavigationView = binding.navView
+        }
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main_cerrar)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-    }
-}
+
+            }
+
+
+
