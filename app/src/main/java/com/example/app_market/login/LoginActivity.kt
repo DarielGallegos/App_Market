@@ -1,4 +1,4 @@
-package com.example.app_market
+package com.example.app_market.login
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -10,6 +10,9 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.app_market.DashboardClient
+import com.example.app_market.login.formRegister.FormRegisterClientActivity
+import com.example.app_market.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
