@@ -47,6 +47,9 @@ dependencies {
     val versionRetrofit = "2.9.0"
     val versionOkHttp = "4.9.0"
 
+    //Implementaciones para el Glide
+    implementation ("com.github.bumptech.glide:glide:4.11.0")
+
     //Implementaciones para Retrofit y OkHttp
     implementation("com.squareup.retrofit2:retrofit:$versionRetrofit")
     implementation("com.squareup.retrofit2:converter-gson:$versionRetrofit")

@@ -1,39 +1,65 @@
 package com.example.app_market
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.recyclerview.widget.GridLayoutManager
+import client.Client
+import com.example.app_market.adapters.CatProductosAdapter
+import com.example.app_market.databinding.ActivityCatalogoProductosBinding
+import model.common.Producto
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import client.services.ProductService
+import com.google.gson.Gson
+import model.common.ApiResponseBody
+
 
 class CatalogoProductosActivity : AppCompatActivity() {
 
-    //private lateinit var personLinearLayout: LinearLayout
-    private lateinit var favorite: FloatingActionButton
-    private lateinit var cactusCardView: CardView
+    private lateinit var binding: ActivityCatalogoProductosBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+        binding = ActivityCatalogoProductosBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        //personLinearLayout = findViewById(R.id.person_linear_layout)
-        favorite = findViewById(R.id.favorite)
-        cactusCardView = findViewById(R.id.cactus_card_view)
+        val rec_view = binding.recViewCatProductos
+        rec_view.layoutManager = GridLayoutManager(this, 2)
 
-        //personLinearLayout.setOnClickListener {
-        //    val intent = Intent(this, Main3Activity::class.java)
-        //    startActivity(intent)
-        //}
+        val apiService = Client.ClientRetrofit.getService(ProductService::class.java) as ProductService
+        val call = apiService.listarProductos()
 
-        favorite.setOnClickListener {
-            val intent = Intent(this, Main4Activity::class.java)
-            startActivity(intent)
-        }
+        call.enqueue(object : Callback<ApiResponseBody>{
 
-        cactusCardView.setOnClickListener {
-            val intent = Intent(this, Main5Activity::class.java)
-            startActivity(intent)
-        }
+            override
+            fun onResponse(call: Call <ApiResponseBody>, response: Response<ApiResponseBody>) {
+                if (response.isSuccessful()) {
+
+                    val productos: List<Producto>? = Gson().fromJson(Gson().toJson(response.body()?.data?.content),Array<Producto>::class.java).toList()
+                    rec_view.adapter = CatProductosAdapter(
+                        productos
+                    )
+
+                    //  adapter = ProductsAdapter(product)
+                   // recyclerView.setAdapter(adapter)
+                } else {
+                    Toast.makeText(
+                        this@CatalogoProductosActivity,
+                        "Error: " + response.code(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            override
+            fun onFailure(call: Call<ApiResponseBody>, t: Throwable) {
+                Toast.makeText(this@CatalogoProductosActivity, t.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
+
     }
 }
