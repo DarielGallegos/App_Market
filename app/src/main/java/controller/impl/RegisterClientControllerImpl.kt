@@ -9,4 +9,8 @@ class RegisterClientControllerImpl(context: Context): RegisterClientController {
     override fun saveClient(status: Boolean) {
         RegisterClientView.statusSaveClient(status)
     }
+
+    override fun sendEmail(status: Boolean) {
+        RegisterClientView.statusSendEmail(status)
+    }
 }

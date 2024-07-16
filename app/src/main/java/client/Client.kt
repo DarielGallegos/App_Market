@@ -39,4 +39,35 @@ class Client {
              return this.retrofit.create(ServiceClass)
          }
     }
+
+    object ClientEmail{
+        lateinit var retrofit:Retrofit
+        init{
+            lateinit var retrofitClient : Retrofit
+            if(!this::retrofit.isInitialized){
+                val interceptor = HttpLoggingInterceptor()
+                interceptor.level = HttpLoggingInterceptor.Level.BODY
+
+                val clientHttp = OkHttpClient.Builder()
+                    .addInterceptor(interceptor)
+                    .addInterceptor(InterceptorClient())
+                    .connectTimeout(5, TimeUnit.SECONDS)
+                    .callTimeout(5, TimeUnit.SECONDS)
+                    .readTimeout(5, TimeUnit.SECONDS)
+                    .writeTimeout(5, TimeUnit.SECONDS)
+                    .build()
+
+                retrofitClient = Retrofit.Builder()
+                    .client(clientHttp)
+                    .baseUrl(RUTES.RUTE_SERVICE_EMAIL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+            }
+            this::retrofit.set(retrofitClient)
+        }
+
+        fun getService( ServiceClass: Class<*>): Any{
+            return this.retrofit.create(ServiceClass)
+        }
+    }
 }

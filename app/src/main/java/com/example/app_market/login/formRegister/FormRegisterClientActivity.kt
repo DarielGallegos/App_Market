@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -16,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.app_market.R
 import model.dto.POST.ClientPOST
 import service.impl.RegisterClientServiceImpl
+import storage.DataStoreCarMarket
 import utils.Converters
 import utils.Permissions
 import view.RegisterClientView
@@ -82,6 +84,7 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         image.setOnClickListener {
             Permissions().checkCameraPermission(this)
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -105,5 +108,19 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         }
         builderDialog.show()
 
+    }
+
+    override fun statusSendEmail(status: Boolean) {
+        val builderDialog = AlertDialog.Builder(this)
+        builderDialog.setTitle("Registro de cliente")
+        var msg = "Error al enviar correo"
+        if (status) {
+            msg = "Correo enviado correctamente"
+        }
+        builderDialog.setMessage(msg)
+        builderDialog.setPositiveButton("Aceptar") { dialog, which ->
+            dialog.dismiss()
+        }
+        builderDialog.show()
     }
 }
