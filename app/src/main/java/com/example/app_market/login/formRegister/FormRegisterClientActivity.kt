@@ -22,6 +22,7 @@ import utils.Converters
 import utils.Permissions
 import view.RegisterClientView
 import view.validations.ValidationAlertFormRegister
+import kotlin.random.Random
 
 class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
     private lateinit var image: ImageView
@@ -75,7 +76,8 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
             val img = Converters().bitmapToBase64(image.drawable.toBitmap()) as String
             val status = validator.validateForm(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin", 1), passwdConfirm)
             if(status){
-                service.saveClient(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin", 1))
+                val code = Random.nextInt(100000)
+                service.saveClientValidation(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin", 1), code)
             }
         }
         btnBack.setOnClickListener{
@@ -108,19 +110,5 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         }
         builderDialog.show()
 
-    }
-
-    override fun statusSendEmail(status: Boolean) {
-        val builderDialog = AlertDialog.Builder(this)
-        builderDialog.setTitle("Registro de cliente")
-        var msg = "Error al enviar correo"
-        if (status) {
-            msg = "Correo enviado correctamente"
-        }
-        builderDialog.setMessage(msg)
-        builderDialog.setPositiveButton("Aceptar") { dialog, which ->
-            dialog.dismiss()
-        }
-        builderDialog.show()
     }
 }

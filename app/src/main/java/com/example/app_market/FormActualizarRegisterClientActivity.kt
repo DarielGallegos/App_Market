@@ -98,8 +98,4 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterClient
         builderDialog.show()
 
     }
-
-    override fun statusSendEmail(status: Boolean) {
-        TODO("Not yet implemented")
-    }
 }
