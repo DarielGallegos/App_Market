@@ -2,7 +2,7 @@
     <string name="app_name">App_Market</string>
     <string-array name="list_genero">
         <item>Masculino</item>
-        <item>Feminino</item>
+        <item>Femenino</item>
     </string-array>
     <string name="title_activity_main_cerrar">MainCerrarActivity</string>
     <string name="title_home">Home</string>

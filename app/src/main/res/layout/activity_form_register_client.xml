@@ -199,7 +199,7 @@
                                     android:drawablePadding="16dp"
                                     android:fontFamily="@font/calibri"
                                     android:hint="Fecha de Nacimiento"
-                                    android:inputType="date"
+                                    android:inputType="datetime|date"
                                     android:maxLines="1"
                                     android:textColor="@android:color/black"
                                     android:textSize="16sp" />
