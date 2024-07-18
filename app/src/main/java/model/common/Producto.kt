@@ -43,4 +43,19 @@ class Producto (
              field= ft
          }
 
+     var precio:Float= 0.0f
+         get(){
+             return field
+         }
+         set(pc){
+             field = pc
+         }
+     var marca:String = ""
+         get(){
+             return field
+         }
+         set(mc){
+             field = mc
+         }
+
  }

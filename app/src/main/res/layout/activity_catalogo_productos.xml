@@ -94,79 +94,27 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <include
+        android:id="@+id/ly_pasarela_categorias"
+        layout="@layout/pasarela_categorias"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_view_cat_productos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/ly_pasarela_categorias"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <!--<RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="24dp"
-            android:src="@drawable/ic_favorite_white_24dp"
-            app:fabSize="normal" />
-
-
-    </RelativeLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_anchor="@+id/relativeLayout"
-        app:layout_anchorGravity="center">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="4dp"
-                android:fontFamily="@font/calibri"
-                android:padding="8dp"
-                android:text="Category"
-                android:textColor="#000000"
-                android:textSize="18sp" />
-
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:fontFamily="@font/calibri"
-                android:padding="8dp"
-                android:text="Hot Item"
-                android:textColor="#000000"
-                android:textSize="18sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-    </ScrollView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

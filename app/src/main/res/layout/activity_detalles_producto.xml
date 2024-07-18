@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main5Activity">
+    tools:context=".DetallesProductoActivity">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -69,11 +69,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/calibri"
-                        android:text="Cactus"
+                        android:text="Producto x"
                         android:textColor="#000000"
                         android:textSize="24sp" />
 
                     <TextView
+                        android:id="@+id/txtprecio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/calibri"
@@ -100,6 +101,16 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/txtmarca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/calibri"
+            android:padding="16dp"
+            android:text="Marca"
+            android:textColor="#444444"
+            android:textSize="16sp" />
+
         <View
             android:layout_width="200dp"
             android:layout_height="4dp"
@@ -107,16 +118,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="#dedede" />
-
-        <TextView
-            android:id="@+id/txtdescripcion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/calibri"
-            android:padding="16dp"
-            android:text="Descripción"
-            android:textColor="#444444"
-            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnañadir_carrito"

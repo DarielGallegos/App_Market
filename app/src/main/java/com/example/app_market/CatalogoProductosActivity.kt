@@ -1,8 +1,10 @@
 package com.example.app_market
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.GridLayoutManager
 import client.Client
 import com.example.app_market.adapters.CatProductosAdapter
@@ -12,6 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import client.services.ProductService
+import com.example.app_market.databinding.PasarelaCategoriasBinding
 import com.google.gson.Gson
 import model.common.ApiResponseBody
 
@@ -28,6 +31,12 @@ class CatalogoProductosActivity : AppCompatActivity() {
         val rec_view = binding.recViewCatProductos
         rec_view.layoutManager = GridLayoutManager(this, 2)
 
+        binding.lyPasarelaCategorias.refresco.setOnClickListener{
+
+            return@setOnClickListener
+        }
+
+
         val apiService = Client.ClientRetrofit.getService(ProductService::class.java) as ProductService
         val call = apiService.listarProductos()
 
@@ -39,11 +48,10 @@ class CatalogoProductosActivity : AppCompatActivity() {
 
                     val productos: List<Producto>? = Gson().fromJson(Gson().toJson(response.body()?.data?.content),Array<Producto>::class.java).toList()
                     rec_view.adapter = CatProductosAdapter(
+                        this@CatalogoProductosActivity,
                         productos
                     )
 
-                    //  adapter = ProductsAdapter(product)
-                   // recyclerView.setAdapter(adapter)
                 } else {
                     Toast.makeText(
                         this@CatalogoProductosActivity,
