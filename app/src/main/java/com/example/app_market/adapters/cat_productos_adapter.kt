@@ -2,21 +2,15 @@ package com.example.app_market.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.renderscript.ScriptGroup.Binding
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.GlideContext
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.app_market.DetallesProductoActivity
-import com.example.app_market.databinding.ActivityCatalogoProductosBinding
 import com.example.app_market.databinding.ViewProductoBinding
 import model.common.Producto
 import utils.Converters
-import java.io.ByteArrayInputStream
+
 
 class CatProductosAdapter(val context: Context, private val productos:List<Producto>?,  ):
     RecyclerView.Adapter<CatProductosAdapter.MyViewHolder>()
