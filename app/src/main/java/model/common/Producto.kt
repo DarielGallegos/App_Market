@@ -1,7 +1,5 @@
 package model.common
 
-import java.sql.Blob
-
 class Producto (
     //var producto: String,
     //var cod_producto: String,
@@ -58,4 +56,23 @@ class Producto (
              field = mc
          }
 
+     var cantidad:Int = 0
+         get(){
+             return field
+         }
+         set(cn){
+             field = cn
+         }
+
+     var subtotal:Double = 0.0
+         get(){
+             return field
+         }
+         set(sb){
+             field = sb
+         }
+
  }
+
+
+

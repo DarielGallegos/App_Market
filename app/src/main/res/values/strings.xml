@@ -2,10 +2,41 @@
     <string name="app_name">App_Market</string>
     <string-array name="list_genero">
         <item>Masculino</item>
-        <item>Feminino</item>
+        <item>Femenino</item>
     </string-array>
     <string name="title_activity_main_cerrar">MainCerrarActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <!-- Resources View Login -->
+    <string name="title_activity_form_register_client">FormRegisterClientActivity</string>
+    <!-- End Resources View Login -->
+
+    <!-- Resources View Recovery Password Validation -->
+    <string name="title_activity_reset_password">Actualizar Contraseña</string>
+    <string name="title_form_reset_password">Formulario Cambio Contraseña</string>
+    <string name="field_password">Ingrese su nueva contraseña:</string>
+    <string name="field_password_hint">********</string>
+    <string name="field_password_security">Ingrese su nueva contraseña nuevamente:</string>
+    <string name="button_update_password">Confirmar</string>
+    <!-- End Resources View Recovery Password Validation -->
+
+
+    <!-- Resources View Recovery Password Validation Email -->
+    <string name="title_activity_reset_password_email">Recuperar Contraseña</string>
+    <string name="title_form_reset_password_email">Formulario de Recuperación</string>
+    <string name="field_email">Ingrese su correo electronico: </string>
+    <string name="field_email_hint">example@gmail.com</string>
+    <string name="button_request">Enviar Peticion</string>
+    <!-- End Resources View Recovery Password Validation Email -->
+
+    <!-- Resources View Recovery Password Validation Code -->
+    <string name="title_activity_reset_password_validation_code">Validar Codigo de Recuperación</string>
+    <string name="title_form_reset_password_code">Formulario de Codigo de Verificación</string>
+    <string name="field_code">Ingrese el codigo de recuperación: </string>
+    <string name="field_code_hint">123456</string>
+    <string name="button_validate">Validar Codigo</string>
+    <!-- End Resources View Recovery Password Validation Code -->
+
 </resources>
