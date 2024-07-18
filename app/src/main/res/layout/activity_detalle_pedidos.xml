@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8793eb"
+        android:paddingTop="24dp"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:theme="@style/AppTheme.Toolbar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="Detalles de mi pedido"
+            android:fontFamily="@font/calibri"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_detalles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="300dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        >
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/Pedido"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/logo"
+                            app:civ_border_color="#000000"
+                            app:civ_border_width="1dp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="257dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="16dp"
+                            android:textColorHint="#000000">
+
+                            <EditText
+                                android:id="@+id/txtNumPedido"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/calibri"
+                                android:hint="Pedido #"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:textColor="@android:color/black"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="16dp"
+                            android:textColorHint="#FFB3B3B3">
+
+                            <TextView
+                                android:id="@+id/txtEstado"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="20dp"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/calibri"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                tools:text="Estado" />
+
+
+                            <TextView
+                                android:id="@+id/txtPedido"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="20dp"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/calibri"
+                                android:text="Tu pedido"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txtProducto"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/calibri"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                tools:text="Producto" />
+
+                            <TextView
+                                android:id="@+id/txtCantidad"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/calibri"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                tools:text="Cantidad" />
+
+
+                            <TextView
+                                android:id="@+id/txtTupago"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="20dp"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/calibri"
+                                android:text="Tu pago"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txtSubTotal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/calibri"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                tools:text="SubTotal" />
+
+                            <TextView
+                                android:id="@+id/txtEnvio"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/calibri"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                tools:text="Envio" />
+
+                            <TextView
+                                android:id="@+id/txtTotal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/calibri"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                tools:text="Total" />
+
+                            <TextView
+                                android:id="@+id/txtDetalles"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="20dp"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/calibri"
+                                android:text="Detalles de Entrega"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txtDireccion"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/calibri"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                tools:text="Direccion" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="16dp"
+                            android:textColorHint="#FFB3B3B3"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </ScrollView>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
