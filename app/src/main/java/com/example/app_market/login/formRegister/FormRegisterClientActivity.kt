@@ -103,6 +103,7 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         var msg = "Error al guardar información"
         if(status){
             msg = "Cliente registrado correctamente"
+            flush()
         }
         builderDialog.setMessage(msg)
         builderDialog.setPositiveButton("Aceptar") { dialog, which ->
@@ -110,5 +111,17 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         }
         builderDialog.show()
 
+    }
+
+    private fun flush(){
+        txtName.text.clear()
+        txtLastName.text.clear()
+        txtDate.text.clear()
+        txtEmail.text.clear()
+        txtPhone.text.clear()
+        txtUser.text.clear()
+        txtPasswd.text.clear()
+        txtPasswdConfirm.text.clear()
+        cboGender.setSelection(0)
     }
 }

@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.app_market.DashboardClient
 import com.example.app_market.login.formRegister.FormRegisterClientActivity
 import com.example.app_market.R
+import com.example.app_market.login.recoveryPassword.ResetPasswordEmailActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -50,6 +51,10 @@ class LoginActivity : loginView,  AppCompatActivity(){
 
         register.setOnClickListener(View.OnClickListener {
             val intent = Intent(applicationContext, FormRegisterClientActivity::class.java)
+            startActivity(intent)
+        })
+        forgot.setOnClickListener(View.OnClickListener {
+            val intent = Intent(applicationContext, ResetPasswordEmailActivity::class.java)
             startActivity(intent)
         })
 

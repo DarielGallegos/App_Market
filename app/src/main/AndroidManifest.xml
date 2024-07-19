@@ -45,16 +45,18 @@
             android:value="AIzaSyBqLOKjkZP1gaso6t8MatGWpV0tTgE8-J4"/>
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <activity
-            android:name=".login.formRegister.FormRegisterClienValidationActivity"
-            android:exported="false" />
-        <activity
             android:name=".login.recoveryPassword.ResetPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".login.recoveryPassword.ResetPasswordValidationCodeActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:exported="false" />
         <activity
             android:name=".login.recoveryPassword.ResetPasswordEmailActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:exported="false" />
         <activity
             android:name=".MainCerrarActivity"
@@ -65,6 +67,10 @@
             android:exported="false" />
         <activity
             android:name=".login.formRegister.FormRegisterClientActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:exported="false" />
         <activity
             android:name=".Main5Activity"
