@@ -1,10 +1,8 @@
 package com.example.app_market
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.GridLayoutManager
 import client.Client
 import com.example.app_market.adapters.CatProductosAdapter
@@ -14,7 +12,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import client.services.ProductService
-import com.example.app_market.databinding.PasarelaCategoriasBinding
 import com.google.gson.Gson
 import model.common.ApiResponseBody
 

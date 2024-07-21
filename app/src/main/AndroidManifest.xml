@@ -70,7 +70,7 @@
             android:name=".DetallesProductoActivity"
             android:label=""
             android:screenOrientation="portrait"
-            android:theme="@style/MyAppTheme"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".Main4Activity"
@@ -90,8 +90,15 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
+        </activity>
+
         <activity
             android:name=".login.LoginActivity"
             android:exported="true"
@@ -100,11 +107,7 @@
             android:theme="@style/MyAppTheme"
 
             android:windowSoftInputMode="stateHidden|adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".LoginActivity"

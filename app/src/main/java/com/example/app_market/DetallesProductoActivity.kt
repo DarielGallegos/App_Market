@@ -1,11 +1,9 @@
 package com.example.app_market
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.app_market.databinding.ActivityCatalogoProductosBinding
 import com.example.app_market.databinding.ActivityDetallesProductoBinding
 import utils.Converters
 
@@ -13,20 +11,15 @@ class DetallesProductoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetallesProductoBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityDetallesProductoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnRegresar.setOnClickListener {
-            val intent = Intent(this@DetallesProductoActivity, CatalogoProductosActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding = ActivityDetallesProductoBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        var toolbar = binding.detProToolbar
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true);
 
         val extras = intent.extras
         if (extras != null) {
@@ -41,9 +34,23 @@ class DetallesProductoActivity : AppCompatActivity() {
             binding.detalleProducto.setImageBitmap(Converters().base64ToBitmap(foto!!))
         }
 
+        /*binding.btnRegresar.setOnClickListener {
+            val intent = Intent(this@DetallesProductoActivity, CatalogoProductosActivity::class.java)
+            startActivity(intent)
+            //Log.d("Click","********Boton atras")
+        }*/
+
+        binding.btnaAdirCarrito.setOnClickListener(){
+            Log.d("Click","********Boton carrito")
+        }
 
         // Set immersive fullscreen mode
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
