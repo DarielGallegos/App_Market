@@ -80,7 +80,7 @@ class Producto (
              field = ds
          }
 
-     var categoria:Int = 0
+     var id_categoria:Int = 0
          get(){
              return field
          }

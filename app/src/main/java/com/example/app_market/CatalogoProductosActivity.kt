@@ -1,6 +1,7 @@
 package com.example.app_market
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -29,14 +30,19 @@ class CatalogoProductosActivity : AppCompatActivity() {
     var productos: List<Producto>? = null
     var productosAux: List<Producto>? = null
     var adapter:CatProductosAdapter? = null
+    private var lastQuery: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCatalogoProductosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buscar.addTextChangedListener {
 
+
+        binding.Inicio.setOnClickListener{
+
+            val intent = Intent(this, DashboardClient::class.java)
+            startActivity(intent)
         }
 
         val rec_view = binding.recViewCatProductos
@@ -76,7 +82,6 @@ class CatalogoProductosActivity : AppCompatActivity() {
             }
         })
 
-
         val apiService = Client.ClientRetrofit.getService(ProductService::class.java) as ProductService
         val call = apiService.listarProductos()
 
@@ -110,8 +115,6 @@ class CatalogoProductosActivity : AppCompatActivity() {
             }
         })
 
-
-
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -136,17 +139,30 @@ class CatalogoProductosActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun filterCategoria(query: Int): Boolean {
-        Log.d("FilterCategoria", "Query: $query")
+
+        if (lastQuery == query) {
+            productos = productosAux?.toList()
+            adapter!!.setData(productos!!)
+            adapter!!.notifyDataSetChanged()
+
+            lastQuery = null
+            return true
+        }
+
+        lastQuery = query
+        productos = productosAux
 
         if(query == 0) {
-            productos = productosAux
+
             adapter!!.setData(productos!!)
             adapter!!.notifyDataSetChanged()
             return true
         }
 
+        Log.d("FilterCategoria", "Query: $query")
+
         productos = productos!!.filter { producto ->
-            producto.categoria == query
+            producto.id_categoria == query
         }
 
         adapter!!.setData(productos!!)

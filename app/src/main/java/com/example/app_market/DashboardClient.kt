@@ -27,6 +27,8 @@ class DashboardClient : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard_client)
         btnLogout = findViewById(R.id.btcerrar)
+        btnNuevoPedido = findViewById(R.id.card_view_nuevo_pedido)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -61,13 +63,18 @@ class DashboardClient : AppCompatActivity() {
             alertDialogBox.show()
         }
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            preference.getCredentiales().collect {
-                withContext(Dispatchers.Main) {
-                    if (it.id == null) {
-                        val intent = Intent(this@DashboardClient, LoginActivity::class.java)
-                        startActivity(intent)
-                        finish()
+        btnNuevoPedido.setOnClickListener {
+            val intent = Intent(this, CatalogoProductosActivity::class.java)
+            startActivity(intent)
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                preference.getCredentiales().collect {
+                    withContext(Dispatchers.Main) {
+                        if (it.id == null) {
+                            val intent = Intent(this@DashboardClient, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
                     }
                 }
             }

@@ -19,6 +19,9 @@ class DetallesProductoActivity : AppCompatActivity() {
         binding = ActivityDetallesProductoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var cantidad = 1
+        binding.productoCantidad.text = cantidad.toString()
+
         var toolbar = binding.detProToolbar
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -39,6 +42,17 @@ class DetallesProductoActivity : AppCompatActivity() {
             binding.txtdescripcion.text = descripcion
         }
 
+        binding.agregarProducto.setOnClickListener{
+            cantidad++
+            binding.productoCantidad.text = cantidad.toString()
+        }
+
+        binding.removerProducto.setOnClickListener{
+            if (cantidad > 1){
+                cantidad--
+                binding.productoCantidad.text = cantidad.toString()
+            }
+        }
 
         binding.btnaAdirCarrito.setOnClickListener(){
             try {
