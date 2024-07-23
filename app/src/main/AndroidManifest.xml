@@ -40,6 +40,12 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".repartidores.PedidosDisponibles.PedidoDisponible"
+            android:exported="false" />
+        <activity
+            android:name=".repartidores.PedidosAceptados.PedidoAceptadoDetalle"
+            android:exported="false" />
+        <activity
             android:name=".repartidores.ListaProductos.ListaProductos"
             android:exported="false"
             android:screenOrientation="portrait"

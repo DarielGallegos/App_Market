@@ -1,6 +1,8 @@
 package com.example.app_market.repartidores.ListaProductos
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -11,13 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.app_market.R
 import com.example.app_market.databinding.ActivityListaProductosBinding
 import com.example.app_market.repartidores.ListaProductos.Adapter.DataProductoAdapter
+import com.example.app_market.repartidores.PedidosAceptados.PedidoAceptadoDetalle
 import com.example.app_market.repartidores.PedidosDisponibles.Adapter.DataDisponibleAdapter
 import com.example.app_market.repartidores.PedidosDisponibles.DataDisponibleProvider
 import com.example.app_market.repartidores.PedidosDisponibles.DataDisponibles
 
 class ListaProductos : AppCompatActivity() {
 
-    private lateinit var btnBack: ImageView
+    private lateinit var btnBack: Button
 
     private lateinit var binding: ActivityListaProductosBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +28,16 @@ class ListaProductos : AppCompatActivity() {
         binding = ActivityListaProductosBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initReciclerView()
+
+        btnBack = findViewById(R.id.btnRegresar)
+
+        btnBack.setOnClickListener{
+            val intent = Intent(this@ListaProductos, PedidoAceptadoDetalle::class.java)
+            startActivity(intent)
+        }
     }
+
+
     fun initReciclerView() {
         binding.recyclerListaProductos.layoutManager = LinearLayoutManager(this)
         binding.recyclerListaProductos.adapter =
@@ -34,5 +46,6 @@ class ListaProductos : AppCompatActivity() {
 
     fun OnItemSelected(DataProductos: DataProductos){
         Toast.makeText(this, DataProductos.producto, Toast.LENGTH_SHORT).show()
+
     }
 }

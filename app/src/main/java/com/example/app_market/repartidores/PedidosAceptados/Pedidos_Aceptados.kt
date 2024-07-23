@@ -27,25 +27,23 @@ class Pedidos_Aceptados : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPedidosAceptadosBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initReciclerView()
+        initRecyclerView()
 
-        btnBack = findViewById(R.id.imgBack)
-        btnPed = findViewById(R.id.imagearrow1)
-        btnBack.setOnClickListener{
+        binding.imgBack.setOnClickListener {
             val intent = Intent(this@Pedidos_Aceptados, DashBoardRepartidoresActivity::class.java)
             startActivity(intent)
         }
+    }
 
-        btnPed.setOnClickListener{
-            //Detalles de pedido
+    private fun initRecyclerView() {
+        binding.recyclerPedAcep.layoutManager = LinearLayoutManager(this)
+        binding.recyclerPedAcep.adapter = DataAceptadoAdapter(DataAceptadoProvider.DataListAceptados) { dataAceptados ->
+            onItemSelected(dataAceptados)
         }
     }
 
-    fun initReciclerView() {
-        binding.recyclerPedAcep.layoutManager = LinearLayoutManager(this)
-        binding.recyclerPedAcep.adapter = DataAceptadoAdapter(DataAceptadoProvider.DataListAceptados) { DataAceptados -> OnItemSelected(DataAceptados) }
-    }
-    fun OnItemSelected(DataAceptados: DataAceptados){
-        Toast.makeText(this, DataAceptados.pedido, Toast.LENGTH_SHORT).show()
+    private fun onItemSelected(dataAceptados: DataAceptados) {
+        val intent = Intent(this@Pedidos_Aceptados, PedidoAceptadoDetalle::class.java)
+        startActivity(intent)
     }
 }
