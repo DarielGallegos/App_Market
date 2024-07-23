@@ -6,7 +6,7 @@ import java.util.List
 
 class DataStoreCarMarket{
     object CarMarket{
-         lateinit var list : ArrayList<Producto>
+         lateinit var list : MutableList<Producto>
         init{
             list = ArrayList<Producto>()
         }
@@ -15,7 +15,7 @@ class DataStoreCarMarket{
             list.add(producto)
         }
 
-        fun getCarMarket() : ArrayList<Producto>{
+        fun getCarMarket() : MutableList<Producto>{
             return list
         }
 

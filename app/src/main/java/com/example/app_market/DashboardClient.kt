@@ -2,6 +2,7 @@ package com.example.app_market
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -11,6 +12,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.app_market.car_market.ProductosCarMarket
 import com.example.app_market.login.LoginActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,23 +23,28 @@ class DashboardClient : AppCompatActivity() {
     private lateinit var btnShowPedidos: CardView
     private lateinit var btnNuevoPedido: CardView
     private lateinit var btnLogout: LinearLayout
+
+
     private val preference = StoragePreferences.getInstance(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard_client)
         btnLogout = findViewById(R.id.btcerrar)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         btnShowPedidos = findViewById(R.id.card_view_pedido)
         btnNuevoPedido = findViewById(R.id.card_view_nuevo_pedido)
         btnNuevoPedido.setOnClickListener {
-            val intent = Intent(this, CatalogoProductosActivity::class.java)
+            val intent = Intent(this, ProductosCarMarket::class.java)
             startActivity(intent)
         }
+
 
         btnLogout.setOnClickListener {
             // Crear y mostrar el AlertDialog
