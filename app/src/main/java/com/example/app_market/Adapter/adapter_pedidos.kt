@@ -17,8 +17,8 @@ class adapter_pedidos (private val pedidos:List<Pedidos>?,  ):
                 Log.d("Pro adapter","click en pedido")
             }
 
-            binding.tvNumeroPedido.text = pedidos.numPedido.toString()
-            binding.tvEstado.text = pedidos.estadoPedido
+            binding.tvNumeroPedido.text = pedidos.pedido_numero.toString()
+            binding.tvEstado.text = pedidos.estado_pedido
             binding.tvTotal.text = pedidos.total.toString()
         }
 
@@ -28,14 +28,19 @@ class adapter_pedidos (private val pedidos:List<Pedidos>?,  ):
         val binding = VistapedidosBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MyViewHolder(binding)
     }
-    //Obtener el total de productos
+    //Obtener el total de pedidos
     override fun getItemCount(): Int {
-        return pedidos!!.size
+       //t return pedidos!!.size
+        return pedidos?.size ?: 0
     }
-    //Le pasan un producto y la posicion del pedido
+    //Le pasan un pedido y la posicion del pedido
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val pedidos = pedidos!![position]
-        holder.bind(pedidos)
-
+       //t val pedido = pedidos!![position]
+        //t Log.i("Pedido ${position}", pedido.toString())
+       //t holder.bind(pedido)
+        pedidos?.get(position)?.let {
+            Log.i("Pedido $position", it.toString())
+            holder.bind(it)
+        }
     }
 }

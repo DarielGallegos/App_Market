@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".">
+    tools:context=".DetallesPedidoActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -181,45 +181,24 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/txtSubTotal"
+                                android:id="@+id/txtPrecio"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:drawablePadding="16dp"
                                 android:fontFamily="@font/calibri"
                                 android:textSize="16sp"
                                 android:textStyle="bold"
-                                tools:text="SubTotal" />
+                                tools:text="Precio" />
 
                             <TextView
-                                android:id="@+id/txtEnvio"
+                                android:id="@+id/txtMonto"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:drawablePadding="16dp"
                                 android:fontFamily="@font/calibri"
                                 android:textSize="16sp"
                                 android:textStyle="bold"
-                                tools:text="Envio" />
-
-                            <TextView
-                                android:id="@+id/txtTotal"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:drawablePadding="16dp"
-                                android:fontFamily="@font/calibri"
-                                android:textSize="16sp"
-                                android:textStyle="bold"
-                                tools:text="Total" />
-
-                            <TextView
-                                android:id="@+id/txtDetalles"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="20dp"
-                                android:drawablePadding="16dp"
-                                android:fontFamily="@font/calibri"
-                                android:text="Detalles de Entrega"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
+                                tools:text="Monto" />
 
                             <TextView
                                 android:id="@+id/txtDireccion"
