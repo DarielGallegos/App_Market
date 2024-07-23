@@ -51,15 +51,15 @@ class CatalogoProductosActivity : AppCompatActivity() {
             return@setOnClickListener
         }
         binding.lyPasarelaCategorias.lacteos.setOnClickListener{
-
+            filterCategoria(query = 2 )
             return@setOnClickListener
         }
         binding.lyPasarelaCategorias.botanas.setOnClickListener{
-
+            filterCategoria(query = 3 )
             return@setOnClickListener
         }
         binding.lyPasarelaCategorias.enlatados.setOnClickListener{
-
+            filterCategoria(query = 4 )
             return@setOnClickListener
         }
 

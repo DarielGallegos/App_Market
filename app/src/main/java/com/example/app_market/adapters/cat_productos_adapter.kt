@@ -44,17 +44,17 @@ class CatProductosAdapter(val context: Context, private var productos:List<Produ
         }
 
     }
-    //Establecer una conexion con el Layout de vista de producto
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ViewProductoBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MyViewHolder(context, binding)
     }
-    //Obtener el total de productos
+
     override fun getItemCount(): Int {
        return productos!!.size
 
     }
-    //Le pasan un producto y la posicion del producto
+
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val producto = productos!![position]
         holder.bind(producto)
