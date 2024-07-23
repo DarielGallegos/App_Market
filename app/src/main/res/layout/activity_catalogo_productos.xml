@@ -57,6 +57,7 @@
                         android:textSize="24sp" />
 
                     <ImageView
+                        android:id="@+id/carrito"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_alignParentTop="true"
@@ -74,6 +75,7 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:id="@+id/buscar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/white_rounded_shape"

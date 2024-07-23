@@ -72,6 +72,21 @@ class Producto (
              field = sb
          }
 
+     var descripcion:String = ""
+         get(){
+             return field
+         }
+         set(ds){
+             field = ds
+         }
+
+     var categoria:Int = 0
+         get(){
+             return field
+         }
+         set(ct){
+             field = ct
+         }
  }
 
 

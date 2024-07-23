@@ -3,8 +3,11 @@ package com.example.app_market
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.app_market.databinding.ActivityDetallesProductoBinding
+import model.common.Producto
+import storage.DataStoreCarMarket
 import utils.Converters
 
 class DetallesProductoActivity : AppCompatActivity() {
@@ -24,24 +27,29 @@ class DetallesProductoActivity : AppCompatActivity() {
         val extras = intent.extras
         if (extras != null) {
             val nombre = extras.getString("nombre")
-            val precio = extras.getFloat("precio", 0.0f) // 0 es el valor por defecto si no se encuentra la clave
+            val precio = extras.getFloat("precio", 0.0f)
             val foto = extras.getString("foto")
             val marca= extras.getString("marca")
+            val descripcion = extras.getString("descripcion")
 
             binding.txtnombreProduc.text = nombre
             binding.txtprecio.text = precio.toString()
             binding.txtmarca.text = marca
             binding.detalleProducto.setImageBitmap(Converters().base64ToBitmap(foto!!))
+            binding.txtdescripcion.text = descripcion
         }
 
-        /*binding.btnRegresar.setOnClickListener {
-            val intent = Intent(this@DetallesProductoActivity, CatalogoProductosActivity::class.java)
-            startActivity(intent)
-            //Log.d("Click","********Boton atras")
-        }*/
 
         binding.btnaAdirCarrito.setOnClickListener(){
-            Log.d("Click","********Boton carrito")
+            try {
+                DataStoreCarMarket.CarMarket.addCarMarket(producto =Producto())
+                Toast.makeText(this, "Producto añadido al carrito", Toast.LENGTH_SHORT).show()
+            }
+            catch (e: Exception){
+                Log.e("Error", "Error al añadir el producto al carrito", e)
+                Toast.makeText(this, "Error al añadir el producto al carrito", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         // Set immersive fullscreen mode

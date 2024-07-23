@@ -12,12 +12,17 @@ import model.common.Producto
 import utils.Converters
 
 
-class CatProductosAdapter(val context: Context, private val productos:List<Producto>?,  ):
+class CatProductosAdapter(val context: Context, private var productos:List<Producto>?,  ):
     RecyclerView.Adapter<CatProductosAdapter.MyViewHolder>()
 {
+
+        fun setData(productos:List<Producto>){
+            this.productos = productos
+        }
+
     class MyViewHolder(val context: Context, val binding: ViewProductoBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(producto: Producto) {
-            binding.imagen.setOnClickListener {
+            binding.cardProducto.setOnClickListener {
                 Log.d("Pro adapter","click en producto")
 
                     val intent = Intent(context, DetallesProductoActivity::class.java)
@@ -25,6 +30,8 @@ class CatProductosAdapter(val context: Context, private val productos:List<Produ
                     intent.putExtra("precio",producto.precio)
                     intent.putExtra("foto",producto.foto)
                     intent.putExtra("marca",producto.marca)
+                    intent.putExtra("descripcion",producto.descripcion)
+
                     context.startActivity(intent)
 
             }
@@ -44,7 +51,8 @@ class CatProductosAdapter(val context: Context, private val productos:List<Produ
     }
     //Obtener el total de productos
     override fun getItemCount(): Int {
-        return productos!!.size
+       return productos!!.size
+
     }
     //Le pasan un producto y la posicion del producto
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
