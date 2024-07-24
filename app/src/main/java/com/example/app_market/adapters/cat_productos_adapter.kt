@@ -29,7 +29,7 @@ class CatProductosAdapter(val context: Context, private var productos:List<Produ
                     intent.putExtra("nombre",producto.producto)
                     intent.putExtra("precio",producto.precio)
                     intent.putExtra("foto",producto.foto)
-
+                    intent.putExtra("id",producto.id)
                     intent.putExtra("marca",producto.marca)
                     intent.putExtra("descripcion",producto.descripcion)
 

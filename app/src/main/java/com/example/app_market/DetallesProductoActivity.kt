@@ -28,19 +28,20 @@ class DetallesProductoActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowHomeEnabled(true);
 
         val extras = intent.extras
-        if (extras != null) {
-            val nombre = extras.getString("nombre")
+
+            val nombre = extras!!.getString("nombre")
             val precio = extras.getFloat("precio", 0.0f)
             val foto = extras.getString("foto")
             val marca= extras.getString("marca")
             val descripcion = extras.getString("descripcion")
+            val id = extras.getInt("id")
 
             binding.txtnombreProduc.text = nombre
             binding.txtprecio.text = precio.toString()
             binding.txtmarca.text = marca
             binding.detalleProducto.setImageBitmap(Converters().base64ToBitmap(foto!!))
             binding.txtdescripcion.text = descripcion
-        }
+
 
         binding.agregarProducto.setOnClickListener{
             cantidad++
@@ -56,7 +57,16 @@ class DetallesProductoActivity : AppCompatActivity() {
 
         binding.btnaAdirCarrito.setOnClickListener(){
             try {
-                DataStoreCarMarket.CarMarket.addCarMarket(producto =Producto())
+                val producto = Producto()
+                producto.id = id
+                producto.cantidad = cantidad
+                producto.producto = nombre!!
+                producto.precio = precio
+                producto.descripcion = descripcion!!
+                producto.marca = marca!!
+
+                DataStoreCarMarket.CarMarket.addCarMarket(producto)
+                DataStoreCarMarket.CarMarket.imprimir()
                 Toast.makeText(this, "Producto añadido al carrito", Toast.LENGTH_SHORT).show()
             }
             catch (e: Exception){
