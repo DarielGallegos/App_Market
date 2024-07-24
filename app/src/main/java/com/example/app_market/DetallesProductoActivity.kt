@@ -64,6 +64,7 @@ class DetallesProductoActivity : AppCompatActivity() {
                 producto.precio = precio
                 producto.descripcion = descripcion!!
                 producto.marca = marca!!
+                producto.foto = foto
 
                 DataStoreCarMarket.CarMarket.addCarMarket(producto)
                 DataStoreCarMarket.CarMarket.imprimir()
