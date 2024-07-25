@@ -53,9 +53,11 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="122dp"
                 android:drawablePadding="16dp"
+                android:enabled="false"
                 android:fontFamily="@font/calibri"
                 android:inputType="text"
                 android:maxLines="1"
+                android:minHeight="48dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:visibility="visible" />
@@ -69,7 +71,9 @@
                 android:layout_marginStart="93dp"
                 android:layout_marginBottom="70dp"
                 android:ems="10"
-                android:inputType="phone" />
+                android:enabled="false"
+                android:inputType="phone"
+                android:minHeight="48dp" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -126,6 +130,7 @@
                 android:layout_marginEnd="11dp"
                 android:layout_marginBottom="6dp"
                 android:ems="10"
+                android:enabled="false"
                 android:gravity="start|top"
                 android:inputType="textMultiLine" />
 
@@ -133,7 +138,7 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
+        android:id="@+id/mapViewAccept"
         android:layout_width="0dp"
         android:layout_height="224dp"
         android:layout_marginStart="20dp"
@@ -182,7 +187,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
-                android:id="@+id/txtRegApellido"
+                android:id="@+id/txtTotal"
                 android:layout_width="251dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -190,9 +195,11 @@
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="20dp"
                 android:drawablePadding="16dp"
+                android:enabled="false"
                 android:fontFamily="@font/calibri"
                 android:inputType="text"
                 android:maxLines="1"
+                android:minHeight="48dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -227,9 +234,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapView" />
+        app:layout_constraintTop_toBottomOf="@+id/mapViewAccept" />
 
     <Button
+        android:id="@+id/btnAccept"
         android:layout_width="183dp"
         android:layout_height="41dp"
         android:layout_gravity="center"

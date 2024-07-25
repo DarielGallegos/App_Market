@@ -67,6 +67,7 @@ class LoginActivity : loginView,  AppCompatActivity(){
                     }
                 }
             }
+            
         }
 
         loginButton = findViewById(R.id.login)

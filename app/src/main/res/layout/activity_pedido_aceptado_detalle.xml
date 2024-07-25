@@ -131,7 +131,7 @@
         </androidx.cardview.widget.CardView>
 
         <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView"
+            android:id="@+id/mapViewAccept"
             android:layout_width="0dp"
             android:layout_height="224dp"
             android:layout_marginStart="20dp"
@@ -180,7 +180,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <EditText
-                    android:id="@+id/txtRegApellido"
+                    android:id="@+id/txtTotal"
                     android:layout_width="251dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -225,7 +225,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.927"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mapView" />
+            app:layout_constraintTop_toBottomOf="@+id/mapViewAccept" />
 
         <Button
             android:layout_width="183dp"
@@ -239,12 +239,12 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintEnd_toStartOf="@+id/btnFinish"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnFinish"
             android:layout_width="183dp"
             android:layout_height="41dp"
             android:layout_gravity="center"

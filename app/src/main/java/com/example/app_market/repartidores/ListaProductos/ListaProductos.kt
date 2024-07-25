@@ -1,51 +1,37 @@
 package com.example.app_market.repartidores.ListaProductos
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.app_market.R
 import com.example.app_market.databinding.ActivityListaProductosBinding
 import com.example.app_market.repartidores.ListaProductos.Adapter.DataProductoAdapter
-import com.example.app_market.repartidores.PedidosAceptados.PedidoAceptadoDetalle
-import com.example.app_market.repartidores.PedidosDisponibles.Adapter.DataDisponibleAdapter
-import com.example.app_market.repartidores.PedidosDisponibles.DataDisponibleProvider
-import com.example.app_market.repartidores.PedidosDisponibles.DataDisponibles
+import model.dto.REQUEST.ProductosDetalle
+import service.impl.ListaProductosServiceImpl
+import view.ListaProductosView
 
-class ListaProductos : AppCompatActivity() {
+class ListaProductos : AppCompatActivity(), ListaProductosView {
 
     private lateinit var btnBack: Button
-
+    private val service = ListaProductosServiceImpl(this)
     private lateinit var binding: ActivityListaProductosBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListaProductosBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initReciclerView()
-
+        service.getDetallePedido(intent.getIntExtra("NumeroPedido", 0))
         btnBack = findViewById(R.id.btnRegresar)
-
         btnBack.setOnClickListener{
-            val intent = Intent(this@ListaProductos, PedidoAceptadoDetalle::class.java)
-            startActivity(intent)
+            finish()
         }
     }
 
-
-    fun initReciclerView() {
-        binding.recyclerListaProductos.layoutManager = LinearLayoutManager(this)
-        binding.recyclerListaProductos.adapter =
-            DataProductoAdapter(DataProductoProvider.DataListProducto) { DataProductos -> OnItemSelected(DataProductos)}
+    fun OnItemSelected(DataProductos: ProductosDetalle){
     }
 
-    fun OnItemSelected(DataProductos: DataProductos){
-        Toast.makeText(this, DataProductos.producto, Toast.LENGTH_SHORT).show()
-
+    override fun initRecyclerView(list: List<ProductosDetalle>) {
+        binding.recyclerListaProductos.layoutManager = LinearLayoutManager(this)
+        binding.recyclerListaProductos.adapter = DataProductoAdapter(list) {OnItemSelected(it)}
     }
 }

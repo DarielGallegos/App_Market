@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_market.R
-import com.example.app_market.repartidores.PedidosAceptados.DataAceptados
+import model.dto.REQUEST.CabeceraPedidosUnsignedAndSigned
 
-class DataAceptadoAdapter(private val ListAceptado: List<DataAceptados>, private val OnClickListener:(DataAceptados)->Unit) :
+class DataAceptadoAdapter(private val ListAceptado: List<CabeceraPedidosUnsignedAndSigned>, private val OnClickListener:(CabeceraPedidosUnsignedAndSigned)->Unit) :
     RecyclerView.Adapter<DataAceptadoViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataAceptadoViewHolder {
        val LayoutInflater= LayoutInflater.from(parent.context)

@@ -41,10 +41,16 @@
         tools:ignore="AllowBackup">
         <activity
             android:name=".repartidores.PedidosDisponibles.PedidoDisponible"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".repartidores.PedidosAceptados.PedidoAceptadoDetalle"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".repartidores.ListaProductos.ListaProductos"
             android:exported="false"

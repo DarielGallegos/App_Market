@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_market.R
-import com.example.app_market.repartidores.PedidosDisponibles.DataDisponibles
+import model.dto.REQUEST.CabeceraPedidosUnsignedAndSigned
 
-class DataDisponibleAdapter(private val ListDisponible: List<DataDisponibles>, private val OnClickListener:(DataDisponibles)->Unit) : RecyclerView.Adapter<DataDisponibleViewHolder>(){
+class DataDisponibleAdapter(private val ListDisponible: List<CabeceraPedidosUnsignedAndSigned>, private val OnClickListener:(CabeceraPedidosUnsignedAndSigned)->Unit) : RecyclerView.Adapter<DataDisponibleViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataDisponibleViewHolder {
         val LayoutInflater=LayoutInflater.from(parent.context)
         return DataDisponibleViewHolder(LayoutInflater.inflate(R.layout.item_datadisponible,parent,false))
