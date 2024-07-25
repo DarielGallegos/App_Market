@@ -39,4 +39,6 @@
     <string name="button_validate">Validar Codigo</string>
     <!-- End Resources View Recovery Password Validation Code -->
 
+
+    <string name="llamar">Llamar</string>
 </resources>

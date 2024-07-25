@@ -3,20 +3,22 @@ package com.example.app_market.repartidores.PedidosAceptados
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.app_market.R
-import com.example.app_market.repartidores.DashBoardRepartidoresActivity
 import com.example.app_market.repartidores.ListaProductos.ListaProductos
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import model.dto.REQUEST.CabeceraPedidoDataContact
 import service.impl.PedidoDisponibleServiceImpl
 import view.PedidoDisponibleView
@@ -25,11 +27,14 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
 
     private lateinit var btnVerProductos: Button
     private lateinit var btnFinish: Button
+    private lateinit var btnCall : Button
+    private lateinit var btnInitTravel : Button
     private lateinit var txtNombre : EditText
     private lateinit var txtTelefono : EditText
     private lateinit var txtDireccion : EditText
     private lateinit var txtTotal : EditText
     private lateinit var map: MapView
+    private lateinit var mMap: GoogleMap
     private var numPedido = 0
     private val service = PedidoDisponibleServiceImpl(this)
     @SuppressLint("MissingInflatedId")
@@ -45,8 +50,10 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
 
         numPedido = intent.getIntExtra("NumeroPedido", 0)
 
+        btnCall = findViewById(R.id.btnCall)
         btnFinish = findViewById(R.id.btnFinish)
         btnVerProductos = findViewById(R.id.btnVerProductos)
+        btnInitTravel = findViewById(R.id.btnInitTravel)
         txtNombre = findViewById(R.id.txtNombres)
         txtTelefono = findViewById(R.id.txtTelefono)
         txtDireccion = findViewById(R.id.txtDireccion)
@@ -69,6 +76,27 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
                 }
                 .show()
         }
+        btnCall.setOnClickListener{
+            val intent = Intent(Intent.ACTION_CALL)
+            intent.data = android.net.Uri.parse("tel:+504${txtTelefono.text}")
+            startActivity(intent)
+        }
+        btnInitTravel.setOnClickListener{
+            val direccion = txtDireccion.text.split(",")
+            val latitud = direccion[0]
+            val longitud = direccion[1]
+            AlertDialog.Builder(this)
+                .setTitle("¿Desea Iniciar el Viaje?")
+                .setPositiveButton("Si") { _, _ ->
+                    val locateIntentUri =
+                        Uri.parse("google.navigation:q=" + latitud + "," + longitud)
+                        val travelIntent = Intent(Intent.ACTION_VIEW, locateIntentUri)
+                        travelIntent.setPackage("com.google.android.apps.maps")
+                        startActivity(travelIntent)
+                }
+                .setNegativeButton("No") { _, _ ->}
+                .show()
+        }
         map.onCreate(savedInstanceState)
         map.getMapAsync(this)
         map.onResume()
@@ -79,6 +107,7 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
         txtTelefono.setText(e.telefono)
         txtDireccion.setText(e.ubicacion)
         txtTotal.setText(e.total.toString())
+
     }
 
     override fun acceptPedido(msg: String, status: String) {
@@ -95,6 +124,7 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
     }
 
     override fun onMapReady(p0: GoogleMap) {
+        mMap = p0
         p0.mapType = GoogleMap.MAP_TYPE_NORMAL
         p0.uiSettings.isZoomControlsEnabled = true
         p0.uiSettings.isCompassEnabled = true
@@ -104,5 +134,13 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
         p0.uiSettings.isTiltGesturesEnabled = true
         p0.uiSettings.isRotateGesturesEnabled = true
         p0.uiSettings.isMapToolbarEnabled = true
+        var direccion = txtDireccion.text.split(",")
+        var latitud = direccion[0].toDouble()
+        var longitud = direccion[1].toDouble()
+        if(mMap != null){
+            val location = LatLng(latitud, longitud)
+            mMap.addMarker(MarkerOptions().position(location).title("Marcador"))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+        }
     }
 }

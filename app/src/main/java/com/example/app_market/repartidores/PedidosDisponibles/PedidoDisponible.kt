@@ -13,10 +13,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.app_market.R
 import com.example.app_market.repartidores.ListaProductos.ListaProductos
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.OnMapLoadedCallback
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import model.dto.REQUEST.CabeceraPedidoDataContact
@@ -33,6 +36,7 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
     private lateinit var txtDireccion: EditText
     private lateinit var txtTotal: EditText
     private lateinit var map: MapView
+    private lateinit var mMap : GoogleMap
     private val service = PedidoDisponibleServiceImpl(this)
     private var numPedido = 0
     private val storage = StoragePreferences.getInstance(this)
@@ -97,6 +101,7 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
     }
 
     override fun onMapReady(p0: GoogleMap) {
+        mMap = p0
         p0.mapType = GoogleMap.MAP_TYPE_NORMAL
         p0.uiSettings.isZoomControlsEnabled = true
         p0.uiSettings.isCompassEnabled = true
@@ -106,6 +111,14 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
         p0.uiSettings.isTiltGesturesEnabled = true
         p0.uiSettings.isRotateGesturesEnabled = true
         p0.uiSettings.isMapToolbarEnabled = true
+        var direccion = txtDireccion.text.split(",")
+        var latitud = direccion[0].toDouble()
+        var longitud = direccion[1].toDouble()
+        if(mMap != null){
+            val location = LatLng(latitud, longitud)
+            mMap.addMarker(MarkerOptions().position(location).title("Marcador"))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+        }
     }
 
     override fun onMapLoaded() {

@@ -60,7 +60,7 @@
 
                 <EditText
                     android:id="@+id/txtTelefono"
-                    android:layout_width="281dp"
+                    android:layout_width="173dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentBottom="true"
@@ -126,6 +126,18 @@
                     android:ems="10"
                     android:gravity="start|top"
                     android:inputType="textMultiLine" />
+
+                <Button
+                    android:id="@+id/btnCall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/txtDireccion"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_toEndOf="@+id/txtTelefono"
+                    android:text="@string/llamar" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -227,21 +239,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mapViewAccept" />
 
-        <Button
-            android:layout_width="183dp"
-            android:layout_height="41dp"
-            android:layout_gravity="center"
-            android:background="@color/colorPrimary"
-            android:fontFamily="@font/calibri"
-            android:text="Iniciar Viaje"
-            android:textAllCaps="false"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnFinish"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+    <Button
+        android:id="@+id/btnInitTravel"
+        android:layout_width="183dp"
+        android:layout_height="41dp"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/calibri"
+        android:text="Iniciar Viaje"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnFinish"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
         <Button
             android:id="@+id/btnFinish"
