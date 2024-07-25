@@ -7,17 +7,13 @@ import android.widget.EditText
 import client.Client
 import client.services.ClientServiceMethods
 import client.services.EmailService
-import com.example.app_market.login.formRegister.FormRegisterClientActivity
 import com.google.gson.Gson
 import controller.impl.RegisterClientControllerImpl
 import model.common.ApiResponseBody
 import model.dto.POST.ClientPOST
 import model.dto.REQUEST.ClientData
 import model.email.ApiResponseEmail
-import retrofit2.converter.gson.GsonConverterFactory
 import service.RegisterClientService
-
-import retrofit2.Retrofit
 
 class RegisterClientServiceImpl(context: Context) : RegisterClientService {
     private val clientService = Client.ClientRetrofit.getService(ClientServiceMethods::class.java) as ClientServiceMethods

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -16,20 +15,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import client.Client
-import client.services.ClientServiceMethods
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import model.common.ApiResponseBody
-import model.dto.POST.ClientPOST
 import model.dto.REQUEST.ClientData
+import service.impl.RegisterClientServiceImpl
 
 import storage.StoragePreferences
 import utils.Converters
 import utils.Permissions
 import view.RegisterActualizarClientView
-import service.RegisterClientService as RegisterClientService
 
 
 class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActualizarClientView {
@@ -46,7 +41,8 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
     private lateinit var cboGender: Spinner
 
     private var storage = StoragePreferences.getInstance(this)
-    private var service = Client.ClientRetrofit.getService(ClientServiceMethods::class.java) as RegisterClientService
+    private var service = RegisterClientServiceImpl(this)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,13 +106,14 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
     }
 
 
-    override fun loadClient(it: ClientData) {
+    override fun loadClient(it: ClientData, i: Int) {
         txtName.setText(it.nombres)
         txtLastName.setText(it.apellidos)
         txtDate.setText(it.fechaNacimiento)
         txtEmail.setText(it.correo)
         txtPhone.setText(it.telefono)
-
+        txtUser.setText(it.usuario)
+        cboGender.setSelection(i)
         val bitmap = Converters().base64ToBitmap(it.foto)
         image.setImageBitmap(bitmap)
 

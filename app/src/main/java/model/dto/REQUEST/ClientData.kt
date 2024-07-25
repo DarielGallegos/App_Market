@@ -9,4 +9,5 @@ data class ClientData(
     val fechaNacimiento : String = "",
     val foto: String = "",
     val genero: String = "",
+    val usuario: String = "",
 )

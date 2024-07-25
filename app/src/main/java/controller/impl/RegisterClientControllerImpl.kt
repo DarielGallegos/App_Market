@@ -7,9 +7,9 @@ import view.RegisterActualizarClientView
 import view.RegisterClientView
 
 class RegisterClientControllerImpl(context: Context): RegisterClientController {
-    private val RegisterClientView = context as RegisterClientView
-    private val UpdateClientView = context as RegisterActualizarClientView
+    val context = context
     override fun saveClient(status: Boolean) {
+        val RegisterClientView = context as RegisterClientView
         RegisterClientView.statusSaveClient(status)
     }
 
@@ -17,6 +17,7 @@ class RegisterClientControllerImpl(context: Context): RegisterClientController {
     }
 
     override fun loadClient(response: List<ClientData>) {
-        UpdateClientView.loadClient(response[0])
+        val UpdateClientView = context as RegisterActualizarClientView
+        UpdateClientView.loadClient(response[0], if(response[0].genero == "M") 0 else 1)
     }
 }

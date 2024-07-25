@@ -70,6 +70,18 @@ class DashboardClient : AppCompatActivity() {
             alertDialogBox.show()
         }
 
+        lifecycleScope.launch(Dispatchers.IO) {
+            preference.getCredentiales().collect {
+                withContext(Dispatchers.Main) {
+                    if (it.id == null) {
+                        val intent = Intent(this@DashboardClient, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+            }
+        }
+
         bntActualizar.setOnClickListener {
             val intent = Intent(this, FormActualizarRegisterClientActivity::class.java)
             startActivity(intent)

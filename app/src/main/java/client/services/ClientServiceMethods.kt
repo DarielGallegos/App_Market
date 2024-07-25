@@ -20,7 +20,4 @@ interface ClientServiceMethods {
     @GET("api/v1/Clientes/{id}")
     fun loadClient(@Path("id") id: Int): Call<ApiResponseBody>
 
-
-
-
 }
