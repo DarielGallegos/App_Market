@@ -6,13 +6,13 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.app_market.databinding.ActivityProductosCarMarketBinding
-import model.common.Producto
+import model.common.CarMarketProducto
 import storage.DataStoreCarMarket
 
 class ProductosCarMarket : ComponentActivity() {
     private lateinit var binding: ActivityProductosCarMarketBinding
     private lateinit var adapter: ProductosAdapter
-    private lateinit var productosList: MutableList<Producto>
+    private lateinit var productosList: MutableList<CarMarketProducto>
 
 
 
@@ -34,10 +34,10 @@ class ProductosCarMarket : ComponentActivity() {
 
     private fun initRecyclerView() {
         val manager = LinearLayoutManager(this)
-        DataStoreCarMarket.CarMarket.addCarMarket(Producto(1, "Mirinda", 15.0, 5, 75.5, "Nada"))
-        DataStoreCarMarket.CarMarket.addCarMarket(Producto(2, "Coca-Cola", 12.0, 10, 50.0, "Soda"))
-        DataStoreCarMarket.CarMarket.addCarMarket(Producto(3, "Pepsi", 11.0, 7, 45.0, "Soda"))
-        DataStoreCarMarket.CarMarket.addCarMarket(Producto(4, "Fanta", 14.0, 8, 65.0, "Soda"))
+        DataStoreCarMarket.CarMarket.addCarMarket(CarMarketProducto(1, "Mirinda", 15.0, 5, 75.5, "Nada"))
+        DataStoreCarMarket.CarMarket.addCarMarket(CarMarketProducto(2, "Coca-Cola", 12.0, 10, 50.0, "Soda"))
+        DataStoreCarMarket.CarMarket.addCarMarket(CarMarketProducto(3, "Pepsi", 11.0, 7, 45.0, "Soda"))
+        DataStoreCarMarket.CarMarket.addCarMarket(CarMarketProducto(4, "Fanta", 14.0, 8, 65.0, "Soda"))
 
         adapter = ProductosAdapter(
             productosList,
@@ -49,13 +49,13 @@ class ProductosCarMarket : ComponentActivity() {
         binding.recyclerProductos.adapter = adapter
     }
 
-    private fun onItemSelected(producto: Producto) {
-        Toast.makeText(this, producto.nombre, Toast.LENGTH_SHORT).show()
+    private fun onItemSelected(carMarketProducto: CarMarketProducto) {
+        Toast.makeText(this, carMarketProducto.nombre, Toast.LENGTH_SHORT).show()
     }
 
-    private fun onItemDeleted(producto: Producto) {
-        DataStoreCarMarket.CarMarket.deleteCarMarket(producto)
-        adapter.deleteItem(producto)
+    private fun onItemDeleted(carMarketProducto: CarMarketProducto) {
+        DataStoreCarMarket.CarMarket.deleteCarMarket(carMarketProducto)
+        adapter.deleteItem(carMarketProducto)
         Toast.makeText(this, "Este producto ha sido borrado", Toast.LENGTH_SHORT).show()
         adapter.notifyDataSetChanged()
     }

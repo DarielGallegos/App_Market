@@ -1,34 +1,33 @@
 package storage
 
-import model.common.Producto
+import model.common.CarMarketProducto
 import java.util.ArrayList
-import java.util.List
 
 class DataStoreCarMarket{
     object CarMarket{
-         lateinit var list : MutableList<Producto>
+         lateinit var list : MutableList<CarMarketProducto>
         init{
-            list = ArrayList<Producto>()
+            list = ArrayList<CarMarketProducto>()
         }
 
-        fun addCarMarket(producto: Producto){
-            list.add(producto)
+        fun addCarMarket(carMarketProducto: CarMarketProducto){
+            list.add(carMarketProducto)
         }
 
-        fun getCarMarket() : MutableList<Producto>{
+        fun getCarMarket() : MutableList<CarMarketProducto>{
             return list
         }
 
-        fun deleteCarMarket(producto: Producto){
-            list.remove(producto)
+        fun deleteCarMarket(carMarketProducto: CarMarketProducto){
+            list.remove(carMarketProducto)
         }
 
         fun clearCarMarket(){
             list.clear()
         }
 
-        fun updateCarMarket(producto: Producto){
-            list.set(producto.id, producto)
+        fun updateCarMarket(carMarketProducto: CarMarketProducto){
+            list.set(carMarketProducto.id, carMarketProducto)
         }
     }
 }

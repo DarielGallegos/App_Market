@@ -17,10 +17,8 @@ import com.example.app_market.login.recoveryPassword.ResetPasswordEmailActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import model.common.Producto
 import model.dto.POST.CredentialsPOST
 import service.impl.LoginServiceImpl
-import storage.DataStoreCarMarket
 import storage.StoragePreferences
 import view.loginView
 

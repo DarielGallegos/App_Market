@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_market.R
-import model.common.Producto
+import model.common.CarMarketProducto
 
 class ProductosAdapter(
-    private val productosList: MutableList<Producto>,
-    private val onClickListener: (Producto) -> Unit,
-    private val onDeleteListener: (Producto) -> Unit
+    private val productosList: MutableList<CarMarketProducto>,
+    private val onClickListener: (CarMarketProducto) -> Unit,
+    private val onDeleteListener: (CarMarketProducto) -> Unit
     ) : RecyclerView.Adapter<ProductosViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductosViewHolder {
@@ -24,8 +24,8 @@ class ProductosAdapter(
         holder.render(item, onClickListener, onDeleteListener)
     }
 
-    fun deleteItem(producto: Producto){
-        val position = productosList.indexOf(producto)
+    fun deleteItem(carMarketProducto: CarMarketProducto){
+        val position = productosList.indexOf(carMarketProducto)
         if (position != -1) {
             productosList.removeAt(position)
             notifyItemRemoved(position)
