@@ -29,5 +29,12 @@ class DataStoreCarMarket{
         fun updateCarMarket(carMarketProducto: CarMarketProducto){
             list.set(carMarketProducto.id, carMarketProducto)
         }
+
+        fun imprimir()
+        {
+            list.forEach { elemeto ->
+                println(elemeto.id.toString() + " " + (elemeto.producto)+" "+(elemeto.cantidad) +" "+ (elemeto.precio))
+            }
+        }
     }
 }
