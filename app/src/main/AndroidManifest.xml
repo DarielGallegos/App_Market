@@ -30,6 +30,13 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
+    <!-- Permisos de almacenamiento -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- Permiso para usar el sistema de autocompletado -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -44,6 +51,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBqLOKjkZP1gaso6t8MatGWpV0tTgE8-J4"/>
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
         <activity
             android:name=".login.recoveryPassword.ResetPasswordActivity"
             android:label=""
@@ -58,12 +66,12 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:exported="false" />
-        <activity
-            android:name=".MainCerrarActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main_cerrar" />
+
         <activity
             android:name=".DashboardClient"
+            android:exported="false" />
+        <activity
+            android:name=".FormActualizarRegisterClientActivity"
             android:exported="false" />
         <activity
             android:name=".login.formRegister.FormRegisterClientActivity"
@@ -105,7 +113,6 @@
             android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

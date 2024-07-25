@@ -15,6 +15,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.app_market.R
+import model.common.ApiResponseBody
 import model.dto.POST.ClientPOST
 import service.impl.RegisterClientServiceImpl
 import storage.DataStoreCarMarket
@@ -97,6 +98,8 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         }
     }
 
+
+
     override fun statusSaveClient(status: Boolean) {
         val builderDialog = AlertDialog.Builder(this)
         builderDialog.setTitle("Registro de cliente")
@@ -112,6 +115,8 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         builderDialog.show()
 
     }
+
+
 
     private fun flush(){
         txtName.text.clear()

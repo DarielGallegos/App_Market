@@ -1,25 +1,38 @@
 package com.example.app_market
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.drawable.toBitmap
+
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import client.Client
+import client.services.ClientServiceMethods
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import model.common.ApiResponseBody
 import model.dto.POST.ClientPOST
-import service.impl.RegisterClientServiceImpl
+import model.dto.REQUEST.ClientData
+
+import storage.StoragePreferences
 import utils.Converters
 import utils.Permissions
-import view.RegisterClientView
+import view.RegisterActualizarClientView
+import service.RegisterClientService as RegisterClientService
 
-class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterClientView {
+
+class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActualizarClientView {
     private lateinit var image: ImageView
     private lateinit var btnRegister: Button
     private lateinit var txtName: EditText
@@ -30,21 +43,28 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterClient
     private lateinit var txtUser: EditText
     private lateinit var txtPasswd: EditText
     private lateinit var txtPasswdConfirm: EditText
-
     private lateinit var cboGender: Spinner
 
-    private var service = RegisterClientServiceImpl(this)
+    private var storage = StoragePreferences.getInstance(this)
+    private var service = Client.ClientRetrofit.getService(ClientServiceMethods::class.java) as RegisterClientService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_form_register_client)
+        setContentView(R.layout.activity_form_actualizar_client)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        //Assigned value to component lateinit
+        lifecycleScope.launch(Dispatchers.IO) {
+            storage.getCredentiales().collect {
+                withContext(Dispatchers.Main) {
+                    if (it.id != null) { service.loadClient(it.id) }
+                }
+            }
+        }
         image = findViewById(R.id.imgUserReg)
         txtName = findViewById(R.id.txtRegNombre)
         txtLastName = findViewById(R.id.txtRegApellido)
@@ -55,25 +75,30 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterClient
         txtPasswd = findViewById(R.id.txtRegPassword)
         txtPasswdConfirm = findViewById(R.id.txtRegPasswordConfirm)
         cboGender = findViewById(R.id.txtRegGenero)
-
         btnRegister = findViewById(R.id.btn_guardar)
+
         btnRegister.setOnClickListener {
-            var nombre = txtName.text.toString()
-            var apellido = txtLastName.text.toString()
-            var fecha = txtDate.text.toString()
-            var correo = txtEmail.text.toString()
-            var telefono = txtPhone.text.toString()
-            var generoChar = cboGender.selectedItem.toString()[0]
-            var genero = generoChar.toString()
-            var usuario = txtUser.text.toString()
-            var passwd = txtPasswd.text.toString()
-            var passwdConfirm = txtPasswdConfirm.text.toString()
-            var img = Converters().bitmapToBase64(image.drawable.toBitmap()) as String
-            service.saveClient(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwdConfirm, 2, "Admin", 1))
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                //service.updateClient(clientIdToUpdate, Int)
+                withContext(Dispatchers.Main) {
+                    //statusUpdateClient(response.isSuccessful)
+                }
+            }
         }
         image.setOnClickListener {
             Permissions().checkCameraPermission(this)
         }
+    }
+
+    private fun showError(message: String) {
+        val builderDialog = AlertDialog.Builder(this)
+        builderDialog.setTitle("Error")
+        builderDialog.setMessage(message)
+        builderDialog.setPositiveButton("Aceptar") { dialog, _ ->
+            dialog.dismiss()
+        }
+        builderDialog.show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -84,18 +109,29 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterClient
         }
     }
 
-    override fun statusSaveClient(status: Boolean) {
+
+    override fun loadClient(it: ClientData) {
+        txtName.setText(it.nombres)
+        txtLastName.setText(it.apellidos)
+        txtDate.setText(it.fechaNacimiento)
+        txtEmail.setText(it.correo)
+        txtPhone.setText(it.telefono)
+
+        val bitmap = Converters().base64ToBitmap(it.foto)
+        image.setImageBitmap(bitmap)
+
+    }
+
+    override fun statusUpdateClient(status: Boolean) {
         val builderDialog = AlertDialog.Builder(this)
-        builderDialog.setTitle("Registro de cliente")
-        var msg = "Error al guardar información"
-        if(status){
-            msg = "Cliente registrado correctamente"
-        }
+        builderDialog.setTitle("Actualización de cliente")
+        val msg =
+            if (status) "Cliente actualizado correctamente" else "Error al actualizar información"
         builderDialog.setMessage(msg)
-        builderDialog.setPositiveButton("Aceptar") { dialog, which ->
+        builderDialog.setPositiveButton("Aceptar") { dialog, _ ->
             dialog.dismiss()
         }
         builderDialog.show()
-
     }
+
 }

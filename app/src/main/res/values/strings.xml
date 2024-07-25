@@ -22,7 +22,6 @@
     <string name="button_update_password">Confirmar</string>
     <!-- End Resources View Recovery Password Validation -->
 
-
     <!-- Resources View Recovery Password Validation Email -->
     <string name="title_activity_reset_password_email">Recuperar Contraseña</string>
     <string name="title_form_reset_password_email">Formulario de Recuperación</string>
@@ -37,6 +36,7 @@
     <string name="field_code">Ingrese el codigo de recuperación: </string>
     <string name="field_code_hint">123456</string>
     <string name="button_validate">Validar Codigo</string>
+    <string name="profile_image" />
     <!-- End Resources View Recovery Password Validation Code -->
 
 </resources>

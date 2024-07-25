@@ -3,6 +3,7 @@ package utils
 import android.graphics.Bitmap
 import java.io.ByteArrayOutputStream
 import android.util.Base64
+import android.widget.ImageView
 
 class Converters {
     fun bitmapToBase64(bitmap: Bitmap?) : String?{
@@ -15,8 +16,12 @@ class Converters {
         return ""
     }
 
-    fun base64ToBitmap(base64: String) : Bitmap?{
-        val imageBytes = Base64.decode(base64, Base64.DEFAULT)
-        return android.graphics.BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+    fun base64ToBitmap(base64: String): Bitmap? {
+        return try {
+            val imageBytes = Base64.decode(base64, Base64.DEFAULT)
+            android.graphics.BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+        } catch (e: IllegalArgumentException) {
+            null // Retorna null si la cadena Base64 es inválida
+        }
     }
 }
