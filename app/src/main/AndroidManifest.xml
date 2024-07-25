@@ -40,7 +40,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".car_market.DetallesProductos"
+            android:name=".car_market.DetallesProductosFinancieros"
             android:exported="false" />
         <activity
             android:name=".car_market.ProductosCarMarket"

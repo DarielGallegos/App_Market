@@ -4,12 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.app_market.R
 import com.example.app_market.databinding.ActivityProductosCarMarketBinding
 import model.common.Producto
 import storage.DataStoreCarMarket
@@ -31,7 +26,7 @@ class ProductosCarMarket : ComponentActivity() {
 
         binding.btnConfirmar.setOnClickListener {
             val total = Calculos()
-            val intent = Intent(this, DetallesProductos::class.java)
+            val intent = Intent(this, DetallesProductosFinancieros::class.java)
             intent.putExtra("TOTAL", total)
             startActivity(intent)
         }
