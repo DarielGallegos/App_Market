@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.app_market.R
 import com.example.app_market.databinding.ActivityDetallesProductosFinancierosBinding
 import com.example.app_market.databinding.ActivityProductosCarMarketBinding
@@ -20,12 +21,17 @@ import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import storage.StoragePreferences
 
 class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    private var preferences = StoragePreferences.getInstance(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalles_productos_financieros)
@@ -45,6 +51,19 @@ class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback {
         val txtImpuesto = findViewById<EditText>(R.id.txtimpuesto)
         val txtEnvio = findViewById<EditText>(R.id.txtenvio)
         val txtTotal = findViewById<EditText>(R.id.txttotal)
+        val txtCliente = findViewById<EditText>(R.id.txtcliente)
+        val txtTelefono = findViewById<EditText>(R.id.txttelefono)
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            preferences.getCredentiales().collect {
+                withContext(Dispatchers.Main) {
+                    if (it.id != null) {
+                        txtCliente.setText(it.nombre)
+                        txtTelefono.setText(it.telefono)
+                    }
+                }
+            }
+        }
 
         txtSubtotal.setText(subtotal.toString())
         txtImpuesto.setText(impuesto.toString())

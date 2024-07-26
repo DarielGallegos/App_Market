@@ -26,7 +26,7 @@ class DashboardClient : AppCompatActivity() {
     private lateinit var btnShowPedidos: CardView
     private lateinit var btnNuevoPedido: CardView
     private lateinit var btnLogout: LinearLayout
-
+    private lateinit var btnActualizar: LinearLayout
 
     private val preference = StoragePreferences.getInstance(this)
 
@@ -44,7 +44,7 @@ class DashboardClient : AppCompatActivity() {
         }
         btnShowPedidos = findViewById(R.id.card_view_pedido)
         btnNuevoPedido = findViewById(R.id.card_view_nuevo_pedido)
-
+        btnActualizar = findViewById(R.id.btactualizar)
         btnNuevoPedido.setOnClickListener {
             val intent = Intent(this, CatalogoProductosActivity::class.java)
             startActivity(intent)
@@ -63,30 +63,29 @@ class DashboardClient : AppCompatActivity() {
                     }
                 }
                 .setNegativeButton("No") { _, _ ->
-                    Toast.makeText(this, "Clicked No", Toast.LENGTH_SHORT).show()
                 }
             val alertDialogBox = artDialogBuilder.create()
             alertDialogBox.show()
         }
 
-        btnNuevoPedido.setOnClickListener {
-            val intent = Intent(this, CatalogoProductosActivity::class.java)
-            startActivity(intent)
-
-            lifecycleScope.launch(Dispatchers.IO) {
-                preference.getCredentiales().collect {
-                    withContext(Dispatchers.Main) {
-                        if (it.id == null) {
-                            val intent = Intent(this@DashboardClient, LoginActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                        }
+        lifecycleScope.launch(Dispatchers.IO) {
+            preference.getCredentiales().collect {
+                withContext(Dispatchers.Main) {
+                    if (it.id == null) {
+                        val intent = Intent(this@DashboardClient, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
                     }
                 }
             }
         }
 
-        bntActualizar.setOnClickListener {
+        btnNuevoPedido.setOnClickListener {
+            val intent = Intent(this, CatalogoProductosActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnActualizar.setOnClickListener {
             val intent = Intent(this, FormActualizarRegisterClientActivity::class.java)
             startActivity(intent)
         }
