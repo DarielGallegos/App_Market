@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import client.Client
 import client.services.ProductService
 import com.example.app_market.adapters.CatProductosAdapter
+import com.example.app_market.car_market.ProductosCarMarket
 import com.example.app_market.databinding.ActivityCatalogoProductosBinding
 import com.google.gson.Gson
 import model.common.ApiResponseBody
@@ -49,7 +50,8 @@ class CatalogoProductosActivity : AppCompatActivity() {
         rec_view.layoutManager = GridLayoutManager(this, 2)
 
         binding.carrito.setOnClickListener{
-
+            val intent = Intent(this, ProductosCarMarket::class.java)
+            startActivity(intent)
         }
 
         binding.lyPasarelaCategorias.refresco.setOnClickListener{

@@ -3,24 +3,26 @@ package com.example.app_market.car_market
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_market.databinding.ItemProductosBinding
-import model.common.CarMarketProducto
+import model.common.Producto
+import utils.Converters
 
 class ProductosViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val binding = ItemProductosBinding.bind(view)
 
-    fun render(carMarketProductoModel: CarMarketProducto, onClickListener: (CarMarketProducto) -> Unit, onDeleteListener: (CarMarketProducto) -> Unit) {
-        binding.tvProductoName.text = carMarketProductoModel.nombre
-        binding.tvProductoPrice.text = carMarketProductoModel.precio.toString()
-        binding.tvProductoCant.text = carMarketProductoModel.cantidad.toString()
+    fun render(producto: Producto, onClickListener: (Producto) -> Unit, onDeleteListener: (Producto) -> Unit) {
+        binding.tvProductoName.text = producto.producto
+        binding.tvProductoPrice.text = producto.precio.toString()
+        binding.tvProductoCant.text = producto.cantidad.toString()
 
-        //Glide.with(binding.ivProducto.context).load(productoModel.foto).into(binding.ivProducto)
+        val bitmap = Converters().base64ToBitmap(producto.foto)
+        binding.ivProducto.setImageBitmap(bitmap)
 
         itemView.setOnClickListener {
-            onClickListener(carMarketProductoModel)
+            onClickListener(producto)
         }
 
         binding.btnEliminar.setOnClickListener {
-            onDeleteListener(carMarketProductoModel)
+            onDeleteListener(producto)
         }
     }
 }
