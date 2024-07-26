@@ -11,6 +11,7 @@ import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toBitmap
 
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -18,6 +19,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import model.dto.POST.ClientPOST
 import model.dto.REQUEST.ClientData
 import service.impl.RegisterClientServiceImpl
 
@@ -25,11 +27,13 @@ import storage.StoragePreferences
 import utils.Converters
 import utils.Permissions
 import view.RegisterActualizarClientView
+import view.validations.ValidationAlertFormRegister
 
 
 class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActualizarClientView {
     private lateinit var image: ImageView
     private lateinit var btnRegister: Button
+    private lateinit var btnBack: ImageView
     private lateinit var txtName: EditText
     private lateinit var txtLastName: EditText
     private lateinit var txtDate: EditText
@@ -42,7 +46,7 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
 
     private var storage = StoragePreferences.getInstance(this)
     private var service = RegisterClientServiceImpl(this)
-
+    private lateinit var validator : ValidationAlertFormRegister
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +65,7 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
                 }
             }
         }
+        validator = ValidationAlertFormRegister(this)
         image = findViewById(R.id.imgUserReg)
         txtName = findViewById(R.id.txtRegNombre)
         txtLastName = findViewById(R.id.txtRegApellido)
@@ -72,18 +77,47 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
         txtPasswdConfirm = findViewById(R.id.txtRegPasswordConfirm)
         cboGender = findViewById(R.id.txtRegGenero)
         btnRegister = findViewById(R.id.btn_guardar)
+        btnBack = findViewById(R.id.imgBackPut)
 
         btnRegister.setOnClickListener {
 
             lifecycleScope.launch(Dispatchers.IO) {
-                //service.updateClient(clientIdToUpdate, Int)
-                withContext(Dispatchers.Main) {
-                    //statusUpdateClient(response.isSuccessful)
+                storage.getCredentiales().collect {
+                    withContext(Dispatchers.Main) {
+                        if (it.id != null) {
+                            updateClient(it.id)
+                        }
+                    }
                 }
             }
         }
         image.setOnClickListener {
             Permissions().checkCameraPermission(this)
+        }
+    }
+
+    private fun updateClient(id: Int){
+        val nombre = txtName.text.toString().trim()
+        val apellido = txtLastName.text.toString().trim()
+        val fecha = txtDate.text.toString().trim()
+        val correo = txtEmail.text.toString().trim()
+        val telefono = txtPhone.text.toString().trim()
+        val generoChar = cboGender.selectedItem.toString()[0]
+        val genero = generoChar.toString().trim()
+        val usuario = txtUser.text.toString().trim()
+        val passwd = txtPasswd.text.toString().trim()
+        val passwdConfirm = txtPasswdConfirm.text.toString().trim()
+        val img = Converters().bitmapToBase64(image.drawable.toBitmap()) as String
+        if(passwd.isEmpty()){
+            val status = validator.ValidateFormUpdate(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, "l", 2, "Admin"))
+            if(status) {
+                service.updateClient(id, ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, "", 2, "Admin"))
+            }
+        }else{
+            val status = validator.validateForm(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin"), passwdConfirm)
+            if(status){
+                service.updateClient(id, ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin"))
+            }
         }
     }
 

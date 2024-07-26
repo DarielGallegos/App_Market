@@ -40,10 +40,24 @@ class RegisterClientServiceImpl(context: Context) : RegisterClientService {
         })
     }
 
-    override fun updateClient(clientIdToUpdate: Int, clientPOST: Int) {
-        TODO("Not yet implemented")
-    }
+    override fun updateClient(Id: Int, e: ClientPOST) {
+        clientService.updateClient(Id, e).enqueue(object : retrofit2.Callback<ApiResponseBody> {
+            override fun onResponse(call: retrofit2.Call<ApiResponseBody>, response: retrofit2.Response<ApiResponseBody>) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        controller.updateClient(responseBody.status == "OK")
+                    }else{
+                        Log.d("Update Client", "Response es null")
+                    }
+                }
+            }
 
+            override fun onFailure(call: retrofit2.Call<ApiResponseBody>, t: Throwable) {
+                Log.e("Error Update Client: ", t.message.toString())
+            }
+        })
+    }
 
     override fun saveClientValidation(e: ClientPOST, code: Int?) {
         sendEmail("Registro de Cliente", "Codigo de Validacion: $code", e.correo)

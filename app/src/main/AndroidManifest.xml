@@ -72,7 +72,10 @@
             android:exported="false" />
         <activity
             android:name=".FormActualizarRegisterClientActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".login.formRegister.FormRegisterClientActivity"
             android:label=""

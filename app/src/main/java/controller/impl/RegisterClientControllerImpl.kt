@@ -14,6 +14,8 @@ class RegisterClientControllerImpl(context: Context): RegisterClientController {
     }
 
     override fun updateClient(status: Boolean) {
+        val UpdateClientView = context as RegisterActualizarClientView
+        UpdateClientView.statusUpdateClient(status)
     }
 
     override fun loadClient(response: List<ClientData>) {
