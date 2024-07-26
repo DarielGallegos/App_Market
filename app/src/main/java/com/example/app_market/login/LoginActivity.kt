@@ -13,7 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import com.example.app_market.DashboardClient
 import com.example.app_market.login.formRegister.FormRegisterClientActivity
 import com.example.app_market.R
+import com.example.app_market.administrador.DashBoardAdministrador
 import com.example.app_market.login.recoveryPassword.ResetPasswordEmailActivity
+import com.example.app_market.repartidores.DashBoardRepartidoresActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -60,10 +62,11 @@ class LoginActivity : loginView,  AppCompatActivity(){
             preferences.getCredentiales().collect {
                 withContext(Dispatchers.Main) {
                     if(it.id != null){
-                        start()
+                        start(it.empleado?:false, it.rol == "Administrador")
                     }
                 }
             }
+            
         }
 
         loginButton = findViewById(R.id.login)
@@ -90,22 +93,34 @@ class LoginActivity : loginView,  AppCompatActivity(){
         }
     }
 
-    override fun login(status: Boolean) {
+    override fun login(status: Boolean, isEmpleado: Boolean, isAdmin: Boolean) {
         val alert = AlertDialog.Builder(this)
         alert.setTitle("Inicio de Sesión")
         alert.setMessage( if(status) "Inicio de sesión exitoso" else "Inicio de sesión fallido")
         alert.setPositiveButton("Aceptar") { dialog, which ->
             if(status){
-                start()
+                start(isEmpleado, isAdmin)
             }
             dialog.dismiss()
         }
         alert.show()
     }
 
-    private fun start(){
-        val intent = Intent(this, DashboardClient::class.java)
-        startActivity(intent)
-        finish()
+    private fun start(isEmpleado:Boolean, isAdmin: Boolean){
+        when(isEmpleado){
+            true -> {
+                val intent = if(isAdmin)
+                    Intent(this, DashBoardAdministrador::class.java)
+                    else Intent(this, DashBoardRepartidoresActivity::class.java)
+
+                startActivity(intent)
+                finish()
+            }
+            false -> {
+                val intent = Intent(this, DashboardClient::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
     }
 }

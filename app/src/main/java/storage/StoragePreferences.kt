@@ -5,9 +5,11 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.map
 import model.dto.REQUEST.Credentials
+import storage.src.KEY_PREFERENCE_STORAGE.Companion.KEY_EMPLEADO
 import storage.src.KEY_PREFERENCE_STORAGE.Companion.KEY_ID
 import storage.src.KEY_PREFERENCE_STORAGE.Companion.KEY_NAME
 import storage.src.KEY_PREFERENCE_STORAGE.Companion.KEY_ROL
+import storage.src.KEY_PREFERENCE_STORAGE.Companion.KEY_TELEFONO
 import storage.src.KEY_PREFERENCE_STORAGE.Companion.KEY_USERNAME
 
 val Context.dataStore by preferencesDataStore(name = "USER_CREDENTIALS")
@@ -30,7 +32,9 @@ class StoragePreferences(private val context: Context) {
             id = preferences[KEY_ID],
             nombre = preferences[KEY_NAME].orEmpty(),
             usuario = preferences[KEY_USERNAME].orEmpty(),
-            rol = preferences[KEY_ROL].orEmpty()
+            rol = preferences[KEY_ROL].orEmpty(),
+            telefono = preferences[KEY_TELEFONO].orEmpty(),
+            empleado = preferences[KEY_EMPLEADO] ?: false
         )
     }
 
@@ -40,6 +44,8 @@ class StoragePreferences(private val context: Context) {
             e.nombre?.let { preferences[KEY_NAME] = it }
             e.usuario?.let { preferences[KEY_USERNAME] = it }
             e.rol?.let { preferences[KEY_ROL] = it }
+            e.telefono?.let { preferences[KEY_TELEFONO] = it }
+            e.empleado?.let { preferences[KEY_EMPLEADO] = it }
         }
     }
 

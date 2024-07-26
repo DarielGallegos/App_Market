@@ -17,9 +17,9 @@ class LoginControllerImpl(context: Context) : LoginController {
             GlobalScope.launch(Dispatchers.IO) {
                 preferences.saveCredentials(e!!)
             }
-            view.login(status)
+            view.login(status, e?.empleado?:false, e?.rol == "Administrador" )
         }else{
-            view.login(status)
+            view.login(status, e?.empleado?:false, false)
         }
     }
 }

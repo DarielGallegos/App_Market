@@ -1,8 +1,10 @@
 package utils
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import java.io.ByteArrayOutputStream
 import android.util.Base64
+import android.util.Log
 
 class Converters {
     fun bitmapToBase64(bitmap: Bitmap?) : String?{
