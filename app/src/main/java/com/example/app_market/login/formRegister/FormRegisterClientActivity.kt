@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -17,7 +16,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.app_market.R
 import model.dto.POST.ClientPOST
 import service.impl.RegisterClientServiceImpl
-import storage.DataStoreCarMarket
 import utils.Converters
 import utils.Permissions
 import view.RegisterClientView
@@ -74,10 +72,10 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
             val passwd = txtPasswd.text.toString().trim()
             val passwdConfirm = txtPasswdConfirm.text.toString().trim()
             val img = Converters().bitmapToBase64(image.drawable.toBitmap()) as String
-            val status = validator.validateForm(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin", 1), passwdConfirm)
+            val status = validator.validateForm(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin"), passwdConfirm)
             if(status){
                 val code = Random.nextInt(100000)
-                service.saveClientValidation(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin", 1), code)
+                service.saveClientValidation(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin"), code)
             }
         }
         btnBack.setOnClickListener{
@@ -97,6 +95,8 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         }
     }
 
+
+
     override fun statusSaveClient(status: Boolean) {
         val builderDialog = AlertDialog.Builder(this)
         builderDialog.setTitle("Registro de cliente")
@@ -112,6 +112,8 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         builderDialog.show()
 
     }
+
+
 
     private fun flush(){
         txtName.text.clear()

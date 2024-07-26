@@ -1,6 +1,16 @@
 package model.dto.POST
 
-data class ClientPOST(var nombres: String, var apellidos: String
-            , var fecha_nac: String, var genero: String, var correo: String
-            , var telefono: String, var foto: String, var usuario: String,
-            var passwd: String, var id_rol: Int, var creado_por: String, var estado: Int)
+data class ClientPOST(
+
+    val nombres: String,
+    val apellidos: String,
+    val fecha_nac: String,
+    val genero: String,
+    val correo: String,
+    val telefono: String,
+    val foto: String,
+    val usuario: String,
+    val passwd: String,
+    val id_rol: Int,
+    val creado_por: String
+)
