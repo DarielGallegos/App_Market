@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.app_market.R
+import com.example.app_market.databinding.ActivityDetallesProductosFinancierosBinding
+import com.example.app_market.databinding.ActivityProductosCarMarketBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -34,22 +36,25 @@ class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+        val subtotal = intent.getDoubleExtra("SUBTOTAL", 0.0)
+        val impuesto = intent.getDoubleExtra("IMPUESTO", 0.0)
+        val envio = intent.getDoubleExtra("ENVIO", 0.0)
         val total = intent.getDoubleExtra("TOTAL", 0.0)
-        val impuesto = total * 0.15
-        val totalSum = total + impuesto
-        val txtTotal = findViewById<EditText>(R.id.txttotal)
-        txtTotal.setText(totalSum.toString())
-        val txtImpuesto = findViewById<EditText>(R.id.txtimpuesto)
-        txtImpuesto.setText(impuesto.toString())
-        val txtTotalImpuesto = findViewById<EditText>(R.id.txttotal_imp)
-        txtTotalImpuesto.setText(impuesto.toString())
 
+        val txtSubtotal = findViewById<EditText>(R.id.txtsubtotal)
+        val txtImpuesto = findViewById<EditText>(R.id.txtimpuesto)
+        val txtEnvio = findViewById<EditText>(R.id.txtenvio)
+        val txtTotal = findViewById<EditText>(R.id.txttotal)
+
+        txtSubtotal.setText(subtotal.toString())
+        txtImpuesto.setText(impuesto.toString())
+        txtEnvio.setText(envio.toString())
+        txtTotal.setText(total.toString())
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap
 
-        // Check location permissions and request if not granted
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
         } else {

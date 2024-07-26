@@ -21,4 +21,5 @@ class Converters {
         val imageBytes = Base64.decode(base64, Base64.DEFAULT)
         return android.graphics.BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
     }
+
 }

@@ -5,7 +5,7 @@ package com.example.app_market
 
 import android.content.Intent
 import android.os.Bundle
-
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -26,7 +26,8 @@ class DashboardClient : AppCompatActivity() {
     private lateinit var btnShowPedidos: CardView
     private lateinit var btnNuevoPedido: CardView
     private lateinit var btnLogout: LinearLayout
-    private lateinit var bntActualizar: LinearLayout
+
+
     private val preference = StoragePreferences.getInstance(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,14 +36,12 @@ class DashboardClient : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard_client)
 
         btnLogout = findViewById(R.id.btcerrar)
-        bntActualizar = findViewById(R.id.btactualizar)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         btnShowPedidos = findViewById(R.id.card_view_pedido)
         btnNuevoPedido = findViewById(R.id.card_view_nuevo_pedido)
 
@@ -70,13 +69,18 @@ class DashboardClient : AppCompatActivity() {
             alertDialogBox.show()
         }
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            preference.getCredentiales().collect {
-                withContext(Dispatchers.Main) {
-                    if (it.id == null) {
-                        val intent = Intent(this@DashboardClient, LoginActivity::class.java)
-                        startActivity(intent)
-                        finish()
+        btnNuevoPedido.setOnClickListener {
+            val intent = Intent(this, CatalogoProductosActivity::class.java)
+            startActivity(intent)
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                preference.getCredentiales().collect {
+                    withContext(Dispatchers.Main) {
+                        if (it.id == null) {
+                            val intent = Intent(this@DashboardClient, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
                     }
                 }
             }
