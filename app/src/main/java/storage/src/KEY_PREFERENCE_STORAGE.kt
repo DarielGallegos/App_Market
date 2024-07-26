@@ -11,6 +11,7 @@ enum class KEY_PREFERENCE_STORAGE {
         val KEY_NAME = stringPreferencesKey("nombre")
         val KEY_USERNAME = stringPreferencesKey("username")
         val KEY_ROL = stringPreferencesKey("rol")
+        val KEY_TELEFONO = stringPreferencesKey("telefono")
         val KEY_EMPLEADO = booleanPreferencesKey("empleado")
     }
 }

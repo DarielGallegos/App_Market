@@ -1,5 +1,5 @@
 package view
 
 interface loginView {
-    fun login(status: Boolean, isEmpleado: Boolean)
+    fun login(status: Boolean, isEmpleado: Boolean, isAdmin: Boolean)
 }
