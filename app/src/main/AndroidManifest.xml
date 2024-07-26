@@ -107,9 +107,19 @@
             android:label="@string/title_activity_main_cerrar" />
         <activity
             android:name=".DashboardClient"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".login.formRegister.FormRegisterClientActivity"
+            android:exported="false"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".FormActualizarRegisterClientActivity"
             android:exported="false"
             android:label=""
             android:screenOrientation="portrait"
