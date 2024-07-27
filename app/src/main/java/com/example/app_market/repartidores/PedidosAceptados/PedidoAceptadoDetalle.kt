@@ -157,7 +157,7 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
         dirCoordinates?.let { coordinates ->
             if (::mMap.isInitialized) {
                 val location = coordinates
-                mMap.addMarker(MarkerOptions().position(location).title("Marcador"))
+                mMap.addMarker(MarkerOptions().position(location).title("Cliente"))
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
             }
         }
