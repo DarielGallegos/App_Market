@@ -29,12 +29,14 @@ import model.common.Producto
 import model.dto.POST.Pedido
 import model.dto.POST.ProductoPedido
 import service.impl.DetallesProductosFinancierosServiceImpl
+import storage.DataStoreCarMarket
 import storage.StoragePreferences
 import view.DetallesProductosFinancierosView
 
 class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, DetallesProductosFinancierosView{
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
+    private lateinit var adapter: ProductosAdapter
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var Service = DetallesProductosFinancierosServiceImpl(this)
     private lateinit var btnPedido: Button
@@ -114,11 +116,14 @@ class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, De
                     )
 
                     Service.pedidosProductos(pedido)
+                    setResult(RESULT_OK)
+                    finish()
                     //Log.d("DetallesProductos", "Pedido: $pedido")
                 }
             }
         }
     }
+
 
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap

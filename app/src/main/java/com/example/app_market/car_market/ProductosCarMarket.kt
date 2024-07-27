@@ -16,7 +16,7 @@ class ProductosCarMarket : AppCompatActivity() {
     private lateinit var adapter: ProductosAdapter
     private lateinit var productosList: MutableList<Producto>
     private val envio = 50.0
-
+    private val REQUEST_CODE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,14 @@ class ProductosCarMarket : AppCompatActivity() {
             intent.putExtra("ENVIO", envio)
             intent.putExtra("TOTAL", total)
             intent.putParcelableArrayListExtra("PRODUCTOS_LIST", ArrayList(productosList))
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_CODE)
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            DataStoreCarMarket.CarMarket.clearCarMarket()
+            finish()
         }
     }
 

@@ -39,6 +39,7 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
     private lateinit var mMap : GoogleMap
     private val service = PedidoDisponibleServiceImpl(this)
     private var numPedido = 0
+    private var dirText = ""
     private val storage = StoragePreferences.getInstance(this)
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +51,7 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        dirText = ""
         numPedido = intent.getIntExtra("NumeroPedido", 0)
         btnVerProductos = findViewById(R.id.btnVerProductos)
         btnAccept = findViewById(R.id.btnAccept)
@@ -85,6 +86,7 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
         txtTelefono.setText(e.telefono)
         txtDireccion.setText(e.ubicacion)
         txtTotal.setText(e.total.toString())
+        setDir(e.ubicacion)
     }
 
     override fun acceptPedido(msg: String, status: String) {
@@ -111,16 +113,20 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
         p0.uiSettings.isTiltGesturesEnabled = true
         p0.uiSettings.isRotateGesturesEnabled = true
         p0.uiSettings.isMapToolbarEnabled = true
-        var direccion = txtDireccion.text.split(",")
-        var latitud = direccion[0].toDouble()
-        var longitud = direccion[1].toDouble()
-        if(mMap != null){
-            val location = LatLng(latitud, longitud)
-            mMap.addMarker(MarkerOptions().position(location).title("Marcador"))
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+        if(!getDir().isEmpty()){
+            var direccion = getDir().split(",")
+            var latitud = direccion[0].toDouble()
+            var longitud = direccion[1].toDouble()
+            if(mMap != null){
+                val location = LatLng(latitud, longitud)
+                mMap.addMarker(MarkerOptions().position(location).title("Marcador"))
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+            }
         }
     }
 
+    private fun setDir(e : String) { this.dirText = e }
+    private fun getDir() : String {return this.dirText}
     override fun onMapLoaded() {
     }
 }
