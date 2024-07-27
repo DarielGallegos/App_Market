@@ -1,93 +1,54 @@
 package model.common
 
-class Producto (
-    //var producto: String,
-    //var cod_producto: String,
-    //var id_categoria: Int,
-    //var marca: String,
-    /*var foto: Blob,
-    var precio: Float,
-    var stock_min: Int,
-    var stock_max: Int,
-    var creado_por: String,
-    var modificado_por: String,
-    var creado_en: String,
-    var modificado_en: String,
-    var estado: Int*/
+import android.os.Parcel
+import android.os.Parcelable
 
-)
- {
-     var id:Int = 0
-         get(){
-         return field
-     }
-    set(id){
-        field= id
+class Producto() : Parcelable {
+    var id: Int = 0
+    var producto: String = ""
+    var foto: String = ""
+    var precio: Float = 0.0f
+    var marca: String = ""
+    var cantidad: Int = 0
+    var subtotal: Double = 0.0
+    var descripcion: String = ""
+    var id_categoria: Int = 0
+
+    constructor(parcel: Parcel) : this() {
+        id = parcel.readInt()
+        producto = parcel.readString() ?: ""
+        foto = parcel.readString() ?: ""
+        precio = parcel.readFloat()
+        marca = parcel.readString() ?: ""
+        cantidad = parcel.readInt()
+        subtotal = parcel.readDouble()
+        descripcion = parcel.readString() ?: ""
+        id_categoria = parcel.readInt()
     }
 
-     var producto:String =""
-         get(){
-             return field
-         }
-         set(pr){
-             field= pr
-         }
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
+        parcel.writeString(producto)
+        parcel.writeString(foto)
+        parcel.writeFloat(precio)
+        parcel.writeString(marca)
+        parcel.writeInt(cantidad)
+        parcel.writeDouble(subtotal)
+        parcel.writeString(descripcion)
+        parcel.writeInt(id_categoria)
+    }
 
-     var foto:String = ""
-         get(){
-             return field
-         }
-         set(ft){
-             field= ft
-         }
+    override fun describeContents(): Int {
+        return 0
+    }
 
-     var precio:Float= 0.0f
-         get(){
-             return field
-         }
-         set(pc){
-             field = pc
-         }
-     var marca:String = ""
-         get(){
-             return field
-         }
-         set(mc){
-             field = mc
-         }
+    companion object CREATOR : Parcelable.Creator<Producto> {
+        override fun createFromParcel(parcel: Parcel): Producto {
+            return Producto(parcel)
+        }
 
-     var cantidad:Int = 0
-         get(){
-             return field
-         }
-         set(cn){
-             field = cn
-         }
-
-     var subtotal:Double = 0.0
-         get(){
-             return field
-         }
-         set(sb){
-             field = sb
-         }
-
-     var descripcion:String = ""
-         get(){
-             return field
-         }
-         set(ds){
-             field = ds
-         }
-
-     var id_categoria:Int = 0
-         get(){
-             return field
-         }
-         set(ct){
-             field = ct
-         }
- }
-
-
-
+        override fun newArray(size: Int): Array<Producto?> {
+            return arrayOfNulls(size)
+        }
+    }
+}

@@ -27,10 +27,6 @@ class ProductosCarMarket : AppCompatActivity() {
 
         initRecyclerView()
 
-        setSupportActionBar(binding.detProToolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-
         binding.btnConfirmar.setOnClickListener {
             val subtotal = calculoSubtotal()
             val impuesto = subtotal * 0.15
@@ -41,6 +37,7 @@ class ProductosCarMarket : AppCompatActivity() {
             intent.putExtra("IMPUESTO", impuesto)
             intent.putExtra("ENVIO", envio)
             intent.putExtra("TOTAL", total)
+            intent.putParcelableArrayListExtra("PRODUCTOS_LIST", ArrayList(productosList))
             startActivity(intent)
         }
     }
