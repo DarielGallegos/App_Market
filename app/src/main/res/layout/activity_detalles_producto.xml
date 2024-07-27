@@ -12,21 +12,6 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="279dp"
-            android:layout_height="6dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="16dp"
-            android:background="#ffc6c6"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtmarca"
-            app:layout_constraintVertical_bias="0.0" />
-
         <ImageView
             android:id="@+id/detalle_Producto"
             android:layout_width="wrap_content"
@@ -97,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="Descripción:"
             android:textColor="@color/design_default_color_on_secondary"
             android:textSize="16sp"
@@ -106,7 +91,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
@@ -133,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/buttonshape"
             android:fontFamily="@font/calibri"
@@ -143,8 +128,10 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/producto_cantidad"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/producto_cantidad"
-            app:layout_constraintTop_toBottomOf="@+id/producto_cantidad" />
+            app:layout_constraintTop_toBottomOf="@+id/producto_cantidad"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/textView4"
@@ -256,7 +243,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:freezesText="false"
             android:text="Cantidad:"
             android:textAlignment="center"
