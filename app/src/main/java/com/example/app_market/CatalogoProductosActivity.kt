@@ -52,7 +52,7 @@ class CatalogoProductosActivity : AppCompatActivity() {
 
         }
 
-        binding.lyPasarelaCategorias.refresco.setOnClickListener{
+        binding.lyPasarelaCategorias.bebidas.setOnClickListener{
             filterCategoria(query = 1 )
             return@setOnClickListener
         }
@@ -60,11 +60,11 @@ class CatalogoProductosActivity : AppCompatActivity() {
             filterCategoria(query = 2 )
             return@setOnClickListener
         }
-        binding.lyPasarelaCategorias.botanas.setOnClickListener{
+        binding.lyPasarelaCategorias.carnes.setOnClickListener{
             filterCategoria(query = 3 )
             return@setOnClickListener
         }
-        binding.lyPasarelaCategorias.enlatados.setOnClickListener{
+        binding.lyPasarelaCategorias.bebes.setOnClickListener{
             filterCategoria(query = 4 )
             return@setOnClickListener
         }
