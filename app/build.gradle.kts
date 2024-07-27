@@ -44,7 +44,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.play.services.maps)
     val versionRetrofit = "2.9.0"
     val versionOkHttp = "4.9.0"
 
@@ -58,6 +57,10 @@ dependencies {
     //Implementaciones para preferences DataStore
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.3")
+
+    //Implementaciones para Google Maps Services
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -1,45 +1,24 @@
 package model.common
 
+import com.google.gson.annotations.SerializedName
+
 class PedidosDetalles {
 
-    var NombreProducto: String = ""
-        get() {
-            return field
-        }
-        set(np) {
-            field = np
-        }
+    @SerializedName("pedido_numero")
+    var pedidoNumero: Int = 0
 
-    var Precio: Float = 0.0f
-        get() {
-            return field
-        }
-        set(p) {
-            field = p
-        }
+    @SerializedName("NombreProducto")
+    var nombreProducto: String = ""
 
-    var Cantidad: Int = 0
-        get() {
-            return field
-        }
-        set(c) {
-            field = c
-        }
+    @SerializedName("Precio")
+    var precio: Float = 0.0f
 
-    var Monto: Float = 0.0f
-        get() {
-            return field
-        }
-        set(m) {
-            field = m
-        }
+    @SerializedName("Cantidad")
+    var cantidad: Int = 0
 
-    var Imagen: String = ""
-        get() {
-            return field
-        }
-        set(i) {
-            field = i
-        }
+    @SerializedName("Monto")
+    var monto: Float = 0.0f
 
+    @SerializedName("Imagen")
+    var imagen: String = ""
 }

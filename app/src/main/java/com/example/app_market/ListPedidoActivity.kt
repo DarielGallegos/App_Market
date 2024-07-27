@@ -1,5 +1,6 @@
 package com.example.app_market
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
@@ -68,17 +69,14 @@ class ListPedidoActivity : AppCompatActivity() {
                         Gson().toJson(response.body()?.data?.content),
                         Array<Pedidos>::class.java
                     ).toList()
-                        rec_view.adapter = adapter_pedidos(
-                        pedidos
-                    )
-                    //_-adapter = ProductsAdapter(product)
-                    //recyclerView.setAdapter(adapter)
+                    rec_view.adapter = adapter_pedidos(pedidos) { pedido ->
+                        // Crear el Intent para iniciar DetallesPedidoActivity
+                        val intent = Intent(this@ListPedidoActivity, PedidoDetallesActivity::class.java)
+                        intent.putExtra("numeroPedido", pedido.pedido_numero)
+                        startActivity(intent)
+                    }
                 } else {
-                    Toast.makeText(
-                        this@ListPedidoActivity,
-                        "Error: " + response.code(),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@ListPedidoActivity, "Error: " + response.code(), Toast.LENGTH_SHORT).show()
                 }
             }
 

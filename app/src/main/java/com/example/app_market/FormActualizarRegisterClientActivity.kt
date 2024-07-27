@@ -45,7 +45,7 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterClient
         }
 
         //Assigned value to component lateinit
-        image = findViewById(R.id.Pedido)
+        image = findViewById(R.id.imgPedido)
         txtName = findViewById(R.id.txtRegNombre)
         txtLastName = findViewById(R.id.txtRegApellido)
         txtDate = findViewById(R.id.txtRegFecha)

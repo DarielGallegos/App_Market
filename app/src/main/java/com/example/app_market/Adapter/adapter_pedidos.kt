@@ -6,15 +6,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_market.databinding.VistapedidosBinding
 import model.common.Pedidos
+import com.google.gson.Gson
 
 
-class adapter_pedidos (private val pedidos:List<Pedidos>?,  ):
+class adapter_pedidos (private val pedidos:List<Pedidos>?,
+                       private val onClickListener: (Pedidos) -> Unit):
     RecyclerView.Adapter<adapter_pedidos.MyViewHolder>()
 {
     class MyViewHolder(val binding: VistapedidosBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(pedidos: Pedidos) {
+        fun bind(pedidos: Pedidos, onClickListener: (Pedidos) -> Unit) {
             binding.cardViewPedido.setOnClickListener {
-                Log.d("Pro adapter","click en pedido")
+                onClickListener(pedidos)
             }
 
             binding.tvNumeroPedido.text = pedidos.pedido_numero.toString()
@@ -39,8 +41,7 @@ class adapter_pedidos (private val pedidos:List<Pedidos>?,  ):
         //t Log.i("Pedido ${position}", pedido.toString())
        //t holder.bind(pedido)
         pedidos?.get(position)?.let {
-            Log.i("Pedido $position", it.toString())
-            holder.bind(it)
+            holder.bind(it, onClickListener)
         }
     }
 }

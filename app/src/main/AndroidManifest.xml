@@ -21,9 +21,14 @@
     <uses-feature
         android:name="android.hardware.camera.front.flash"
         android:required="true" />
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="true"/>
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -34,6 +39,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBqLOKjkZP1gaso6t8MatGWpV0tTgE8-J4"/>
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <activity
             android:name=".login.formRegister.FormRegisterClienValidationActivity"
             android:exported="false" />
@@ -96,6 +105,13 @@
 
         <activity
             android:name=".ListPedidoActivity"
+            android:exported="false"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".PedidoDetallesActivity"
             android:exported="false"
             android:label=""
             android:screenOrientation="portrait"
