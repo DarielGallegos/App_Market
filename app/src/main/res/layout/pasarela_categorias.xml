@@ -24,7 +24,7 @@
             android:padding="8dp">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/refresco"
+                android:id="@+id/bebidas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -53,7 +53,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/calibri"
-                            android:text="Refresco"
+                            android:text="Bebidas"
                             android:textColor="#3C3C3C"
                             android:textSize="16sp" />
 
@@ -115,7 +115,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/botanas"
+                android:id="@+id/carnes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -132,7 +132,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/img_3" />
+                        android:src="@drawable/img_5" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -143,7 +143,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/calibri"
-                            android:text="Botanas"
+                            android:text="Carnes"
                             android:textColor="#3C3C3C"
                             android:textSize="16sp" />
 
@@ -160,7 +160,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/enlatados"
+                android:id="@+id/bebes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -169,7 +169,7 @@
                 app:cardUseCompatPadding="true"
                 app:contentPadding="12dp">
 
-                <LinearLayout
+            <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -177,7 +177,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/img_4" />
+                        android:src="@drawable/img_6" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -188,7 +188,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/calibri"
-                            android:text="Enlatados"
+                            android:text="Bebés"
                             android:textColor="#3C3C3C"
                             android:textSize="16sp" />
 
