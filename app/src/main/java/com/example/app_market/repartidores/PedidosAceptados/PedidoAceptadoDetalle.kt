@@ -128,7 +128,7 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
                 finish()
             }
             .show()
-        NotificationCompat.Builder(this, "1")
+        NotificationCompat.Builder(this, "channel_private_client_12")
             .setContentTitle("Estado de su Pedido")
             .setContentText("Se ha dado por finalizado su pedido")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
