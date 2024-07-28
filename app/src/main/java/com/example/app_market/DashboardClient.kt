@@ -3,7 +3,11 @@ package com.example.app_market
 
 
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
@@ -12,6 +16,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.app.NotificationCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
@@ -75,6 +80,8 @@ class DashboardClient : AppCompatActivity() {
                         val intent = Intent(this@DashboardClient, LoginActivity::class.java)
                         startActivity(intent)
                         finish()
+                    }else{
+                        initChannelPrivateClient(it.id)
                     }
                 }
             }
@@ -88,6 +95,21 @@ class DashboardClient : AppCompatActivity() {
         btnActualizar.setOnClickListener {
             val intent = Intent(this, FormActualizarRegisterClientActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun initChannelPrivateClient(id: Int){
+        //Crea canal personalizado de notificaciones
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val channelId = "channel_private_client_${id}"
+            val name = "Canal de notificaciones"
+            val descriptionText = "Canal de notificaciones privadas"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel("1", name, importance).apply {
+                description = descriptionText
+            }
+            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
         }
     }
 }

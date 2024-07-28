@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.app_market.DashboardClient
 import com.example.app_market.login.formRegister.FormRegisterClientActivity
 import com.example.app_market.R
-import com.example.app_market.administrador.DashBoardAdministrador
+import com.example.app_market.Administracion.DashBoardAdministrador
 import com.example.app_market.login.recoveryPassword.ResetPasswordEmailActivity
 import com.example.app_market.repartidores.DashBoardRepartidoresActivity
 import kotlinx.coroutines.Dispatchers
