@@ -40,7 +40,7 @@ class DashBoardAdministrador : AppCompatActivity() {
 
         btnLogout = findViewById(R.id.btcerrar)
         btnshowpedEntre = findViewById(R.id.card_view_entregados)
-        btnshowpedPende = findViewById(R.id.card_view_pendiente)
+        btnshowpedPende = findViewById(R.id.card_view_pendientes)
 
         btnshowpedEntre.setOnClickListener {
             val intent = Intent(this@DashBoardAdministrador, Pedidos_Entregados::class.java)
