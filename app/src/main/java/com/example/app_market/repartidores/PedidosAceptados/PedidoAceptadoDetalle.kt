@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import model.dto.REQUEST.CabeceraPedidoDataContact
 import service.impl.PedidoDisponibleServiceImpl
+import utils.MailSender
 import view.PedidoDisponibleView
 
 class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCallback {
@@ -41,6 +42,8 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
     private var dirCoordinates: LatLng? = null
     private var numPedido = 0
     private val service = PedidoDisponibleServiceImpl(this)
+    private var email = ""
+    private val mail = MailSender()
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -113,6 +116,7 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
         txtTelefono.setText(e.telefono)
         txtDireccion.setText(e.ubicacion)
         txtTotal.setText(e.total.toString())
+        email = e.correo
         setDir(e.ubicacion)
         setupMapIfReady()
     }
@@ -128,11 +132,7 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
                 finish()
             }
             .show()
-        NotificationCompat.Builder(this, "channel_private_client_12")
-            .setContentTitle("Estado de su Pedido")
-            .setContentText("Se ha dado por finalizado su pedido")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .build()
+        mail.sendEmail(email, "Supermerrcado El Económico", "Su pedido ha sido finalizado")
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

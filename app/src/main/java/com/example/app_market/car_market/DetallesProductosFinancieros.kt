@@ -31,6 +31,7 @@ import model.dto.POST.ProductoPedido
 import service.impl.DetallesProductosFinancierosServiceImpl
 import storage.DataStoreCarMarket
 import storage.StoragePreferences
+import utils.MailSender
 import view.DetallesProductosFinancierosView
 
 class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, DetallesProductosFinancierosView{
@@ -40,10 +41,11 @@ class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, De
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var Service = DetallesProductosFinancierosServiceImpl(this)
     private lateinit var btnPedido: Button
+    private val mail = MailSender()
 
     private var preferences = StoragePreferences.getInstance(this)
     private var client: Int? = null
-
+    private var email = ""
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +78,7 @@ class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, De
                         txtCliente.setText(it.nombre)
                         txtTelefono.setText(it.telefono)
                         client = it.id
+                        email = it.correo.toString()
                     }
                 }
             }
@@ -192,6 +195,9 @@ class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, De
                     else "No se ha podido procesar el pedido",
             Toast.LENGTH_LONG
         ).show()
+        if(status){
+            mail.sendEmail(email, "Supermerrcado El Económico", "Su pedido ha sido procesado")
+        }
     }
 
     override fun showError(message: String) {

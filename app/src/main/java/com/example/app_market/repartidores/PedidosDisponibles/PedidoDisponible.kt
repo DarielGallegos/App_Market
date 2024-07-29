@@ -25,6 +25,7 @@ import kotlinx.coroutines.launch
 import model.dto.REQUEST.CabeceraPedidoDataContact
 import service.impl.PedidoDisponibleServiceImpl
 import storage.StoragePreferences
+import utils.MailSender
 import view.PedidoDisponibleView
 
 class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCallback, OnMapLoadedCallback {
@@ -41,7 +42,10 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
     private var numPedido = 0
     private var dirCoordinates: LatLng? = null
     private val storage = StoragePreferences.getInstance(this)
-
+    private val mail = MailSender()
+    private var email = ""
+    private var user = ""
+    private var phone = ""
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +75,8 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
             lifecycleScope.launch(Dispatchers.IO) {
                 storage.getCredentiales().collect {
                     if(it.id != null){
+                        user = it.nombre.toString()
+                        phone = it.telefono.toString()
                         service.acceptPedido(numPedido, it.id)
                     }
                 }
@@ -85,6 +91,7 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
         txtTelefono.setText(e.telefono)
         txtDireccion.setText(e.ubicacion)
         txtTotal.setText(e.total.toString())
+        email = e.correo
         setDir(e.ubicacion)
         setupMapIfReady()
     }
@@ -97,6 +104,9 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
             finish()
         }
             .show()
+        if(status != "Pedido Rechazado"){
+            mail.sendEmail(email, "Supermerrcado El Económico", "Su pedido ha sido aceptado por nuestro repartidor: $user \n Su número de pedido es: $numPedido \n Puede contactar a nuestro repartidor mediante: +504 $phone")
+        }
     }
 
     override fun finishPedido(msg: String) {
