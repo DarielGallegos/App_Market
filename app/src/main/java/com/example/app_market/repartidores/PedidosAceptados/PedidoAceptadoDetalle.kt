@@ -10,6 +10,8 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.app_market.R
@@ -126,6 +128,11 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
                 finish()
             }
             .show()
+        NotificationCompat.Builder(this, "channel_private_client_12")
+            .setContentTitle("Estado de su Pedido")
+            .setContentText("Se ha dado por finalizado su pedido")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .build()
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -157,7 +164,7 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
         dirCoordinates?.let { coordinates ->
             if (::mMap.isInitialized) {
                 val location = coordinates
-                mMap.addMarker(MarkerOptions().position(location).title("Marcador"))
+                mMap.addMarker(MarkerOptions().position(location).title("Cliente"))
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
             }
         }
