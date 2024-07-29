@@ -6,4 +6,6 @@ data class Credentials(
     val usuario : String?,
     val telefono : String?,
     val rol: String?,
-    val empleado: Boolean?)
+    val empleado: Boolean?,
+    val correo: String? = ""
+)

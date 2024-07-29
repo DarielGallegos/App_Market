@@ -6,5 +6,5 @@ data class CabeceraPedidoDataContact(
     val total: Double = 0.0,
     val ubicacion: String = "",
     val cliente: String ="",
-
+    val correo: String = ""
 )
