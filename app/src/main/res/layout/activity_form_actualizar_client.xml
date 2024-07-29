@@ -127,7 +127,7 @@
                             android:textColorHint="#FFB3B3B3">
 
                             <EditText
-                                android:id="@+id/txtRegApellido"
+                                android:id="@+id/txtTotalAdm"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:drawablePadding="16dp"

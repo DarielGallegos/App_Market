@@ -49,7 +49,7 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         //Assigned value to component lateinit
         image = findViewById(R.id.imgUserReg)
         txtName = findViewById(R.id.txtRegNombre)
-        txtLastName = findViewById(R.id.txtRegApellido)
+        txtLastName = findViewById(R.id.txtTotalAdm)
         txtDate = findViewById(R.id.txtRegFecha)
         txtEmail = findViewById(R.id.txtRegCorreo)
         txtPhone = findViewById(R.id.txtRegTelefono)

@@ -70,19 +70,13 @@
             android:theme="@style/MyAppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".Administracion.Entregados.DetallesEntregados"
-            android:label=""
-            android:screenOrientation="portrait"
-            android:theme="@style/MyAppTheme"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
             android:name=".Administracion.Entregados.Pedidos_Entregados"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/MyAppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".Administracion.Pendientes.DetallesPendientes"
+            android:name=".Administracion.Pendientes.DetallesPedidos"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/MyAppTheme"
