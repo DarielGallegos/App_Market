@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Administracion.Pendientes.DetallesPendientes">
+    tools:context=".Administracion.Pendientes.DetallesPedidos">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
@@ -96,6 +96,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="122dp"
                 android:drawablePadding="16dp"
+                android:enabled="false"
                 android:fontFamily="@font/calibri"
                 android:inputType="text"
                 android:maxLines="1"
@@ -227,14 +228,15 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
-                android:id="@+id/txtRegApellido"
-                android:layout_width="251dp"
+                android:id="@+id/txtTotalAdm"
+                android:layout_width="199dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="20dp"
                 android:drawablePadding="16dp"
+                android:enabled="false"
                 android:fontFamily="@font/calibri"
                 android:inputType="text"
                 android:maxLines="1"

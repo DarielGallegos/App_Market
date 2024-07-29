@@ -3,7 +3,6 @@ package com.example.app_market
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -68,7 +67,7 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
         validator = ValidationAlertFormRegister(this)
         image = findViewById(R.id.imgUserReg)
         txtName = findViewById(R.id.txtRegNombre)
-        txtLastName = findViewById(R.id.txtRegApellido)
+        txtLastName = findViewById(R.id.txtTotalAdm)
         txtDate = findViewById(R.id.txtRegFecha)
         txtEmail = findViewById(R.id.txtRegCorreo)
         txtPhone = findViewById(R.id.txtRegTelefono)
