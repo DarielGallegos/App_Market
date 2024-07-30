@@ -39,7 +39,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-
+        <activity
+            android:name=".ValoracionPedidoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListaPendienteValoracionActivity"
+            android:exported="false" />
         <activity
             android:name=".repartidores.PedidosDisponibles.PedidoDisponible"
             android:exported="false"
@@ -87,8 +92,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyAppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-
-
         <activity
             android:name=".repartidores.ListaProductos.ListaProductos"
             android:exported="false"
@@ -127,7 +130,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-
         <activity
             android:name=".DetallesProductoActivity"
             android:exported="false"
@@ -146,8 +148,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-
-
         <activity
             android:name=".MainCerrarActivity"
             android:exported="false"

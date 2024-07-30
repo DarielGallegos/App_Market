@@ -32,6 +32,7 @@ class DashboardClient : AppCompatActivity() {
     private lateinit var btnNuevoPedido: CardView
     private lateinit var btnLogout: LinearLayout
     private lateinit var btnActualizar: LinearLayout
+    private lateinit var btnPedidosFinalizados:CardView
 
     private val preference = StoragePreferences.getInstance(this)
 
@@ -50,6 +51,8 @@ class DashboardClient : AppCompatActivity() {
         btnShowPedidos = findViewById(R.id.card_view_pedido)
         btnNuevoPedido = findViewById(R.id.card_view_nuevo_pedido)
         btnActualizar = findViewById(R.id.btactualizar)
+        btnPedidosFinalizados = findViewById(R.id.card_view_pedidos_finalizados)
+
         btnNuevoPedido.setOnClickListener {
             val intent = Intent(this, CatalogoProductosActivity::class.java)
             startActivity(intent)
@@ -94,6 +97,11 @@ class DashboardClient : AppCompatActivity() {
 
         btnActualizar.setOnClickListener {
             val intent = Intent(this, FormActualizarRegisterClientActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnPedidosFinalizados.setOnClickListener{
+            val intent = Intent(this,ListaPendienteValoracionActivity::class.java)
             startActivity(intent)
         }
     }

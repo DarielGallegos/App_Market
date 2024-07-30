@@ -70,6 +70,10 @@ class CatalogoProductosActivity : AppCompatActivity() {
             filterCategoria(query = 4 )
             return@setOnClickListener
         }
+        binding.lyPasarelaCategorias.futasyverduras.setOnClickListener{
+            filterCategoria(query = 5 )
+            return@setOnClickListener
+        }
 
         binding.buscar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
