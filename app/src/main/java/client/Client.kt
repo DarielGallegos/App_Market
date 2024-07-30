@@ -1,7 +1,6 @@
 package client
 
 import client.interceptor.InterceptorClient
-import client.src.RUTES
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
