@@ -1,24 +1,15 @@
 package model.common
 
-import com.google.gson.annotations.SerializedName
+import model.dto.REQUEST.ProductosDetalle
 
-class PedidosDetalles {
 
-    @SerializedName("pedido_numero")
-    var pedidoNumero: Int = 0
+class PedidosDetalles (
 
-    @SerializedName("NombreProducto")
-    var nombreProducto: String = ""
-
-    @SerializedName("Precio")
-    var precio: Float = 0.0f
-
-    @SerializedName("Cantidad")
-    var cantidad: Int = 0
-
-    @SerializedName("Monto")
-    var monto: Float = 0.0f
-
-    @SerializedName("Imagen")
-    var imagen: String = ""
-}
+    var numeroPedido: Int = 0,
+    var cliente: String = "",
+    var usuario: String = "",
+    var destino: String = "",
+    var productos: List<ProductosDetalle> = listOf(),
+    var total: Double = 0.0,
+    var estado : String = ""
+    )
