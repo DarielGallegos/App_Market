@@ -167,7 +167,7 @@
                 android:layout_height="223dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="16dp"
-                tools:listitem="@layout/item_producto" />
+                tools:listitem="@layout/adapter_producto" />
 
             <TextView
                 android:id="@+id/txtTupago"

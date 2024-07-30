@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_market.R
-import com.example.app_market.databinding.ItemProductoBinding
+import com.example.app_market.databinding.AdapterProductoBinding
 import com.example.app_market.databinding.VistapedidosBinding
 import model.common.Pedidos
 import model.dto.REQUEST.ProductosDetalle
@@ -15,7 +15,7 @@ import utils.Converters
 class productor_adapter(private val productosList: List<ProductosDetalle>) :
     RecyclerView.Adapter<productor_adapter.ProductoViewHolder>() {
 
-    class ProductoViewHolder(val binding: ItemProductoBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ProductoViewHolder(val binding: AdapterProductoBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(producto: ProductosDetalle) {
             binding.tvProducto.text = "Producto: ${producto.nombreProducto}"
             binding.tvPrecio.text = "Precio: L.${producto.precio}"
@@ -25,7 +25,7 @@ class productor_adapter(private val productosList: List<ProductosDetalle>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
-        val binding = ItemProductoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = AdapterProductoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProductoViewHolder(binding)
     }
 
