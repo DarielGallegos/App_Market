@@ -24,11 +24,15 @@
     <uses-feature
         android:name="android.hardware.location"
         android:required="true" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -48,17 +52,16 @@
         <activity
             android:name=".repartidores.PedidosDisponibles.PedidoDisponible"
             android:exported="false"
-            android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".repartidores.PedidosAceptados.PedidoAceptadoDetalle"
             android:exported="false"
-            android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

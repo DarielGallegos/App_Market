@@ -3,18 +3,24 @@ package com.example.app_market.repartidores.PedidosAceptados
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.app_market.R
+import com.example.app_market.databinding.ActivityPedidoAceptadoDetalleBinding
+import com.example.app_market.databinding.ActivityPedidosAceptadosBinding
 import com.example.app_market.repartidores.ListaProductos.ListaProductos
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -29,6 +35,7 @@ import view.PedidoDisponibleView
 
 class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCallback {
 
+    private lateinit var btnBack: ImageView
     private lateinit var btnVerProductos: Button
     private lateinit var btnFinish: Button
     private lateinit var btnCall: Button
@@ -42,14 +49,19 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
     private var dirCoordinates: LatLng? = null
     private var numPedido = 0
     private val service = PedidoDisponibleServiceImpl(this)
+
     private var email = ""
     private val mail = MailSender()
 
     @SuppressLint("MissingInflatedId")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_pedido_aceptado_detalle)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = resources.getColor(R.color.colorPrimaryDark, theme)
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -62,6 +74,7 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
         btnFinish = findViewById(R.id.btnFinish)
         btnVerProductos = findViewById(R.id.btnVerProductos)
         btnInitTravel = findViewById(R.id.btnInitTravel)
+        btnBack = findViewById(R.id.imgBack)
         txtNombre = findViewById(R.id.txtNombres)
         txtTelefono = findViewById(R.id.txtTelefono)
         txtDireccion = findViewById(R.id.txtDireccion)
@@ -69,6 +82,11 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
         map = findViewById(R.id.mapViewAccept)
 
         service.getPedidoDisponible(numPedido)
+
+       btnBack.setOnClickListener{
+            val intent = Intent(this@PedidoAceptadoDetalle, Pedidos_Aceptados::class.java)
+            startActivity(intent)
+        }
 
         btnVerProductos.setOnClickListener {
             val intent = Intent(this@PedidoAceptadoDetalle, ListaProductos::class.java)
@@ -109,6 +127,11 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
 
         map.onCreate(savedInstanceState)
         map.getMapAsync(this)
+
+        btnBack.setOnClickListener{
+            val intent = Intent(this@PedidoAceptadoDetalle, Pedidos_Aceptados::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun initView(e: CabeceraPedidoDataContact) {
