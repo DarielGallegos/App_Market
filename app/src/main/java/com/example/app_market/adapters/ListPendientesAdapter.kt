@@ -27,7 +27,6 @@ class ListPendientesAdapter (val context: Context, private var pedidos:List<Pedi
     class MyViewHolder(val context: Context, val binding:  ViewListaPendientesBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(pedidos: PedidoValorar) {
             binding.cardPedidos.setOnClickListener {
-                Log.d("Pro adapter","click en producto")
 
                 val intent = Intent(context, ValoracionPedidoActivity::class.java)
                 intent.putExtra("pedidoNumero",pedidos.pedidoNumero)

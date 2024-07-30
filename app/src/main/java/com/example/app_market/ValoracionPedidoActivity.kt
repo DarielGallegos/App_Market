@@ -17,6 +17,7 @@ import model.common.Producto
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import utils.Converters
 
 class ValoracionPedidoActivity : AppCompatActivity() {
 
@@ -26,6 +27,11 @@ class ValoracionPedidoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         supportActionBar?.hide()
+
+
+        val extras = intent.extras
+        val pedidoNumero = extras!!.getInt("pedidoNumero")
+
 
         binding = ActivityValoracionPedidoBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -41,9 +47,8 @@ class ValoracionPedidoActivity : AppCompatActivity() {
 
         binding.btnenviar.setOnClickListener{
 
-
             val apiService = Client.ClientRetrofit.getService(PedidoService::class.java) as PedidoService
-            val call = apiService.pedidoFinalizado( NumPedido = 22 )
+            val call = apiService.pedidoFinalizado( NumPedido = pedidoNumero )
 
             call.enqueue(object : Callback<ApiResponseBody> {
 
@@ -53,6 +58,7 @@ class ValoracionPedidoActivity : AppCompatActivity() {
 
                         val msg = response.body()?.data?.msg?.joinToString() ?: "Pedido finalizado con éxito"
                         Toast.makeText(this@ValoracionPedidoActivity, msg, Toast.LENGTH_SHORT).show()
+
 
                     } else {
                         Toast.makeText(
