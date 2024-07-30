@@ -18,10 +18,10 @@ class adapter_pedidos (private val pedidos:List<Pedidos>?,
             binding.cardViewPedido.setOnClickListener {
                 onClickListener(pedidos)
             }
-
-            binding.tvNumeroPedido.text = pedidos.pedido_numero.toString()
-            binding.tvEstado.text = pedidos.estado_pedido
-            binding.tvTotal.text = pedidos.total.toString()
+           // binding.tvProducto.text = "Producto: ${producto.nombreProductos}"
+            binding.tvNumeroPedido.text = "Pedido#${pedidos.pedido_numero}"
+            binding.tvEstado.text = "Estado: ${pedidos.estado_pedido}"
+            binding.tvTotal.text = "Total: L.${pedidos.total}"
         }
 
     }

@@ -2,6 +2,7 @@ package com.example.app_market
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,12 +31,17 @@ class PedidoDetallesActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val numeroPedido = intent.getIntExtra("numeroPedido", 0)
+        val imageViewBack: ImageView = findViewById(R.id.imageViewBack)
+        imageViewBack.setOnClickListener {
+            finish()}
+
 
         if (numeroPedido != 0) {
             obtenerDetallesPedido(numeroPedido)
         } else {
             Toast.makeText(this, "No se pudieron obtener los detalles del pedido", Toast.LENGTH_SHORT).show()
         }
+
     }
 
     private fun obtenerDetallesPedido(pedidoNumero: Int) {
