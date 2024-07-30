@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -13,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.app_market.R
 import com.example.app_market.repartidores.ListaProductos.ListaProductos
+import com.example.app_market.repartidores.PedidosAceptados.Pedidos_Aceptados
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.OnMapLoadedCallback
@@ -29,6 +31,7 @@ import view.PedidoDisponibleView
 
 class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCallback, OnMapLoadedCallback {
 
+    private lateinit var btnBack: ImageView
     private lateinit var btnVerProductos: Button
     private lateinit var btnAccept: Button
     private lateinit var txtNombre: EditText
@@ -47,6 +50,9 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_pedido_disponible_detalle)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = resources.getColor(R.color.colorPrimaryDark, theme)
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -61,6 +67,12 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
         txtTotal = findViewById(R.id.txtTotal)
         map = findViewById(R.id.mapViewAccept)
         service.getPedidoDisponible(numPedido)
+        btnBack = findViewById(R.id.imgBack)
+
+        btnBack.setOnClickListener{
+            val intent = Intent(this@PedidoDisponible, Pedidos_Disponibles::class.java)
+            startActivity(intent)
+        }
 
         btnVerProductos.setOnClickListener{
             val intent = Intent(this@PedidoDisponible, ListaProductos::class.java)

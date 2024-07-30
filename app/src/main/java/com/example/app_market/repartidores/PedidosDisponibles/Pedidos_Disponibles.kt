@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.app_market.R
 import com.example.app_market.databinding.ActivityPedidosDisponiblesBinding
 import com.example.app_market.repartidores.DashBoardRepartidoresActivity
 import com.example.app_market.repartidores.PedidosDisponibles.Adapter.DataDisponibleAdapter
@@ -13,7 +14,7 @@ import service.impl.PedidosDisponiblesServiceImpl
 import view.PedidosDisponiblesView
 
 class Pedidos_Disponibles : AppCompatActivity(), PedidosDisponiblesView {
-
+    private lateinit var btnBack: ImageView
     private lateinit var binding: ActivityPedidosDisponiblesBinding
     private val service = PedidosDisponiblesServiceImpl(this)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,10 +22,15 @@ class Pedidos_Disponibles : AppCompatActivity(), PedidosDisponiblesView {
         binding = ActivityPedidosDisponiblesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         service.getPedidosDisponibles()
+        btnBack = findViewById(R.id.imgBack)
 
-        binding.imgBack.setOnClickListener{
+       /* binding.imgBack.setOnClickListener{
             finish()
-        }
+        }*/
+    btnBack.setOnClickListener{
+        val intent = Intent(this@Pedidos_Disponibles, DashBoardRepartidoresActivity::class.java)
+        startActivity(intent)
+    }
     }
 
 

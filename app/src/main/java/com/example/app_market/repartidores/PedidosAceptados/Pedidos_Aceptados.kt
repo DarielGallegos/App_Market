@@ -6,7 +6,9 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.app_market.R
 import com.example.app_market.databinding.ActivityPedidosAceptadosBinding
+import com.example.app_market.repartidores.DashBoardRepartidoresActivity
 import com.example.app_market.repartidores.PedidosAceptados.Adapter.DataAceptadoAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,7 +35,13 @@ class Pedidos_Aceptados : AppCompatActivity(), PedidosAceptadoView {
                 }
             }
         }
-        binding.imgBack.setOnClickListener { finish() }
+        btnBack = findViewById(R.id.imgBack)
+      //  binding.imgBack.setOnClickListener { finish() }
+        btnBack.setOnClickListener{
+            val intent = Intent(this@Pedidos_Aceptados, DashBoardRepartidoresActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
 

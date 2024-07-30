@@ -6,12 +6,17 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
     </style>
+
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item> <!-- Añadir estas líneas -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> <!-- Añadir estas líneas -->
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item> <!-- Añadir estas líneas -->
+
     </style>
 
 
@@ -28,5 +33,4 @@
         <item name="windowActionBarOverlay">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
-
 </resources>
