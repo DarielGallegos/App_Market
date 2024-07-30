@@ -6,20 +6,16 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import client.Client
-import client.services.PedidoService
-import com.example.app_market.Adapter.adapter_pedidos
+import client.services.PedidoDetallesService
 import com.example.app_market.Adapter.productor_adapter
 import com.example.app_market.databinding.ActivityDetallesPedidoBinding
 import com.google.gson.Gson
 import model.common.ApiResponseBody
-import model.common.Pedidos
 import model.common.PedidosDetalles
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import utils.Converters
 
 class PedidoDetallesActivity : AppCompatActivity() {
 
@@ -45,7 +41,7 @@ class PedidoDetallesActivity : AppCompatActivity() {
     }
 
     private fun obtenerDetallesPedido(pedidoNumero: Int) {
-        val apiService = Client.ClientRetrofit.getService(PedidoService::class.java) as PedidoService
+        val apiService = Client.ClientRetrofit.getService(PedidoDetallesService::class.java) as PedidoDetallesService
         val call = apiService.obtenerDetallesPedido(pedidoNumero)
 
         call.enqueue(object : Callback<ApiResponseBody> {

@@ -2,17 +2,14 @@ package com.example.app_market
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import client.Client
-import client.services.PedidoService
+import client.services.PedidoDetallesService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -61,7 +58,7 @@ class ListPedidoActivity : AppCompatActivity() {
 
     private fun getData(id: Int){
         val apiService =
-            Client.ClientRetrofit.getService(PedidoService::class.java) as PedidoService
+            Client.ClientRetrofit.getService(PedidoDetallesService::class.java) as PedidoDetallesService
         val call = apiService.listarPedidos(id)
 
         call.enqueue(object : Callback<ApiResponseBody> {
