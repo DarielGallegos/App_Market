@@ -7,15 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".Administracion.DashBoardAdministrador">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorRosa"
             android:paddingTop="24dp"
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
@@ -32,6 +32,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="0dp"
+                        android:fontFamily="@font/calibri"
+                        android:text="Inicio | Administración"
+                        android:textAlignment="viewStart"
+                        android:textColor="#FFFFFF"
+                        android:textSize="33sp" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -39,16 +50,6 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="16dp"
                         android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="0dp"
-                            android:fontFamily="@font/calibri"
-                            android:text="Inicio | Administración"
-                            android:textColor="#FFFFFF"
-                            android:textSize="33dp" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
@@ -144,11 +145,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="33"
                 android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_home_gray_24dp" />
+
                 <View
                     android:layout_width="84dp"
                     android:layout_height="2dp"
@@ -169,6 +172,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_person_gray_24dp" />
+
                 <View
                     android:layout_width="84dp"
                     android:layout_height="2dp"

@@ -73,27 +73,27 @@
 
         <activity
             android:name=".Administracion.DashBoardAdministrador"
-            android:label=""
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/MyAppTheme"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".Administracion.Entregados.Pedidos_Entregados"
-            android:label=""
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/MyAppTheme"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".Administracion.Pendientes.DetallesPedidos"
-            android:label=""
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/MyAppTheme"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity
             android:name=".Administracion.Pendientes.Pedidos_Pendientes"
-            android:label=""
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/MyAppTheme"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".repartidores.ListaProductos.ListaProductos"

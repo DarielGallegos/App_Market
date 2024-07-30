@@ -11,40 +11,59 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/calibri"
+            android:text="Pedido N°"
+            android:textColor="@color/design_default_color_on_secondary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/photo"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/photo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="86dp"
+            android:layout_height="104dp"
+            android:layout_marginStart="4dp"
             android:src="@drawable/bagcheck"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/numentregados"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textAlignment="center"
-            android:textSize="23dp"
+            android:layout_width="75dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/calibri"
+            android:gravity="fill_vertical"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.231"
-            app:layout_constraintStart_toEndOf="@+id/photo"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Pedido N" />
+            tools:text="N" />
 
         <TextView
             android:id="@+id/nombreentregados"
-            android:layout_width="153dp"
-            android:layout_height="33dp"
+            android:layout_width="207dp"
+            android:layout_height="54dp"
             android:layout_marginTop="8dp"
-            android:textAlignment="center"
-            android:textSize="20dp"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.022"
             app:layout_constraintStart_toEndOf="@+id/photo"
             app:layout_constraintTop_toBottomOf="@+id/numentregados"
             tools:text="Arcangel" />
@@ -57,7 +76,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.508"
+            app:layout_constraintVertical_bias="0.507"
             app:srcCompat="@drawable/arrowd" />
 
 

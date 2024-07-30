@@ -45,7 +45,7 @@
                     android:layout_marginTop="-1dp"
                     android:fontFamily="@font/calibri"
                     android:gravity="center"
-                    android:text="Detalle de pedido Pendiente "
+                    android:text="Detalle de pedido"
                     android:textColor="#ffffff"
                     android:textSize="26sp" />
             </RelativeLayout>
@@ -89,12 +89,12 @@
 
             <EditText
                 android:id="@+id/txtNombres"
-                android:layout_width="281dp"
+                android:layout_width="276dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="10dp"
-                android:layout_marginBottom="122dp"
+                android:layout_marginBottom="121dp"
                 android:drawablePadding="16dp"
                 android:enabled="false"
                 android:fontFamily="@font/calibri"
@@ -106,14 +106,17 @@
 
             <EditText
                 android:id="@+id/txtTelefono"
-                android:layout_width="281dp"
+                android:layout_width="275dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="93dp"
+                android:layout_marginStart="99dp"
                 android:layout_marginBottom="70dp"
                 android:ems="10"
-                android:inputType="phone" />
+                android:enabled="false"
+                android:inputType="phone"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -121,9 +124,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="17dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="135dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="128dp"
                 android:layout_toStartOf="@+id/txtNombres"
                 android:fontFamily="@font/calibri"
                 android:text="Nombre:"
@@ -133,15 +136,16 @@
 
             <TextView
                 android:id="@+id/textView5"
-                android:layout_width="67dp"
-                android:layout_height="32dp"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="9dp"
-                android:layout_marginEnd="17dp"
-                android:layout_marginBottom="25dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="27dp"
                 android:layout_toStartOf="@+id/txtDireccion"
                 android:fontFamily="@font/calibri"
+                android:gravity="center_vertical"
                 android:text="Dirección:"
                 android:textColor="@color/design_default_color_on_secondary"
                 android:textSize="16sp"
@@ -153,8 +157,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="17dp"
-                android:layout_marginBottom="91dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="80dp"
                 android:fontFamily="@font/calibri"
                 android:text="Teléfono:"
                 android:textColor="@color/design_default_color_on_secondary"
@@ -163,42 +167,46 @@
 
             <EditText
                 android:id="@+id/txtDireccion"
-                android:layout_width="282dp"
-                android:layout_height="59dp"
+                android:layout_width="274dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="11dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginBottom="19dp"
                 android:ems="10"
+                android:enabled="false"
                 android:gravity="start|top"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
-        android:layout_width="370dp"
-        android:layout_height="211dp"
+        android:layout_width="367dp"
+        android:layout_height="229dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="378dp"
         android:layout_height="83dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="16.5dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.191">
+        app:layout_constraintVertical_bias="0.26">
 
         <RelativeLayout
             android:layout_width="347dp"
@@ -218,23 +226,14 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="16dp"
-                android:textColorHint="#FFB3B3B3">
-
-            </com.google.android.material.textfield.TextInputLayout>
-
             <EditText
                 android:id="@+id/txtTotalAdm"
-                android:layout_width="199dp"
+                android:layout_width="194dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="7dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="41dp"
+                android:layout_marginBottom="30dp"
                 android:drawablePadding="16dp"
                 android:enabled="false"
                 android:fontFamily="@font/calibri"
@@ -249,8 +248,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="40dp"
                 android:fontFamily="@font/calibri"
                 android:text="Total a Pagar:"
                 android:textColor="@color/design_default_color_on_secondary"
@@ -275,5 +274,15 @@
         app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapView" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#FFB3B3B3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="624dp">
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
