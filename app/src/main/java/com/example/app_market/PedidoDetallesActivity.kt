@@ -22,6 +22,9 @@ import retrofit2.Response
 class PedidoDetallesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetallesPedidoBinding
+    private lateinit var usuario: String
+    private lateinit var ubicacion: String
+    private var idUsuario = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +44,14 @@ class PedidoDetallesActivity : AppCompatActivity() {
         }
 
         binding.btnMapa.setOnClickListener{
-            val intent = Intent(this, TrackingActivity::class.java)
-            startActivity(intent)
+            if(idUsuario != 0 && idUsuario != 1){
+                val intent = Intent(this, TrackingActivity::class.java)
+                intent.putExtra("idUsuario", idUsuario)
+                intent.putExtra("usuario", usuario)
+                intent.putExtra("ubicacion", ubicacion)
+                intent.putExtra("numeroPedido", numeroPedido)
+                startActivity(intent)
+            }
         }
 
     }
@@ -77,6 +86,10 @@ class PedidoDetallesActivity : AppCompatActivity() {
         binding.txtUsuario.text = pedido.usuario
         binding.txtCliente.text = pedido.cliente
         binding.txtTotal.text = pedido.total.toString()
+
+        idUsuario = pedido.idUsuario
+        usuario = pedido.usuario
+        ubicacion = pedido.destino
 
         val recyclerView = binding.recyclerProductos
         recyclerView.layoutManager = LinearLayoutManager(this)

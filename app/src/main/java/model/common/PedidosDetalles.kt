@@ -9,6 +9,7 @@ class PedidosDetalles (
     var cliente: String = "",
     var usuario: String = "",
     var destino: String = "",
+    var idUsuario: Int = 0,
     var productos: List<ProductosDetalle> = listOf(),
     var total: Double = 0.0,
     var estado : String = ""

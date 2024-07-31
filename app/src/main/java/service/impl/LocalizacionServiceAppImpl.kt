@@ -5,6 +5,7 @@ import android.widget.Toast
 import client.Client
 import client.services.LocalizacionService
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.Marker
 import com.google.gson.Gson
 import model.common.ApiResponseBody
 import retrofit2.Call
@@ -30,7 +31,7 @@ private val client = Client.ClientRetrofit.getService(LocalizacionService::class
         })
     }
 
-    override fun obtenerLocalizacion(idUsuario: Int, map: GoogleMap) {
+    override fun obtenerLocalizacion(idUsuario: Int, map: GoogleMap, marker: Marker) {
         client.obtenerLocalizacion(idUsuario).enqueue(object : Callback<ApiResponseBody> {
             override fun onResponse(call: Call<ApiResponseBody>, response: Response<ApiResponseBody>) {
                 if (response.isSuccessful) {
@@ -38,8 +39,9 @@ private val client = Client.ClientRetrofit.getService(LocalizacionService::class
                     if (responseBody != null) {
                         val gson = Gson()
                         val ubicacion = gson.fromJson(responseBody.data.content.toString(), Array<String>::class.java)
-
-                        Toast.makeText(context, "${ubicacion[0]} + ${ubicacion[1]}", Toast.LENGTH_SHORT).show()
+                        val lat = ubicacion[0].toDouble()
+                        val lng = ubicacion[1].toDouble()
+                        marker.position = com.google.android.gms.maps.model.LatLng(lat, lng)
                     }
                 }
             }

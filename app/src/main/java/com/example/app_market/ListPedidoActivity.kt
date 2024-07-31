@@ -47,7 +47,6 @@ class ListPedidoActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     if(it.id != null){
                        getData(it.id)
-                        getData(1)
                     }else{
                         getData(0)
                     }
