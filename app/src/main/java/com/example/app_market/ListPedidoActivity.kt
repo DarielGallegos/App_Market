@@ -46,7 +46,7 @@ class ListPedidoActivity : AppCompatActivity() {
             preference.getCredentiales().collect() {
                 withContext(Dispatchers.Main) {
                     if(it.id != null){
- //                       getData(it.id)
+                       getData(it.id)
                         getData(1)
                     }else{
                         getData(0)
