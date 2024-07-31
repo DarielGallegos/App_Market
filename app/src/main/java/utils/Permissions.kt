@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 class Permissions {
     val CAMERA_PERMISSION_CODE = 100
     val REQUEST_TAKE_PHOTO = 101
+    val CALL_PERMISSION_CODE = 102
 
     fun checkCameraPermission(context: Context) {
         if (ContextCompat.checkSelfPermission(
@@ -37,6 +38,28 @@ class Permissions {
         if(intent.resolveActivity(context.packageManager) == null){
             (context as Activity).startActivityForResult(intent, REQUEST_TAKE_PHOTO)
         }
+    }
+
+    fun checkCallPermission(context: Context, phoneNumber: String) {
+        if (ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.CALL_PHONE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                context as Activity,
+                arrayOf(Manifest.permission.CALL_PHONE),
+                CALL_PERMISSION_CODE
+            )
+        } else {
+            call(context, phoneNumber)
+        }
+    }
+
+    private fun call(context: Context, e: String){
+        val intent = Intent(Intent.ACTION_CALL)
+        intent.data = Uri.parse("tel:+504${e}")
+        context.startActivity(intent)
     }
 
 }
