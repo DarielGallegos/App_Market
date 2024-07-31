@@ -8,9 +8,10 @@
     tools:context=".ListPedidoActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#8793eb"
+        android:background="@color/colorPrimaryDark"
         android:paddingTop="24dp"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0dp"
@@ -58,14 +59,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/viewpedidos"
-        android:layout_width="411dp"
-        android:layout_height="570dp"
-        android:layout_marginTop="130dp"
+        android:layout_width="410dp"
+        android:layout_height="705dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
         app:layout_constraintVertical_bias="0.0" />
 
 
