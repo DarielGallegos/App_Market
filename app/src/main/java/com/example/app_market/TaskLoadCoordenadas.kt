@@ -20,7 +20,7 @@ class TaskLoadCoordenadas(context: Context, private val id: Int, private val map
         override fun run() {
             // Do something
             service.obtenerLocalizacion(id, map, marker)
-            handler.postDelayed(this, 60000)
+            handler.postDelayed(this, 10000)
         }
     }
 
