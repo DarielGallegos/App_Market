@@ -155,7 +155,31 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
                 finish()
             }
             .show()
-        mail.sendEmail(email, "Supermerrcado El Económico", "Su pedido ha sido finalizado")
+
+        val subject = "Entrega de Pedido - Supermercado El Economico"
+        val body = """
+<html>
+<head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                color: #000000; 
+            }
+            p {
+                margin: 0 0 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Estimado/a cliente,</p>
+        <p>Nos complace informarle que su pedido ha sido entregado con éxito y está ahora finalizado.</p>
+        <p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en contactarnos.</p>
+        <p>Gracias por su compra.</p>
+        <p>Atentamente,<br>El equipo de Supermercado El Económico</p>
+    </body>
+</html>
+""".trimIndent()
+        mail.sendEmail(email, subject, body)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

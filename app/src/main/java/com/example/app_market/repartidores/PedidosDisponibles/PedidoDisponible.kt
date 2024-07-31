@@ -117,7 +117,32 @@ class PedidoDisponible : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCa
         }
             .show()
         if(status != "Pedido Rechazado"){
-            mail.sendEmail(email, "Supermerrcado El Económico", "Su pedido ha sido aceptado por nuestro repartidor: $user \n Su número de pedido es: $numPedido \n Puede contactar a nuestro repartidor mediante: +504 $phone")
+
+            val subject = "Confirmacion de Pedido - Supermercado El Economico"
+            val body = """
+<html>
+<head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                color: #000000; 
+            }
+            p {
+                margin: 0 0 10px 0;
+            }
+        </style>
+    </head>
+     <body>
+        <p>Estimado/a cliente,</p>
+        <p>Nos complace informarle que su pedido ha sido aceptado por nuestro repartidor: <strong>$user</strong></p>
+        <p>Su número de pedido es: <strong>$numPedido</strong></p>
+        <p>Puede contactar a nuestro repartidor mediante: <strong>+504 $phone</strong></p>
+        <p>Gracias por su compra.</p>
+        <p>Atentamente,<br>El equipo de Supermercado El Económico</p>
+    </body>
+</html>
+""".trimIndent()
+            mail.sendEmail(email, subject, body)
         }
     }
 
