@@ -39,7 +39,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="0dp"
                         android:fontFamily="@font/calibri"
-                        android:text="Inicio | Pedidos"
+                        android:text="Pedidos"
                         android:textAlignment="viewStart"
                         android:textColor="#FFFFFF"
                         android:textSize="33sp" />
@@ -135,6 +135,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
             android:background="#FFFFFF"
             android:elevation="4dp"
             android:orientation="horizontal"
@@ -143,15 +144,17 @@
 
             <LinearLayout
                 android:id="@+id/home_linear_dashboard"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="175dp"
+                android:layout_height="46dp"
                 android:layout_weight="33"
                 android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_home_gray_24dp" />
+
                 <View
                     android:layout_width="84dp"
                     android:layout_height="2dp"
@@ -161,30 +164,9 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/btactualizar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="33"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_person_gray_24dp" />
-                <View
-                    android:layout_width="84dp"
-                    android:layout_height="2dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:visibility="invisible" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/btcerrar"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
+                android:layout_width="214dp"
+                android:layout_height="46dp"
                 android:layout_weight="33"
                 android:orientation="vertical">
 
@@ -205,6 +187,6 @@
             </LinearLayout>
 
         </LinearLayout>
-</RelativeLayout>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

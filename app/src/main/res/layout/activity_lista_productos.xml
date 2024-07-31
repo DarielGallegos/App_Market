@@ -9,7 +9,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_ListaProductos"
-        android:layout_width="416dp"
+        android:layout_width="0dp"
         android:layout_height="656dp"
         app:layout_constraintBottom_toTopOf="@+id/btnRegresar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,12 +23,12 @@
         android:layout_width="341dp"
         android:layout_height="53dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/buttonshape"
         android:backgroundTint="?attr/colorPrimaryDark"
         android:fontFamily="@font/calibri"
         android:text="Regresar"
         android:textColor="#ffffff"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
