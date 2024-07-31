@@ -3,9 +3,11 @@ package view.validations
 import android.app.AlertDialog
 import android.content.Context
 import model.dto.POST.ClientPOST
+
 class ValidationAlertFormRegister(context: Context) {
     private val ValidationFormRegister = ValidationFormRegister()
     private val alert = AlertDialog.Builder(context)
+
     private fun validateFields(e: ClientPOST): Boolean {
         return ValidationFormRegister.validateName(e.nombres) &&
                 ValidationFormRegister.validateLastName(e.apellidos) &&
@@ -13,11 +15,11 @@ class ValidationAlertFormRegister(context: Context) {
                 ValidationFormRegister.validateEmail(e.correo) &&
                 ValidationFormRegister.validatePhone(e.telefono) &&
                 ValidationFormRegister.validateUser(e.usuario) &&
-                ValidationFormRegister.validatePassword(e.passwd)
+                ValidationFormRegister.validatePassword(e.passwd)  // Reemplaza passwd con contrasena
     }
 
     private fun validatePasswordConfirm(e: ClientPOST, passwordConfirm: String): Boolean {
-        return  ValidationFormRegister.validatePasswordConfirm(e.passwd, passwordConfirm)
+        return ValidationFormRegister.validatePasswordConfirm(e.passwd, passwordConfirm)  // Reemplaza passwd con contrasena
     }
 
     fun validateForm(e: ClientPOST, passwordConfirm: String) : Boolean{
@@ -27,6 +29,12 @@ class ValidationAlertFormRegister(context: Context) {
         return fields && passwd
     }
 
+    fun ValidateFormUpdate(e: ClientPOST) : Boolean {
+        val fields = validateFields(e)
+        if(!fields) showAlert(fields, true)
+        return fields
+    }
+
     private fun showAlert(fields: Boolean, passwd: Boolean){
         alert.setTitle("Registro de cliente")
             .setMessage(
@@ -34,7 +42,7 @@ class ValidationAlertFormRegister(context: Context) {
                 else if(!passwd) "Las contraseñas no coinciden"
                 else ""
             )
-            .setPositiveButton("Aceptar") { dialog, which ->
+            .setPositiveButton("Aceptar") { dialog, _ ->
                 dialog.dismiss()
             }
             .show()

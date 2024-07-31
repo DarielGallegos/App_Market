@@ -7,11 +7,11 @@ import android.widget.EditText
 import client.Client
 import client.services.ClientServiceMethods
 import client.services.EmailService
-import com.example.app_market.login.formRegister.FormRegisterClientActivity
 import com.google.gson.Gson
 import controller.impl.RegisterClientControllerImpl
 import model.common.ApiResponseBody
 import model.dto.POST.ClientPOST
+import model.dto.REQUEST.ClientData
 import model.email.ApiResponseEmail
 import service.RegisterClientService
 
@@ -19,6 +19,7 @@ class RegisterClientServiceImpl(context: Context) : RegisterClientService {
     private val clientService = Client.ClientRetrofit.getService(ClientServiceMethods::class.java) as ClientServiceMethods
     private val controller = RegisterClientControllerImpl(context)
     private val context = context
+
     override fun saveClient(e: ClientPOST) {
 
         clientService.saveClient(e).enqueue(object : retrofit2.Callback<ApiResponseBody> {
@@ -35,6 +36,25 @@ class RegisterClientServiceImpl(context: Context) : RegisterClientService {
 
             override fun onFailure(call: retrofit2.Call<ApiResponseBody>, t: Throwable) {
                 Log.e("Error Client: ", t.message.toString())
+            }
+        })
+    }
+
+    override fun updateClient(Id: Int, e: ClientPOST) {
+        clientService.updateClient(Id, e).enqueue(object : retrofit2.Callback<ApiResponseBody> {
+            override fun onResponse(call: retrofit2.Call<ApiResponseBody>, response: retrofit2.Response<ApiResponseBody>) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        controller.updateClient(responseBody.status == "OK")
+                    }else{
+                        Log.d("Update Client", "Response es null")
+                    }
+                }
+            }
+
+            override fun onFailure(call: retrofit2.Call<ApiResponseBody>, t: Throwable) {
+                Log.e("Error Update Client: ", t.message.toString())
             }
         })
     }
@@ -85,4 +105,29 @@ class RegisterClientServiceImpl(context: Context) : RegisterClientService {
             }
         })
     }
-}
+
+
+
+        override fun loadClient(id: Int) {
+            clientService.loadClient(id).enqueue(object : retrofit2.Callback<ApiResponseBody> {
+                override fun onResponse(call: retrofit2.Call<ApiResponseBody>, response: retrofit2.Response<ApiResponseBody>) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            val gson = Gson()
+                            val list = gson.fromJson(gson.toJson(responseBody.data.content), Array<ClientData>::class.java).toList()
+                            controller.loadClient(list)
+                        } else {
+                            Log.d("Load Client", "Response es null")
+                        }
+                    } else {
+                        Log.e("Load Client", "Error en la respuesta")
+                    }
+                }
+
+                override fun onFailure(call: retrofit2.Call<ApiResponseBody>, t: Throwable) {
+                    Log.e("Error Load Client: ", t.message.toString())
+                }
+            })
+        }
+    }

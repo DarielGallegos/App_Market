@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -15,9 +14,9 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.app_market.R
+import com.example.app_market.login.LoginActivity
 import model.dto.POST.ClientPOST
 import service.impl.RegisterClientServiceImpl
-import storage.DataStoreCarMarket
 import utils.Converters
 import utils.Permissions
 import view.RegisterClientView
@@ -42,6 +41,9 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_form_register_client)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = resources.getColor(R.color.colorPrimaryDark, theme)
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -49,9 +51,9 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         }
 
         //Assigned value to component lateinit
-        image = findViewById(R.id.imgUserReg)
+        image = findViewById(R.id.imgPedido)
         txtName = findViewById(R.id.txtRegNombre)
-        txtLastName = findViewById(R.id.txtRegApellido)
+        txtLastName = findViewById(R.id.txtTotalAdm)
         txtDate = findViewById(R.id.txtRegFecha)
         txtEmail = findViewById(R.id.txtRegCorreo)
         txtPhone = findViewById(R.id.txtRegTelefono)
@@ -74,14 +76,19 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
             val passwd = txtPasswd.text.toString().trim()
             val passwdConfirm = txtPasswdConfirm.text.toString().trim()
             val img = Converters().bitmapToBase64(image.drawable.toBitmap()) as String
-            val status = validator.validateForm(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin", 1), passwdConfirm)
+            val status = validator.validateForm(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin"), passwdConfirm)
             if(status){
                 val code = Random.nextInt(100000)
-                service.saveClientValidation(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin", 1), code)
+                service.saveClientValidation(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin"), code)
             }
         }
-        btnBack.setOnClickListener{
+        /*btnBack.setOnClickListener{
             finish()
+        }*/
+
+       btnBack.setOnClickListener{
+            val intent = Intent(this@FormRegisterClientActivity, LoginActivity::class.java)
+            startActivity(intent)
         }
         image.setOnClickListener {
             Permissions().checkCameraPermission(this)
@@ -96,6 +103,8 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
             image.setImageBitmap(imageBitmap)
         }
     }
+
+
 
     override fun statusSaveClient(status: Boolean) {
         val builderDialog = AlertDialog.Builder(this)
@@ -112,6 +121,8 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         builderDialog.show()
 
     }
+
+
 
     private fun flush(){
         txtName.text.clear()

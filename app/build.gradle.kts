@@ -48,6 +48,9 @@ dependencies {
     val versionRetrofit = "2.9.0"
     val versionOkHttp = "4.9.0"
 
+    //Implementaciones para el Glide
+    implementation ("com.github.bumptech.glide:glide:4.11.0")
+
     //Implementaciones para Retrofit y OkHttp
     implementation("com.squareup.retrofit2:retrofit:$versionRetrofit")
     implementation("com.squareup.retrofit2:converter-gson:$versionRetrofit")
@@ -61,6 +64,8 @@ dependencies {
 
     //Implementaciones para Google Maps Services
     implementation("com.google.android.gms:play-services-maps:19.0.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

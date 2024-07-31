@@ -9,65 +9,57 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class Client {
-     object ClientRetrofit{
-        private lateinit var retrofit : Retrofit
-         init{
-             lateinit var retrofitClient : Retrofit
-                if(!this::retrofit.isInitialized){
-                    val interceptor = HttpLoggingInterceptor()
-                    interceptor.level = HttpLoggingInterceptor.Level.BODY
+    object ClientRetrofit {
+        private val retrofit: Retrofit by lazy {
+            val interceptor = HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
 
-                    val clientHttp = OkHttpClient.Builder()
-                        .addInterceptor(interceptor)
-                        .addInterceptor(InterceptorClient())
-                        .connectTimeout(5, TimeUnit.SECONDS)
-                        .callTimeout(5, TimeUnit.SECONDS)
-                        .readTimeout(5, TimeUnit.SECONDS)
-                        .writeTimeout(5, TimeUnit.SECONDS)
-                        .build()
+            val clientHttp = OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .addInterceptor(InterceptorClient())
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .callTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .build()
 
-                    retrofitClient = Retrofit.Builder()
-                        .client(clientHttp)
-                        .baseUrl(RUTES.RUTE_BASE_URL)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build()
-                }
-             this::retrofit.set(retrofitClient)
+            Retrofit.Builder()
+                .client(clientHttp)
+                .baseUrl(RUTES.RUTE_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
         }
 
-         fun getService( ServiceClass: Class<*>): Any{
-             return this.retrofit.create(ServiceClass)
-         }
+        fun <T> getService(serviceClass: Class<T>): T {
+            return retrofit.create(serviceClass)
+        }
     }
 
-    object ClientEmail{
-        lateinit var retrofit:Retrofit
-        init{
-            lateinit var retrofitClient : Retrofit
-            if(!this::retrofit.isInitialized){
-                val interceptor = HttpLoggingInterceptor()
-                interceptor.level = HttpLoggingInterceptor.Level.BODY
-
-                val clientHttp = OkHttpClient.Builder()
-                    .addInterceptor(interceptor)
-                    .addInterceptor(InterceptorClient())
-                    .connectTimeout(5, TimeUnit.SECONDS)
-                    .callTimeout(5, TimeUnit.SECONDS)
-                    .readTimeout(5, TimeUnit.SECONDS)
-                    .writeTimeout(5, TimeUnit.SECONDS)
-                    .build()
-
-                retrofitClient = Retrofit.Builder()
-                    .client(clientHttp)
-                    .baseUrl(RUTES.RUTE_SERVICE_EMAIL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
+    object ClientEmail {
+        private val retrofit: Retrofit by lazy {
+            val interceptor = HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
             }
-            this::retrofit.set(retrofitClient)
+
+            val clientHttp = OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .addInterceptor(InterceptorClient())
+                .connectTimeout(5, TimeUnit.SECONDS)
+                .callTimeout(5, TimeUnit.SECONDS)
+                .readTimeout(5, TimeUnit.SECONDS)
+                .writeTimeout(5, TimeUnit.SECONDS)
+                .build()
+
+            Retrofit.Builder()
+                .client(clientHttp)
+                .baseUrl(RUTES.RUTE_SERVICE_EMAIL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
         }
 
-        fun getService( ServiceClass: Class<*>): Any{
-            return this.retrofit.create(ServiceClass)
+        fun <T> getService(serviceClass: Class<T>): T {
+            return retrofit.create(serviceClass)
         }
     }
 }
