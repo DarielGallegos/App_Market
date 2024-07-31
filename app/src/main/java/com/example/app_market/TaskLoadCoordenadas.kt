@@ -8,6 +8,8 @@ import com.google.android.gms.maps.model.Marker
 import service.impl.LocalizacionServiceAppImpl
 
 class TaskLoadCoordenadas(context: Context, private val id: Int, private val map: GoogleMap, private val marker: Marker): HandlerThread("TaskLoadCoordenadas") {
+
+
     private lateinit var handler: Handler
     private val service = LocalizacionServiceAppImpl(context)
     override fun onLooperPrepared() {

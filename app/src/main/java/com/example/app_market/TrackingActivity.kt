@@ -33,6 +33,9 @@ class TrackingActivity : AppCompatActivity(), OnMapReadyCallback {
         enableEdgeToEdge()
 
         setContentView(R.layout.activity_rastreo)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = resources.getColor(R.color.colorPrimaryDark, theme)
+        }
 
         usuario = intent.getStringExtra("usuario") ?: ""
         ubicacion = intent.getStringExtra("ubicacion") ?: ""

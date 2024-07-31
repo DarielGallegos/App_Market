@@ -30,7 +30,7 @@
                 android:layout_marginEnd="16dp">
 
                 <ImageView
-                    android:id="@+id/imgBackPut"
+                    android:id="@+id/imgB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -41,8 +41,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:layout_marginStart="11dp"
-                    android:layout_toEndOf="@+id/imgBackPut"
+                    android:layout_marginTop="0dp"
+                    android:layout_toEndOf="@+id/imgB"
                     android:fontFamily="@font/calibri"
                     android:gravity="center"
                     android:text="Actualización de Cliente"
@@ -203,7 +205,9 @@
                                 android:drawablePadding="16dp"
                                 android:fontFamily="@font/calibri"
                                 android:hint="Fecha de Nacimiento"
-                                android:inputType="datetime|date"
+                                android:maxLength="10"
+                                android:digits="0123456789-"
+                                android:inputType="text"
                                 android:maxLines="1"
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp" />

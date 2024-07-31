@@ -80,11 +80,7 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
         txtPasswdConfirm = findViewById(R.id.txtRegPasswordConfirm)
         cboGender = findViewById(R.id.txtRegGenero)
         btnRegister = findViewById(R.id.btn_guardar)
-        btnBack = findViewById(R.id.imgBackPut)
-
-        btnBack.setOnClickListener{
-            finish()
-        }
+        btnBack = findViewById(R.id.imgB)
 
         btnRegister.setOnClickListener {
 
@@ -100,6 +96,10 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
         }
         image.setOnClickListener {
             Permissions().checkCameraPermission(this)
+        }
+
+        btnBack.setOnClickListener{
+            finish()
         }
     }
 
