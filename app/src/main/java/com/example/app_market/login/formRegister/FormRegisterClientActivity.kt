@@ -14,6 +14,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.app_market.R
+import com.example.app_market.login.LoginActivity
 import model.dto.POST.ClientPOST
 import service.impl.RegisterClientServiceImpl
 import utils.Converters
@@ -40,6 +41,9 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_form_register_client)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = resources.getColor(R.color.colorPrimaryDark, theme)
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -78,8 +82,13 @@ class FormRegisterClientActivity : AppCompatActivity(), RegisterClientView {
                 service.saveClientValidation(ClientPOST(nombre, apellido, fecha, genero, correo, telefono, img, usuario, passwd, 2, "Admin"), code)
             }
         }
-        btnBack.setOnClickListener{
+        /*btnBack.setOnClickListener{
             finish()
+        }*/
+
+       btnBack.setOnClickListener{
+            val intent = Intent(this@FormRegisterClientActivity, LoginActivity::class.java)
+            startActivity(intent)
         }
         image.setOnClickListener {
             Permissions().checkCameraPermission(this)

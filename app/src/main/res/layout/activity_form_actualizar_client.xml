@@ -41,12 +41,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="11dp"
+                    android:layout_toEndOf="@+id/imgBackPut"
                     android:fontFamily="@font/calibri"
                     android:gravity="center"
                     android:text="Actualización de Cliente"
                     android:textColor="#ffffff"
-                    android:textSize="24sp" />
+                    android:textSize="26sp" />
 
             </RelativeLayout>
 

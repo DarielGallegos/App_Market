@@ -41,13 +41,13 @@
 
         <TextView
             android:id="@+id/nombre"
-            android:layout_width="232dp"
-            android:layout_height="44dp"
+            android:layout_width="230dp"
+            android:layout_height="49dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/calibri"
             android:textAlignment="viewStart"
             android:textColor="@color/design_default_color_on_secondary"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.119"
             app:layout_constraintStart_toEndOf="@+id/photo"

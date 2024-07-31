@@ -23,7 +23,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaPendientes"
-        android:layout_width="399dp"
+        android:layout_width="0dp"
         android:layout_height="657dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,17 +49,17 @@
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Pedidos sin Valoración"
+        android:layout_width="245dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/calibri"
+        android:text="Pedidos Sin Valoración"
         android:textColor="@color/cardview_light_background"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="@+id/Inicio"
         app:layout_constraintEnd_toEndOf="@+id/det_pro_toolbar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/Inicio"
         app:layout_constraintTop_toTopOf="@+id/Inicio"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

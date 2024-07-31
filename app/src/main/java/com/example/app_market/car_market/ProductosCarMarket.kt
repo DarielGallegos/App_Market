@@ -2,10 +2,13 @@ package com.example.app_market.car_market
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.app_market.CatalogoProductosActivity
+import com.example.app_market.R
 import com.example.app_market.databinding.ActivityProductosCarMarketBinding
 import model.common.CarMarketProducto
 import model.common.Producto
@@ -18,6 +21,8 @@ class ProductosCarMarket : AppCompatActivity() {
     private val envio = 50.0
     private val REQUEST_CODE = 1
 
+    private lateinit var btnBack: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProductosCarMarketBinding.inflate(layoutInflater)
@@ -26,6 +31,13 @@ class ProductosCarMarket : AppCompatActivity() {
         productosList = DataStoreCarMarket.CarMarket.getCarMarket()
 
         initRecyclerView()
+
+        btnBack = findViewById(R.id.imgBack)
+
+        btnBack.setOnClickListener{
+            val intent = Intent(this@ProductosCarMarket, CatalogoProductosActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.btnConfirmar.setOnClickListener {
             val subtotal = calculoSubtotal()

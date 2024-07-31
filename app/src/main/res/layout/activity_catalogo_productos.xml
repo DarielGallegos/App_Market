@@ -82,7 +82,7 @@
                         android:drawableStart="@drawable/ic_search_light_gray_24dp"
                         android:drawablePadding="8dp"
                         android:fontFamily="@font/calibri"
-                        android:hint="What are you looking for ?"
+                        android:hint="¿Que estas buscando? "
                         android:padding="12dp"
                         android:textColor="@android:color/black"
                         android:textColorHint="#aeaeae"

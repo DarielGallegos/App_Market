@@ -41,13 +41,13 @@
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="81dp"
+                    android:layout_marginStart="6dp"
                     android:layout_toEndOf="@+id/imageViewBack"
                     android:fontFamily="@font/calibri"
                     android:gravity="center"
                     android:text="Mis Pedidos"
                     android:textColor="#ffffff"
-                    android:textSize="24sp" />
+                    android:textSize="26sp" />
 
             </RelativeLayout>
 

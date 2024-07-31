@@ -57,9 +57,10 @@
         <TextView
             android:id="@+id/nombreentregados"
             android:layout_width="207dp"
-            android:layout_height="54dp"
+            android:layout_height="59dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/calibri"
             android:textAlignment="textStart"
             android:textColor="@android:color/black"
             android:textSize="18sp"

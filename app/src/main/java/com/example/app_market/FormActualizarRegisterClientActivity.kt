@@ -43,6 +43,7 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
     private lateinit var txtPasswdConfirm: EditText
     private lateinit var cboGender: Spinner
 
+
     private var storage = StoragePreferences.getInstance(this)
     private var service = RegisterClientServiceImpl(this)
     private lateinit var validator : ValidationAlertFormRegister
@@ -51,6 +52,9 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_form_actualizar_client)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = resources.getColor(R.color.colorPrimaryDark, theme)
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -78,6 +82,10 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
         btnRegister = findViewById(R.id.btn_guardar)
         btnBack = findViewById(R.id.imgBackPut)
 
+        btnBack.setOnClickListener{
+            finish()
+        }
+
         btnRegister.setOnClickListener {
 
             lifecycleScope.launch(Dispatchers.IO) {
@@ -94,6 +102,7 @@ class FormActualizarRegisterClientActivity : AppCompatActivity(), RegisterActual
             Permissions().checkCameraPermission(this)
         }
     }
+
 
     private fun updateClient(id: Int){
         val nombre = txtName.text.toString().trim()

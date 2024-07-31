@@ -55,8 +55,8 @@
 
         <TextView
             android:id="@+id/nombrependiente"
-            android:layout_width="208dp"
-            android:layout_height="47dp"
+            android:layout_width="202dp"
+            android:layout_height="65dp"
             android:layout_marginStart="3dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/calibri"

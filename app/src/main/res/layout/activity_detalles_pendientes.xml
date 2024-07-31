@@ -274,7 +274,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorAzulito"
         android:fontFamily="sans-serif"
         android:text="Ver Productos"
         android:textColor="@color/cardview_light_background"

@@ -43,14 +43,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="81dp"
+                    android:layout_marginStart="2dp"
                     android:layout_marginTop="0dp"
                     android:layout_toEndOf="@+id/imageViewBack"
                     android:fontFamily="@font/calibri"
                     android:gravity="center"
                     android:text="Detalles Pedido"
                     android:textColor="#ffffff"
-                    android:textSize="24sp" />
+                    android:textSize="26sp" />
 
             </RelativeLayout>
 
@@ -60,7 +60,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_detalles"
-        android:layout_width="408dp"
+        android:layout_width="0dp"
         android:layout_height="643dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"

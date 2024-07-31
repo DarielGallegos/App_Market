@@ -3,6 +3,7 @@ package com.example.app_market.car_market
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -14,6 +15,7 @@ import android.util.Base64
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -46,6 +48,7 @@ import java.util.Date
 import java.util.Locale
 
 class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, DetallesProductosFinancierosView{
+    private lateinit var btnBack: ImageView
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
     private lateinit var adapter: ProductosAdapter
@@ -64,6 +67,7 @@ class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, De
         setContentView(R.layout.activity_detalles_productos_financieros)
 
         mapView = findViewById(R.id.mapView)
+        btnBack = findViewById(R.id.imgBack)
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
 
@@ -82,6 +86,12 @@ class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, De
         val txtTotal = findViewById<EditText>(R.id.txttotal)
         val txtCliente = findViewById<EditText>(R.id.txtcliente)
         val txtTelefono = findViewById<EditText>(R.id.txttelefono)
+
+        btnBack.setOnClickListener{
+            val intent = Intent(this@DetallesProductosFinancieros, ProductosCarMarket::class.java)
+            startActivity(intent)
+        }
+
 
         lifecycleScope.launch(Dispatchers.IO) {
             preferences.getCredentiales().collect {
