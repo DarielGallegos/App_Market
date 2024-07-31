@@ -39,7 +39,7 @@ class PedidosSinValorarServicelmpl (private val context: Context) : PedidosSinVa
                 } else {
                     Toast.makeText(
                         context,
-                        "Error: " + response.code(),
+                        "No tiene pedidos pendientes de valoracion",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -47,7 +47,7 @@ class PedidosSinValorarServicelmpl (private val context: Context) : PedidosSinVa
 
             override
             fun onFailure(call: Call<ApiResponseBody>, t: Throwable) {
-                Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "No tiene pedidos pendientes de valoracion", Toast.LENGTH_SHORT).show()
             }
         })
     }
