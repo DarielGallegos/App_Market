@@ -16,13 +16,11 @@ import service.impl.LocalizacionServiceAppImpl
 class TaskSaveCoordenadas(private val context: Context, private val id: Int) : HandlerThread("TaskSaveCoordenadas") {
 
     private lateinit var handler: Handler
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val service = LocalizacionServiceAppImpl(context)
 
     override fun onLooperPrepared() {
         super.onLooperPrepared()
         handler = Handler(looper)
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
         handler.post(task)
     }
 
@@ -49,7 +47,7 @@ class TaskSaveCoordenadas(private val context: Context, private val id: Int) : H
             )
             return
         }
-
+        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             location?.let {
                 val latLng = LatLng(it.latitude, it.longitude)
