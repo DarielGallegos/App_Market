@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#8793eb"
+        android:background="@color/colorPrimaryDark"
         android:paddingTop="24dp"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0dp"
@@ -42,12 +42,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/calibri"
                     android:gravity="center"
                     android:text="Actualización de Cliente"
-                    android:fontFamily="@font/calibri"
                     android:textColor="#ffffff"
-                    android:textSize="24sp"
-                    />
+                    android:textSize="24sp" />
 
             </RelativeLayout>
 
@@ -130,6 +129,7 @@
                                 android:id="@+id/txtTotalAdm"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:backgroundTint="@color/design_default_color_on_secondary"
                                 android:drawablePadding="16dp"
                                 android:fontFamily="@font/calibri"
                                 android:hint="Apellido"
@@ -150,6 +150,7 @@
                                 android:id="@+id/txtRegCorreo"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:backgroundTint="@color/design_default_color_on_secondary"
                                 android:drawablePadding="16dp"
                                 android:fontFamily="@font/calibri"
                                 android:hint="Correo"
@@ -170,6 +171,7 @@
                                 android:id="@+id/txtRegTelefono"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:backgroundTint="@color/design_default_color_on_secondary"
                                 android:drawablePadding="16dp"
                                 android:fontFamily="@font/calibri"
                                 android:hint="Numero Telefonico"
@@ -196,6 +198,7 @@
                                 android:id="@+id/txtRegFecha"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:backgroundTint="@color/design_default_color_on_secondary"
                                 android:drawablePadding="16dp"
                                 android:fontFamily="@font/calibri"
                                 android:hint="Fecha de Nacimiento"
@@ -240,6 +243,7 @@
                                 android:id="@+id/txtRegUser"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:backgroundTint="@color/design_default_color_on_secondary"
                                 android:drawablePadding="16dp"
                                 android:fontFamily="@font/calibri"
                                 android:hint="Usuario"
@@ -259,6 +263,7 @@
                                 android:id="@+id/txtRegPassword"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:backgroundTint="@color/design_default_color_on_secondary"
                                 android:drawablePadding="16dp"
                                 android:fontFamily="@font/calibri"
                                 android:hint="Contraseña"
@@ -278,6 +283,7 @@
                                 android:id="@+id/txtRegPasswordConfirm"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:backgroundTint="@color/design_default_color_on_secondary"
                                 android:drawablePadding="16dp"
                                 android:fontFamily="@font/calibri"
                                 android:hint="Contraseña"
@@ -286,21 +292,22 @@
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp" />
                         </com.google.android.material.textfield.TextInputLayout>
+
                         <Button
                             android:id="@+id/btn_guardar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/card_view_register"
-                            android:layout_marginBottom="16dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="16dp"
-                            android:textAllCaps="false"
+                            android:layout_marginBottom="16dp"
+                            android:backgroundTint="@color/colorAzulito"
                             android:fontFamily="@font/calibri"
-                            android:textSize="18sp"
                             android:text="Actualizar"
-                            android:background="@drawable/buttonshape"
+                            android:textAllCaps="false"
                             android:textColor="#ffffff"
-                            />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

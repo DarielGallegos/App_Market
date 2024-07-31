@@ -15,7 +15,7 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorRosa"
+            android:background="@color/colorPrimaryDark"
             android:paddingTop="24dp"
             android:theme="@style/AppTheme.AppBarOverlay"
             app:elevation="0dp">
@@ -38,7 +38,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="0dp"
                         android:fontFamily="@font/calibri"
-                        android:text="Inicio | Administración"
+                        android:text="Administración"
                         android:textAlignment="viewStart"
                         android:textColor="#FFFFFF"
                         android:textSize="33sp" />
@@ -49,8 +49,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="16dp"
-                        android:orientation="horizontal">
-                    </LinearLayout>
+                        android:orientation="horizontal"></LinearLayout>
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
@@ -141,8 +140,8 @@
 
             <LinearLayout
                 android:id="@+id/home_linear_dashboard"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="187dp"
+                android:layout_height="37dp"
                 android:layout_weight="33"
                 android:orientation="vertical">
 
@@ -161,31 +160,9 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/btactualizar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="33"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_person_gray_24dp" />
-
-                <View
-                    android:layout_width="84dp"
-                    android:layout_height="2dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:visibility="invisible" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/btcerrar"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
+                android:layout_width="184dp"
+                android:layout_height="36dp"
                 android:layout_weight="33"
                 android:orientation="vertical">
 
