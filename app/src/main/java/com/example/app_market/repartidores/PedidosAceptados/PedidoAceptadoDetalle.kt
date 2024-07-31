@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -18,18 +19,26 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.app_market.R
 import com.example.app_market.databinding.ActivityPedidoAceptadoDetalleBinding
 import com.example.app_market.databinding.ActivityPedidosAceptadosBinding
 import com.example.app_market.repartidores.ListaProductos.ListaProductos
+import com.example.app_market.repartidores.TaskSaveCoordenadas
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import model.dto.REQUEST.CabeceraPedidoDataContact
 import service.impl.PedidoDisponibleServiceImpl
+import storage.StoragePreferences
 import utils.MailSender
 import utils.Permissions
 import view.PedidoDisponibleView
@@ -47,10 +56,12 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
     private lateinit var txtTotal: EditText
     private lateinit var map: MapView
     private lateinit var mMap: GoogleMap
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var dirCoordinates: LatLng? = null
     private var numPedido = 0
     private val service = PedidoDisponibleServiceImpl(this)
-
+    private lateinit var task : TaskSaveCoordenadas
+    private val preference = StoragePreferences.getInstance(this)
     private var email = ""
     private val mail = MailSender()
 
@@ -132,6 +143,23 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
             val intent = Intent(this@PedidoAceptadoDetalle, Pedidos_Aceptados::class.java)
             startActivity(intent)
         }
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        lifecycleScope.launch(Dispatchers.IO){
+            preference.getCredentiales().collect{
+                withContext(Dispatchers.Main){
+                    if(it.id != null){
+                        task = TaskSaveCoordenadas(this@PedidoAceptadoDetalle, it.id, fusedLocationClient)
+                        task.startTask()
+                    }
+                }
+
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        task.stopTask()
     }
 
     override fun initView(e: CabeceraPedidoDataContact) {
@@ -216,4 +244,5 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
             }
         }
     }
+
 }

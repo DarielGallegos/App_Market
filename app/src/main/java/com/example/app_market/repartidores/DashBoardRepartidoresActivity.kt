@@ -24,7 +24,6 @@ class DashBoardRepartidoresActivity : AppCompatActivity() {
         private lateinit var btnLogout: LinearLayout
         private lateinit var btnshowpedDis: CardView
         private lateinit var btnshowpedAct:  CardView
-
         private val preference = StoragePreferences.getInstance(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,11 +38,9 @@ class DashBoardRepartidoresActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         btnLogout = findViewById(R.id.btcerrar)
         btnshowpedDis = findViewById(R.id.card_view_pedidoDisponible)
         btnshowpedAct= findViewById(R.id.card_view_pedido_aceptado)
-
 
         btnshowpedDis.setOnClickListener{
 
@@ -88,5 +85,10 @@ class DashBoardRepartidoresActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
     }
 }
