@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import model.dto.REQUEST.CabeceraPedidoDataContact
 import service.impl.PedidoDisponibleServiceImpl
 import utils.MailSender
+import utils.Permissions
 import view.PedidoDisponibleView
 
 class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapReadyCallback {
@@ -105,9 +106,8 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
         }
 
         btnCall.setOnClickListener {
-            val intent = Intent(Intent.ACTION_CALL)
-            intent.data = Uri.parse("tel:+504${txtTelefono.text}")
-            startActivity(intent)
+            val permissions = Permissions()
+            permissions.checkCallPermission(this, txtTelefono.text.toString())
         }
 
         btnInitTravel.setOnClickListener {

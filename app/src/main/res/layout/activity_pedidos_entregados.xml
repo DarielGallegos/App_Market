@@ -11,7 +11,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorRosa"
+        android:background="@color/colorPrimaryDark"
         android:paddingTop="24dp"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0dp"
@@ -55,7 +55,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_PedEnt"
-        android:layout_width="412dp"
+        android:layout_width="0dp"
         android:layout_height="705dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

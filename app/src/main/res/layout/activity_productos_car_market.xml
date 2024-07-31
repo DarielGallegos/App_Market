@@ -43,7 +43,7 @@
         android:layout_height="50dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="655dp"
-        android:background="@drawable/buttonshape"
+        android:backgroundTint="@color/colorAzulito"
         android:fontFamily="@font/calibri"
         android:text="CONFIRMAR PEDIDO"
         android:textAlignment="center"
