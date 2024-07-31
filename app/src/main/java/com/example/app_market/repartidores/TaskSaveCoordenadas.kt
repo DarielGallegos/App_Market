@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Handler
 import android.os.HandlerThread
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -53,6 +54,7 @@ class TaskSaveCoordenadas(private val context: Context, private val id: Int) : H
             location?.let {
                 val latLng = LatLng(it.latitude, it.longitude)
                 val dir = "${latLng.latitude},${latLng.longitude}"
+                Toast.makeText(context, dir, Toast.LENGTH_SHORT).show()
                 service.actualizarLocalizacion(id, dir)
             }
         }
