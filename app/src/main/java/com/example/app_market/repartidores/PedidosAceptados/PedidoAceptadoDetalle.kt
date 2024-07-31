@@ -111,6 +111,7 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
                 .setTitle("¿Da por finalizado el pedido?")
                 .setPositiveButton("Si") { _, _ ->
                     service.finishPedido(numPedido)
+                    task.stopTask()
                 }
                 .setNegativeButton("No") { _, _ -> }
                 .show()
