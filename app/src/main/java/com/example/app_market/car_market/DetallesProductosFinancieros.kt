@@ -2,13 +2,20 @@ package com.example.app_market.car_market
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.location.Location
+import android.os.Build
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -33,6 +40,10 @@ import storage.DataStoreCarMarket
 import storage.StoragePreferences
 import utils.MailSender
 import view.DetallesProductosFinancierosView
+import java.io.ByteArrayOutputStream
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, DetallesProductosFinancierosView{
     private lateinit var mapView: MapView
@@ -46,6 +57,7 @@ class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, De
     private var preferences = StoragePreferences.getInstance(this)
     private var client: Int? = null
     private var email = ""
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -119,6 +131,85 @@ class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, De
                     )
 
                     Service.pedidosProductos(pedido)
+
+                    val subject = "Factura - Supermercado El Economico"
+                    val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
+                    val productosList = intent.getParcelableArrayListExtra<Producto>("PRODUCTOS_LIST") ?: emptyList()
+                    val body = """
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #000000;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+         .logo {
+            width: 75px; 
+        }
+    </style>
+</head>
+<body>
+    <h2>Factura de Pedido</h2>
+    <p>Estimado/a ${txtCliente.text},</p>
+    <p>Nos complace informarle que su pedido ha sido procesado.</p>
+    <p>Gracias por su compra. A continuación, encontrará los detalles de su pedido:</p>
+    <table>
+        <tr>
+            <th colspan="2">Factura Supermercado El Económico</th>
+            <th><center>Hora de Pedido: $currentTime<center/></th>
+            <th><center><img src="https://i.imgur.com/xCQHTF3.png" class="logo" alt="Logo del Supermercado"/><center/></th>
+        </tr>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Total</th>
+        </tr>
+        ${productosList.joinToString("") { producto ->
+                        """
+            <tr>
+                <td>${producto.producto}</td>
+                <td>${producto.cantidad}</td>
+                <td>L. ${producto.precio}</td>
+                <td>L. ${producto.cantidad * producto.precio}</td>
+            </tr>
+            """
+                    }}
+        <tr>
+            <td colspan="3"><strong>Subtotal</strong></td>
+            <td><strong>L. $subtotal</strong></td>
+        </tr>
+        <tr>
+            <td colspan="3"><strong>Impuesto</strong></td>
+            <td><strong>L. $impuesto</strong></td>
+        </tr>
+        <tr>
+            <td colspan="3"><strong>Envío</strong></td>
+            <td><strong>L. $envio</strong></td>
+        </tr>
+        <tr>
+            <td colspan="3"><strong>Total</strong></td>
+            <td><strong>L. $total</strong></td>
+        </tr>
+    </table>
+    <p>Atentamente,<br>El equipo de Supermercado El Económico</p>
+</body>
+</html>
+""".trimIndent()
+
+                    mail.sendEmail(email, subject, body)
                     setResult(RESULT_OK)
                     finish()
                     //Log.d("DetallesProductos", "Pedido: $pedido")
@@ -196,7 +287,7 @@ class DetallesProductosFinancieros : AppCompatActivity(), OnMapReadyCallback, De
             Toast.LENGTH_LONG
         ).show()
         if(status){
-            mail.sendEmail(email, "Supermerrcado El Económico", "Su pedido ha sido procesado")
+            //mail.sendEmail(email, "Supermerrcado El Económico", "Su pedido ha sido procesado")
         }
     }
 
