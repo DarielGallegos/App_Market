@@ -143,12 +143,11 @@ class PedidoAceptadoDetalle : AppCompatActivity(), PedidoDisponibleView, OnMapRe
             val intent = Intent(this@PedidoAceptadoDetalle, Pedidos_Aceptados::class.java)
             startActivity(intent)
         }
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         lifecycleScope.launch(Dispatchers.IO){
             preference.getCredentiales().collect{
                 withContext(Dispatchers.Main){
                     if(it.id != null){
-                        task = TaskSaveCoordenadas(this@PedidoAceptadoDetalle, it.id, fusedLocationClient)
+                        task = TaskSaveCoordenadas(this@PedidoAceptadoDetalle, it.id)
                         task.startTask()
                     }
                 }

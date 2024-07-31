@@ -7,12 +7,13 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.widget.Toast
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import service.impl.LocalizacionServiceAppImpl
 
-class TaskSaveCoordenadas(context: Context, private val id: Int, private val fusedLocationClient: FusedLocationProviderClient) : HandlerThread("TaskSaveCoordenadas") {
+class TaskSaveCoordenadas(private val context: Context, private val id: Int) : HandlerThread("TaskSaveCoordenadas") {
 
     private lateinit var handler: Handler
     private val service = LocalizacionServiceAppImpl(context)
@@ -32,6 +33,7 @@ class TaskSaveCoordenadas(context: Context, private val id: Int, private val fus
 
     @SuppressLint("MissingPermission")
     private fun getLastLocation() {
+        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             location?.let {
                 val latLng = LatLng(it.latitude, it.longitude)
