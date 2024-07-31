@@ -1,5 +1,6 @@
 package com.example.app_market
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import client.Client
 import client.services.PedidoDetallesService
 import com.example.app_market.Adapter.productor_adapter
+import com.example.app_market.car_market.DetallesProductosFinancieros
 import com.example.app_market.databinding.ActivityDetallesPedidoBinding
 import com.google.gson.Gson
 import model.common.ApiResponseBody
@@ -36,6 +38,11 @@ class PedidoDetallesActivity : AppCompatActivity() {
             obtenerDetallesPedido(numeroPedido)
         } else {
             Toast.makeText(this, "No se pudieron obtener los detalles del pedido", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.btnMapa.setOnClickListener{
+            val intent = Intent(this, TrackingActivity::class.java)
+            startActivity(intent)
         }
 
     }
