@@ -17,7 +17,7 @@
             android:id="@+id/ivProducto"
             android:layout_width="85dp"
             android:layout_height="85dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/imagen"
             app:civ_border_color="#000000"
             app:civ_border_width="1dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,9 +31,11 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/calibri"
             android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/ivProducto"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Pedido #" />
+            tools:text="Pedido N°" />
 
         <TextView
             android:id="@+id/tvEstado"
@@ -42,9 +44,11 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/calibri"
             android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivProducto"
             app:layout_constraintTop_toBottomOf="@+id/tvNumeroPedido"
-            tools:text="Estado" />
+            tools:text="Estado: " />
 
         <TextView
             android:id="@+id/tvTotal"
@@ -53,9 +57,11 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/calibri"
             android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivProducto"
             app:layout_constraintTop_toBottomOf="@+id/tvEstado"
-            tools:text="Total" />
+            tools:text="Total: L." />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,7 +19,7 @@ class adapter_pedidos (private val pedidos:List<Pedidos>?,
                 onClickListener(pedidos)
             }
            // binding.tvProducto.text = "Producto: ${producto.nombreProductos}"
-            binding.tvNumeroPedido.text = "Pedido#${pedidos.pedido_numero}"
+            binding.tvNumeroPedido.text = "Pedido N°${pedidos.pedido_numero}"
             binding.tvEstado.text = "Estado: ${pedidos.estado_pedido}"
             binding.tvTotal.text = "Total: L.${pedidos.total}"
         }
