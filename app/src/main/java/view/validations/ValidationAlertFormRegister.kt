@@ -38,7 +38,7 @@ class ValidationAlertFormRegister(context: Context) {
     private fun showAlert(fields: Boolean, passwd: Boolean){
         alert.setTitle("Registro de cliente")
             .setMessage(
-                if(!fields) "Debe completar todos los campos"
+                if(!fields) "Debe completar todos los campos \n Asegurese de ingresar una fecha con el formato YYYY-MM-DD"
                 else if(!passwd) "Las contraseñas no coinciden"
                 else ""
             )

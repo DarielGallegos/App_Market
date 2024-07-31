@@ -10,7 +10,9 @@ class ValidationFormRegister {
         }
 
         fun validateDate(date: String): Boolean {
-            return date.isNotEmpty()
+            val regex = Regex("^[0-9]{4}-[0-9]{2}-[0-9]{2}\$")
+            val flag = if(regex.matches(date)) true else false
+            return date.isNotEmpty() && flag
         }
 
         fun validateEmail(email: String): Boolean {
