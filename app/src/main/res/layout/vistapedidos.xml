@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view_pedido"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/ivProducto"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:src="@drawable/logo"
+            app:civ_border_color="#000000"
+            app:civ_border_width="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvNumeroPedido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/calibri"
+            android:textColor="#000000"
+            app:layout_constraintStart_toEndOf="@id/ivProducto"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Pedido #" />
+
+        <TextView
+            android:id="@+id/tvEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/calibri"
+            android:textColor="#000000"
+            app:layout_constraintStart_toEndOf="@+id/ivProducto"
+            app:layout_constraintTop_toBottomOf="@+id/tvNumeroPedido"
+            tools:text="Estado" />
+
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/calibri"
+            android:textColor="#000000"
+            app:layout_constraintStart_toEndOf="@+id/ivProducto"
+            app:layout_constraintTop_toBottomOf="@+id/tvEstado"
+            tools:text="Total" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+

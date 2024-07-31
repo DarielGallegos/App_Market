@@ -49,6 +49,10 @@ class DashboardClient : AppCompatActivity() {
             insets
         }
         btnShowPedidos = findViewById(R.id.card_view_pedido)
+        btnShowPedidos.setOnClickListener {
+            val intent = Intent(this, ListPedidoActivity::class.java)
+            startActivity(intent)
+        }
         btnNuevoPedido = findViewById(R.id.card_view_nuevo_pedido)
         btnActualizar = findViewById(R.id.btactualizar)
         btnPedidosFinalizados = findViewById(R.id.card_view_pedidos_finalizados)

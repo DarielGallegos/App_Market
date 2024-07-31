@@ -85,7 +85,7 @@
                             >
 
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/imgUserReg"
+                                android:id="@+id/imgPedido"
                                 android:layout_width="75dp"
                                 android:layout_height="75dp"
                                 android:src="@drawable/ic_launcher_background"
