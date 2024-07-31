@@ -82,7 +82,7 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/ic_home_gray_24dp" />
+                        android:src="@drawable/activos" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/ic_home_gray_24dp" />
+                        android:src="@drawable/add" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -150,7 +150,7 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/ic_home_gray_24dp" />
+                        android:src="@drawable/finalizado" />
 
                     <TextView
                         android:layout_width="wrap_content"
