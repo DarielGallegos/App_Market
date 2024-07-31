@@ -26,17 +26,17 @@
     <!-- Resources View Recovery Password Validation Email -->
     <string name="title_activity_reset_password_email">Recuperar Contraseña</string>
     <string name="title_form_reset_password_email">Formulario de Recuperación</string>
-    <string name="field_email">Ingrese su correo electronico: </string>
+    <string name="field_email">Ingrese su correo electrónico: </string>
     <string name="field_email_hint">example@gmail.com</string>
-    <string name="button_request">Enviar Peticion</string>
+    <string name="button_request">Enviar Petición</string>
     <!-- End Resources View Recovery Password Validation Email -->
 
     <!-- Resources View Recovery Password Validation Code -->
-    <string name="title_activity_reset_password_validation_code">Validar Codigo de Recuperación</string>
-    <string name="title_form_reset_password_code">Formulario de Codigo de Verificación</string>
-    <string name="field_code">Ingrese el codigo de recuperación: </string>
+    <string name="title_activity_reset_password_validation_code">Validar Código de Recuperación</string>
+    <string name="title_form_reset_password_code">Formulario de Código de Verificación</string>
+    <string name="field_code">Ingrese el código de recuperación: </string>
     <string name="field_code_hint">123456</string>
-    <string name="button_validate">Validar Codigo</string>
+    <string name="button_validate">Validar Código</string>
     <!-- End Resources View Recovery Password Validation Code -->
 
 
