@@ -41,7 +41,6 @@ class ResetPasswordActivity : AppCompatActivity(), ResetPasswordView {
             if(validation.validateFields(passwdField.text.toString()) && validation.validateFields(passwdConfirmField.text.toString())){
                if(validation.validateEqualFields(passwdField.text.toString(), passwdConfirmField.text.toString())) {
                    service.resetPassword(email, passwdConfirmField.text.toString())
-                   finish()
                    return@setOnClickListener
                }
             }
@@ -59,7 +58,11 @@ class ResetPasswordActivity : AppCompatActivity(), ResetPasswordView {
             .setMessage(
                 if (status) "Se ha reiniciado la contraseña correctamente"
                 else "No se ha podido reiniciar la contraseña"
-            ).setPositiveButton("Aceptar") { _, _ -> }
+            ).setPositiveButton("Aceptar") { _, _ ->
+                if(status){
+                    finish()
+                }
+            }
             .show()
     }
 }

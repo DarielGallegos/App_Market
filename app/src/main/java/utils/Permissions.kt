@@ -35,7 +35,7 @@ class Permissions {
 
     private fun takePhoto(context: Context){
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        if(intent.resolveActivity(context.packageManager) == null){
+        if(intent.resolveActivity(context.packageManager) != null){
             (context as Activity).startActivityForResult(intent, REQUEST_TAKE_PHOTO)
         }
     }
